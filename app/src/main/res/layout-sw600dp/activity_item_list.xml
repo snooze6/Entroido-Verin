@@ -3,7 +3,7 @@
     android:layout_height="match_parent" android:layout_marginLeft="16dp"
     android:layout_marginRight="16dp" android:baselineAligned="false"
     android:divider="?android:attr/dividerHorizontal" android:orientation="horizontal"
-    android:showDividers="middle" tools:context="es.develover.joker.entroido.ItemListActivity">
+    android:showDividers="middle" tools:context="es.develover.joker.entroido.Activities.ItemListActivity">
 
     <!--
     This layout is a two-pane layout for the Items
@@ -12,7 +12,7 @@
     -->
 
     <fragment android:id="@+id/item_list"
-        android:name="es.develover.joker.entroido.ItemListFragment" android:layout_width="0dp"
+        android:name="es.develover.joker.entroido.Fragments.ItemListFragment" android:layout_width="0dp"
         android:layout_height="match_parent" android:layout_weight="2"
         tools:layout="@android:layout/list_content" />
 

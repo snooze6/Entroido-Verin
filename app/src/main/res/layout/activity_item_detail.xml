@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent" android:fitsSystemWindows="true"
-    tools:context="es.develover.joker.entroido.ItemDetailActivity" tools:ignore="MergeRootFrame">
+    tools:context="es.develover.joker.entroido.Activities.ItemDetailActivity" tools:ignore="MergeRootFrame">
 
     <android.support.design.widget.AppBarLayout android:id="@+id/app_bar"
         android:layout_width="match_parent" android:layout_height="@dimen/app_bar_height"

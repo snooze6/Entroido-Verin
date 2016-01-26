@@ -52,7 +52,18 @@ public class ContentProvider {
         dataDays.add(lunes);
         dataDays.add(martes);
         dataDays.add(miercoles);
-
+        dataDays.add(lunes);
+        dataDays.add(martes);
+        dataDays.add(miercoles);
+        dataDays.add(lunes);
+        dataDays.add(martes);
+        dataDays.add(miercoles);
+        dataDays.add(lunes);
+        dataDays.add(martes);
+        dataDays.add(miercoles);
+        dataDays.add(lunes);
+        dataDays.add(martes);
+        dataDays.add(miercoles);
 
 
         return dataDays;

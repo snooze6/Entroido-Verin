@@ -38,7 +38,7 @@ public class EventAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return Events.size();
+        return Events.size()+1;
     }
 
     @Override
@@ -59,7 +59,7 @@ public class EventAdapter extends BaseAdapter {
 
 
             } else {
-               // convertView = layoutInflater.inflate(R.layout.blank, parent, false);
+                convertView = layoutInflater.inflate(R.layout.blank, parent, false);
             }
         } else {
             if (position < Events.size()) {
@@ -69,7 +69,7 @@ public class EventAdapter extends BaseAdapter {
                 }
 
             } else {
-              //  convertView = layoutInflater.inflate(R.layout.blank, parent, false);
+                convertView = layoutInflater.inflate(R.layout.blank, parent, false);
             }
         }
 

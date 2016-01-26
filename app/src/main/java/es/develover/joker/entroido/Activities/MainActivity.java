@@ -1,6 +1,9 @@
 package es.develover.joker.entroido.Activities;
 
+import android.annotation.TargetApi;
 import android.content.Intent;
+import android.graphics.Point;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -10,14 +13,12 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
-
+import android.view.*;
+import android.widget.GridView;
+import es.develover.joker.entroido.Adapters.PartyAdapter;
 import es.develover.joker.entroido.Fragments.ItemDetailFragment;
 import es.develover.joker.entroido.Fragments.ItemListFragment;
+import es.develover.joker.entroido.Model.ContentProvider;
 import es.develover.joker.entroido.R;
 
 public class MainActivity extends AppCompatActivity
@@ -29,7 +30,7 @@ public class MainActivity extends AppCompatActivity
     public static View agenda = null;
     public static View fiesta = null;
 
-    public static int item;
+    public static int item = 1;
 
     @Override
     public void onItemSelected(String id) {
@@ -207,6 +208,7 @@ public class MainActivity extends AppCompatActivity
         public PlaceholderFragment() {
         }
 
+        @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
@@ -218,7 +220,7 @@ public class MainActivity extends AppCompatActivity
                     if (social == null) {
                         rootView = inflater.inflate(R.layout.fragment_social, container, false);
                     } else {
-                        social = rootView;
+                        return social;
                     }
                     break;
                 case 2:
@@ -234,6 +236,8 @@ public class MainActivity extends AppCompatActivity
 
                             ((MainActivity) getActivity()).onItemSelected("1");
                             item = 1;
+                        } else {
+                            mTwoPane = false;
                         }
                     } else {
                         return agenda;
@@ -242,8 +246,27 @@ public class MainActivity extends AppCompatActivity
                 case 3:
                     if (fiesta == null) {
                         rootView = inflater.inflate(R.layout.fragment_fiesta, container, false);
-                    } else {
+
+                        GridView grid = (GridView) rootView.findViewById(R.id.grid);
+                        grid.setAdapter(new PartyAdapter(ContentProvider.parties, getActivity()));
+
+                        if (mTwoPane) {
+                            Point p = new Point();
+                              getActivity().getWindowManager().getDefaultDisplay().getSize(p);
+                              int col = 0;
+                              if (grid.getRequestedColumnWidth()>0) {
+                                  col = (int) p.x/grid.getRequestedColumnWidth();
+                              }
+                              Log.e("[Ancho]: ","[Pantalla: "+p.x+"] - [Columna: "+grid.getRequestedColumnWidth()+"] - [Columnas: "+col+"]");
+
+                            grid.setNumColumns(col);
+                        } else {
+                            grid.setNumColumns(1);
+                        }
+
                         fiesta = rootView;
+                    } else {
+                        return fiesta;
                     }
                     break;
 

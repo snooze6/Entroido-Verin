@@ -6,4 +6,10 @@
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="appbar_padding_top">8dp</dimen>
     <dimen name="app_bar_height">200dp</dimen>
+
+    <dimen name="card_width">370dp</dimen>
+    <dimen name="card_height">370dp</dimen>
+    <dimen name="card_photo">250dp</dimen>
+    <dimen name="card_padding">4dp</dimen>
+    <dimen name="column_width">390dp</dimen>
 </resources>

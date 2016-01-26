@@ -2,67 +2,55 @@ package es.develover.joker.entroido.Network;
 
 import android.util.Base64;
 import android.util.Log;
-
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
-import java.io.UnsupportedEncodingException;
+import javax.net.ssl.HttpsURLConnection;
+import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
 
-import javax.net.ssl.HttpsURLConnection;
-
 public class Twitah {
 
     //SUBCLASE PARA XESTIONAR E DELEGAR ERRORES
-    public class Oauth2Exception extends Exception{
+    public static class Oauth2Exception extends Exception{
         public Oauth2Exception(String message) {
             super(message);
         }
     }
 
     //<DEBUG>
-    private final static String DEBUG_API="DEBUG_API";
+    public final static String DEBUG_API="DEBUG_API";
     //</DEBUG>
 
-    private final static String API_KEY ="VIJrM2ZUPIsG7Qs1qRidaYeD1";
-    private final static String API_SECRET ="apAqSn4nMzGqi5yH6i4ThOiM6IWC2w7B1Lrr9RdBT2iXEPsTJq";
-    private final static String TOKEN_URL = "https://api.twitter.com/oauth2/token";
+    public final static String API_KEY ="VIJrM2ZUPIsG7Qs1qRidaYeD1";
+    public final static String API_SECRET ="apAqSn4nMzGqi5yH6i4ThOiM6IWC2w7B1Lrr9RdBT2iXEPsTJq";
+    public final static String TOKEN_URL = "https://api.twitter.com/oauth2/token";
 
-    private static String bearerToken;
+    public static String bearerToken;
 
     public Twitah(){}
 
-    //codifica a consumerkey e o consumer secret ao formato especificado pola api te twitter
-    private String encodeKeys(String consumerKey, String consumerSecret) throws Oauth2Exception{
+    //codifica a consumerkey e o consumer secret ao formato especificado pola api de twitter
+    static public String encodeKeys(String consumerKey, String consumerSecret) throws Oauth2Exception{
         String encodedConsumerKey ="";
         String encodedConsumerSecret ="";
-
         try {
-
             encodedConsumerKey = URLEncoder.encode(consumerKey, "UTF-8");
             encodedConsumerSecret = URLEncoder.encode(consumerSecret, "UTF-8");
-
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
             throw new Oauth2Exception("Erro ao codificar a API_KEY e/ou a API_SECRET_KEY");
         }
-
         String fullKey = encodedConsumerKey + ":" + encodedConsumerSecret;
-
         return Base64.encodeToString(fullKey.getBytes(), Base64.NO_WRAP);
-
+        //return fullKey;
     }
 
     //construe o token de autentificación
-    private String requestBearerToken(String endPointUrl)
+    public String requestBearerToken(String endPointUrl)
             throws IOException,Oauth2Exception {
 
         HttpsURLConnection connection = null;
@@ -131,7 +119,7 @@ public class Twitah {
     }
 
     // Writes a request to a connection
-    private boolean writeRequest(HttpURLConnection connection,
+    public boolean writeRequest(HttpURLConnection connection,
                                  String textBody) throws Oauth2Exception{
         try {
             //obtense o fluxo de datos da conexion
@@ -153,7 +141,7 @@ public class Twitah {
     }
 
     // Lee a resposta obtida por unha conexion e a devolve como un string
-    private String readResponse(HttpURLConnection connection) throws IOException{
+    public String readResponse(HttpURLConnection connection) throws IOException{
 
         StringBuilder str = new StringBuilder();
 

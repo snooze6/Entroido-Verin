@@ -15,10 +15,12 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.*;
 import android.widget.GridView;
+import android.widget.TextView;
 import es.develover.joker.entroido.Adapters.PartyAdapter;
 import es.develover.joker.entroido.Fragments.ItemDetailFragment;
 import es.develover.joker.entroido.Fragments.ItemListFragment;
 import es.develover.joker.entroido.Model.ContentProvider;
+import es.develover.joker.entroido.Network.Twitah;
 import es.develover.joker.entroido.R;
 
 public class MainActivity extends AppCompatActivity
@@ -219,6 +221,20 @@ public class MainActivity extends AppCompatActivity
                 case 1:
                     if (social == null) {
                         rootView = inflater.inflate(R.layout.fragment_social, container, false);
+
+                        TextView debug = (TextView) rootView.findViewById(R.id.debug);
+                        String msg = null;
+                        try {
+                            msg =   "[API_KEY]:     "+Twitah.API_KEY+"\n"+
+                                    "[API_SECRET]:  "+Twitah.API_SECRET+"\n"+
+                                    "[TOKEN_URL]:   "+Twitah.TOKEN_URL+"\n"+
+                                    "[Encoded]:     "+Twitah.encodeKeys(Twitah.API_KEY, Twitah.API_SECRET);
+                        } catch (Twitah.Oauth2Exception e) {
+                            e.printStackTrace();
+                        }
+                        debug.setText(msg);
+
+                        social = rootView;
                     } else {
                         return social;
                     }

@@ -10,14 +10,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
-import java.util.ArrayList;
-
 import es.develover.joker.entroido.Activities.ItemDetailActivity;
 import es.develover.joker.entroido.Activities.ItemListActivity;
 import es.develover.joker.entroido.Adapters.EventAdapter;
+import es.develover.joker.entroido.Model.ContentProvider;
 import es.develover.joker.entroido.Model.Day;
 import es.develover.joker.entroido.Model.DummyContent;
-import es.develover.joker.entroido.Model.Event;
 import es.develover.joker.entroido.R;
 
 /**
@@ -36,7 +34,8 @@ public class ItemDetailFragment extends Fragment {
     /**
      * The dummy content this fragment is presenting.
      */
-    private DummyContent.DummyItem mItem;
+   private DummyContent.DummyItem mItem;
+    private Day day;
 
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
@@ -53,8 +52,10 @@ public class ItemDetailFragment extends Fragment {
             // Load the dummy content specified by the fragment
             // arguments. In a real-world scenario, use a Loader
             // to load content from a content provider.
+
             mItem = DummyContent.ITEM_MAP.get(getArguments().getString(ARG_ITEM_ID));
 
+            day= ContentProvider.days.get(Integer.parseInt(getArguments().getString(ARG_ITEM_ID))-1);
             Activity activity = this.getActivity();
 /*            CollapsingToolbarLayout appBarLayout = (CollapsingToolbarLayout) activity.findViewById(R.id.toolbar_layout);
             if (appBarLayout != null) {
@@ -70,12 +71,18 @@ public class ItemDetailFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_item_detail, container, false);
         ListView listView = (ListView) rootView.findViewById(R.id.listview_events);
 
-        Event event1 = new Event("Evento 1","Descripcion del evento jejejejejejejejejejejejejeje, metele más cosas",R.drawable.icon);
+
+        //Dummy manual content
+ /*       Event event1 = new Event("Evento 1","Descripcion del evento jejejejejejejejejejejejejeje, metele más cosas",R.drawable.icon);
+        Event event2 = new Event("Evento 1","Descripcion del evento jejejejejejejejejejejejejeje, metele más cosas",R.drawable.domingo);
         ArrayList<Event> events= new ArrayList<Event>();
         events.add(event1);
         events.add(event1);
-        events.add(event1);
-        Day day = new Day("8 de Febrero", R.drawable.domingo, "Domingo de carnaval", "Cabalgata espectacular en el pequeño gran pueblo de Verín", events);
+        events.add(event2);
+        events.add(event2);events.add(event2);
+
+        Day day = new Day("8 de Febrero", R.drawable.icon, "Domingo de carnaval", "Cabalgata espectacular en el pequeño gran pueblo de Verín", events);*/
+
         EventAdapter eventAdapter = new EventAdapter(day,this.getActivity());
         listView.setAdapter(eventAdapter);
         listView.setOnTouchListener(new View.OnTouchListener() {

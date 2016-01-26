@@ -7,7 +7,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ListView;
 
-import es.develover.joker.entroido.Adapters.MainAdapter;
+import es.develover.joker.entroido.Adapters.DayAdapter;
+import es.develover.joker.entroido.Model.ContentProvider;
 import es.develover.joker.entroido.Model.DummyContent;
 
 /**
@@ -74,13 +75,9 @@ public class ItemListFragment extends ListFragment {
 
         // TODO: replace with a real list adapter.
 
-        MainAdapter mainAdapter= new MainAdapter(null,this.getActivity());
-        setListAdapter(mainAdapter);
-/*        setListAdapter(new ArrayAdapter<DummyContent.DummyItem>(
-                getActivity(),
-                android.R.layout.simple_list_item_activated_1,
-                android.R.id.text1,
-                DummyContent.ITEMS));*/
+        DayAdapter dayAdapter = new DayAdapter(ContentProvider.days,this.getActivity());
+        setListAdapter(dayAdapter);
+
     }
 
     @Override

@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void onItemSelected(String id) {
-        Log.e("[Tocado]: ",""+mTwoPane+" - "+id);
+        Log.e("[Tocado]: ", "" + mTwoPane + " - " + id);
         item = Integer.parseInt(id);
         if (mTwoPane) {
             // In two-pane mode, show the detail view in this activity by
@@ -55,6 +55,7 @@ public class MainActivity extends AppCompatActivity
             startActivity(detailIntent);
         }
     }
+
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
      * fragments for each of the sections. We use a
@@ -74,7 +75,9 @@ public class MainActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        fiesta = null; agenda = null; social = null;
+        fiesta = null;
+        agenda = null;
+        social = null;
 
 
         setContentView(R.layout.activity_main);
@@ -91,6 +94,8 @@ public class MainActivity extends AppCompatActivity
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(mViewPager);
+        //Item 0 by default
+        tabLayout.getTabAt(1).select();
     }
 
     @Override
@@ -109,13 +114,14 @@ public class MainActivity extends AppCompatActivity
         super.onRestoreInstanceState(savedInstanceState);
         // Restore UI state from the savedInstanceState.
         // This bundle has also been passed to onCreate.
-    if(mTwoPane){
-        item = savedInstanceState.getInt("Item");
-        this.onItemSelected(""+item);
-        Log.e("Item>>>>>>>>>",""+item);
-    }
+        if (mTwoPane) {
+            item = savedInstanceState.getInt("Item");
+            this.onItemSelected("" + item);
+            Log.e("Item>>>>>>>>>", "" + item);
+        }
 
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -204,44 +210,45 @@ public class MainActivity extends AppCompatActivity
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
-            View rootView=null;
+            View rootView = null;
             int section = getArguments().getInt(ARG_SECTION_NUMBER);
 
-                switch (section) {
-                    case 1:
-                        if (social == null) {
-                            rootView = inflater.inflate(R.layout.fragment_social, container, false);
-                        } else {
-                            social = rootView;
-                        }
-                        break;
-                    case 2:
-                        if (agenda == null) {
-                            rootView = inflater.inflate(R.layout.fragment_agenda, container, false);
-                        } else {
-                            agenda = rootView;
-                        }
-                        break;
-                    case 3:
-                        if (fiesta == null) {
-                            rootView = inflater.inflate(R.layout.activity_item_list, container, false);
-                            fiesta = rootView;
-                            if (rootView.findViewById(R.id.item_detail_container) != null) {
-                                // The detail container view will be present only in the
-                                // large-screen layouts (res/values-large and
-                                // res/values-sw600dp). If this view is present, then the
-                                // activity should be in two-pane mode.
-                                mTwoPane = true;
+            switch (section) {
+                case 1:
+                    if (social == null) {
+                        rootView = inflater.inflate(R.layout.fragment_social, container, false);
+                    } else {
+                        social = rootView;
+                    }
+                    break;
+                case 2:
+                    if (agenda == null) {
+                        rootView = inflater.inflate(R.layout.activity_item_list, container, false);
+                        agenda = rootView;
+                        if (rootView.findViewById(R.id.item_detail_container) != null) {
+                            // The detail container view will be present only in the
+                            // large-screen layouts (res/values-large and
+                            // res/values-sw600dp). If this view is present, then the
+                            // activity should be in two-pane mode.
+                            mTwoPane = true;
 
-                                ((MainActivity)getActivity()).onItemSelected("1");
-                                item = 1;
-                            }
-                        } else {
-                            return fiesta;
+                            ((MainActivity) getActivity()).onItemSelected("1");
+                            item = 1;
                         }
-                        break;
+                    } else {
+                        return agenda;
+                    }
+                    break;
+                case 3:
+                    if (fiesta == null) {
+                        rootView = inflater.inflate(R.layout.fragment_fiesta, container, false);
+                    } else {
+                        fiesta = rootView;
+                    }
+                    break;
 
-                }
+
+            }
             return rootView;
         }
 

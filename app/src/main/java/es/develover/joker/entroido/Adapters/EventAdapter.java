@@ -38,7 +38,7 @@ public class EventAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return Events.size() + 1;
+        return Events.size();
     }
 
     @Override
@@ -84,7 +84,7 @@ public class EventAdapter extends BaseAdapter {
             title.setText(event.getTitle());
 
             description.setText(event.getDescription());
-            Picasso.with(activity).load(day.getPhotoId()).into(image);
+            Picasso.with(activity).load(event.getImage()).into(image);
         }
 
 

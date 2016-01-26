@@ -2,10 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:paddingRight="@dimen/listview_horizontal_margin"
-                android:paddingLeft="@dimen/listview_horizontal_margin"
-                android:paddingTop="@dimen/card_padding">
+                android:orientation="vertical">
 
 
     <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"

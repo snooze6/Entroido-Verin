@@ -13,4 +13,10 @@
     <dimen name="card_photo">200dp</dimen>
     <dimen name="card_padding">4dp</dimen>
     <dimen name="column_width">340dp</dimen>
+
+<!--Fragment fiesta -->
+    <dimen name="fragment_fiesta_paddingBottom">90dp</dimen>
+    <dimen name="fragment_fiesta_paddingTop">0dp</dimen>
+    <dimen name="fragment_fiesta_paddingRight">0dp</dimen>
+    <dimen name="fragment_fiesta_paddingLeft">0dp</dimen>
 </resources>

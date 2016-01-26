@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
@@ -71,20 +72,9 @@ public class ItemDetailFragment extends Fragment {
         ListView listView = (ListView) rootView.findViewById(R.id.listview_events);
 
 
-        //Dummy manual content
- /*       Event event1 = new Event("Evento 1","Descripcion del evento jejejejejejejejejejejejejeje, metele más cosas",R.drawable.icon);
-        Event event2 = new Event("Evento 1","Descripcion del evento jejejejejejejejejejejejejeje, metele más cosas",R.drawable.domingo);
-        ArrayList<Event> events= new ArrayList<Event>();
-        events.add(event1);
-        events.add(event1);
-        events.add(event2);
-        events.add(event2);events.add(event2);
-
-        Day day = new Day("8 de Febrero", R.drawable.icon, "Domingo de carnaval", "Cabalgata espectacular en el pequeño gran pueblo de Verín", events);*/
-
         EventAdapter eventAdapter = new EventAdapter(day,this.getActivity());
         listView.setAdapter(eventAdapter);
-/*        listView.setOnTouchListener(new View.OnTouchListener() {
+        listView.setOnTouchListener(new View.OnTouchListener() {
             // Setting on Touch Listener for handling the touch inside ScrollView
             @Override
             public boolean onTouch(View v, MotionEvent event) {
@@ -92,7 +82,7 @@ public class ItemDetailFragment extends Fragment {
                 v.getParent().requestDisallowInterceptTouchEvent(true);
                 return false;
             }
-        });*/
+        });
 
         return rootView;
     }

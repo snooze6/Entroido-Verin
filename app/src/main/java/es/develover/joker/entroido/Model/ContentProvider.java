@@ -71,14 +71,15 @@ public class ContentProvider {
 
     public static ArrayList<Party> doTheParty() {
         ArrayList<Party> partyData = new ArrayList<Party>();
-        partyData.add(new Party("Mapa", R.drawable.mapaverin, "www.panaderiaroscas.com"));
-        partyData.add(new Party("Orquesta Panorama", R.drawable.panorama, "www.panaderiaroscas.com"));
-        partyData.add(new Party("Orquesta Paris de Noia", R.drawable.parisdenoia, "www.panaderiaroscas.com"));
-        partyData.add(new Party("Orquesta Marbella", R.drawable.marbella, "www.panaderiaroscas.com"));
-        partyData.add(new Party("Orquesta Panorama", R.drawable.panorama, "www.panaderiaroscas.com"));
-        partyData.add(new Party("Orquesta Paris de Noia", R.drawable.parisdenoia, "www.panaderiaroscas.com"));
-        partyData.add(new Party("Mapa", R.drawable.mapaverin, "www.panaderiaroscas.com"));
-        partyData.add(new Party("Orquesta Marbella", R.drawable.marbella, "www.panaderiaroscas.com"));
+        String uriVideo="qh-mwjF-OMo";
+        partyData.add(new Party("Mapa", R.drawable.mapita,"02/02/15", "www.panaderiaroscas.com",uriVideo));
+        partyData.add(new Party("Orquesta Panorama", R.drawable.panorama, "02/02/15", "www.panaderiaroscas.com",uriVideo));
+        partyData.add(new Party("Orquesta Paris de Noia", R.drawable.parisdenoia, "02/02/15", "www.panaderiaroscas.com",uriVideo));
+        partyData.add(new Party("Orquesta Marbella", R.drawable.marbella, "02/02/15", "www.panaderiaroscas.com","www.panaderiaroscas.com"));
+        partyData.add(new Party("Orquesta Panorama", R.drawable.panorama, "02/02/15", "www.panaderiaroscas.com","www.panaderiaroscas.com"));
+        partyData.add(new Party("Orquesta Paris de Noia", R.drawable.parisdenoia, "02/02/15", "www.panaderiaroscas.com","www.panaderiaroscas.com"));
+        partyData.add(new Party("Mapa", R.drawable.mapita, "02/02/15", "www.panaderiaroscas.com","www.panaderiaroscas.com"));
+        partyData.add(new Party("Orquesta Marbella", R.drawable.marbella, "02/02/15", "www.panaderiaroscas.com","www.panaderiaroscas.com"));
 
         return partyData;
     }

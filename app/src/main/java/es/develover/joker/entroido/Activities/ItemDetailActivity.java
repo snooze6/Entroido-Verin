@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.MenuItem;
 
 import es.develover.joker.entroido.Fragments.ItemDetailFragment;
+import es.develover.joker.entroido.Model.ContentProvider;
 import es.develover.joker.entroido.R;
 
 /**
@@ -49,6 +50,9 @@ public class ItemDetailActivity extends AppCompatActivity {
         if (savedInstanceState == null) {
             // Create the detail fragment and add it to the activity
             // using a fragment transaction.
+
+            int no = Integer.parseInt(getIntent().getStringExtra(ItemDetailFragment.ARG_ITEM_ID));
+            toolbar.setTitle(ContentProvider.days.get(no-1).getDayName());
             Bundle arguments = new Bundle();
             arguments.putString(ItemDetailFragment.ARG_ITEM_ID,
                     getIntent().getStringExtra(ItemDetailFragment.ARG_ITEM_ID));

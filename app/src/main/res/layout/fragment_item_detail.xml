@@ -10,8 +10,7 @@
     <ListView
         android:id="@+id/listview_events"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:transcriptMode="alwaysScroll"
+        android:layout_height="match_parent"
         />
 
 

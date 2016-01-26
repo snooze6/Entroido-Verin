@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
@@ -85,7 +84,7 @@ public class ItemDetailFragment extends Fragment {
 
         EventAdapter eventAdapter = new EventAdapter(day,this.getActivity());
         listView.setAdapter(eventAdapter);
-        listView.setOnTouchListener(new View.OnTouchListener() {
+/*        listView.setOnTouchListener(new View.OnTouchListener() {
             // Setting on Touch Listener for handling the touch inside ScrollView
             @Override
             public boolean onTouch(View v, MotionEvent event) {
@@ -93,7 +92,7 @@ public class ItemDetailFragment extends Fragment {
                 v.getParent().requestDisallowInterceptTouchEvent(true);
                 return false;
             }
-        });
+        });*/
 
         return rootView;
     }

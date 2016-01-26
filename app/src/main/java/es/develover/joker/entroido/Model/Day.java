@@ -1,5 +1,7 @@
 package es.develover.joker.entroido.Model;
 
+import java.util.ArrayList;
+
 /**
  * Created by Denis on 25/01/2016.
  */
@@ -8,12 +10,22 @@ public class Day {
     int photoId;
     String dayName;
     String description;
+    ArrayList<Event> events;
 
-    public Day(String date, int photoId, String dayName, String description) {
+    public ArrayList<Event> getEvents() {
+        return events;
+    }
+
+    public void setEvents(ArrayList<Event> events) {
+        this.events = events;
+    }
+
+    public Day(String date, int photoId, String dayName, String description,ArrayList<Event> events) {
         this.date = date;
         this.photoId = photoId;
         this.dayName = dayName;
         this.description = description;
+        this.events=events;
     }
 
     public String getDate() {

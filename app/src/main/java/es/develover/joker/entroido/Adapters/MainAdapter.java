@@ -29,7 +29,7 @@ public class MainAdapter extends BaseAdapter {
 
         this.days = days;
         this.days = new ArrayList<Day>();
-        Day day = new Day("8 de Febrero", R.drawable.domingo, "Domingo de carnaval", "Cabalgata espectacular en el pequeño gran pueblo de Verín");
+        Day day = new Day("8 de Febrero", R.drawable.domingo, "Domingo de carnaval", "Cabalgata espectacular en el pequeño gran pueblo de Verín", null);
         for (int i = 0; i < 20; i++) {
             this.days.add(day);
         }

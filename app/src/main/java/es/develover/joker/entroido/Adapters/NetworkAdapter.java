@@ -31,6 +31,14 @@ public class NetworkAdapter extends BaseAdapter {
     private long min_id;
     private long max_id;
 
+    public void setContenido(ArrayList<NetworkContent> contenido) {
+        this.contenido = contenido;
+    }
+
+    public ArrayList<NetworkContent> getContenido() {
+        return contenido;
+    }
+
     public NetworkAdapter(ArrayList<NetworkContent> contenido, Activity activity) {
         this.activity = activity;
         this.contenido = contenido;
@@ -98,7 +106,7 @@ public class NetworkAdapter extends BaseAdapter {
 
     private void doTheUpdate(){
         try {
-            ArrayList<Tweet> arr = new TwitterUpdater().execute(max_id).get();
+            ArrayList<Tweet> arr = new TwitterUpdater(this).execute(max_id).get();
             for (int i=0; i<arr.size(); i++){
                 if (arr.get(i).getId() < min_id){
                     min_id = arr.get(i).getId();
@@ -123,7 +131,7 @@ public class NetworkAdapter extends BaseAdapter {
             doTheLoad();
         }
         if (position==0){
-            doTheUpdate();
+//            doTheUpdate();
         }
         if (convertView==null){
             convertView = layoutInflater.inflate(R.layout.card_network, parent, false);

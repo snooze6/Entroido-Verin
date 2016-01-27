@@ -21,6 +21,7 @@ import es.develover.joker.entroido.Fragments.ItemDetailFragment;
 import es.develover.joker.entroido.Fragments.ItemListFragment;
 import es.develover.joker.entroido.Model.ContentProvider;
 import es.develover.joker.entroido.Model.NetworkContent;
+import es.develover.joker.entroido.Model.Tweet;
 import es.develover.joker.entroido.Network.TwitterGetter;
 import es.develover.joker.entroido.R;
 
@@ -226,19 +227,15 @@ public class MainActivity extends AppCompatActivity
                     if (social == null) {
                         rootView = inflater.inflate(R.layout.fragment_social, container, false);
 
-                        ListView grid = (ListView) rootView.findViewById(R.id.network_grid);
-                        ArrayList<NetworkContent> aux = new ArrayList<NetworkContent>();
-                        try {
-//                            ArrayList<Tweet> arr = new TwitterGetterId(getActivity().getApplicationContext()).execute(691641259618775041L).get();
-//                            aux.addAll(arr);
+                        ListView list = (ListView) rootView.findViewById(R.id.network_grid);
 
-                            aux.addAll(new TwitterGetter().execute("verin").get());
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        } catch (ExecutionException e) {
-                            e.printStackTrace();
-                        }
-                        grid.setAdapter(new NetworkAdapter(aux, getActivity()));
+                        ArrayList<NetworkContent> dummyContent=new ArrayList<NetworkContent>();
+                        dummyContent.add(new Tweet("","",""));
+
+                        list.setAdapter(new NetworkAdapter(dummyContent, getActivity()));
+
+                        new TwitterGetter((NetworkAdapter)list.getAdapter()).execute("verin");
+
                         social = rootView;
                     } else {
                         return social;

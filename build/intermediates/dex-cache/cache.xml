@@ -2,60 +2,60 @@
 <items version="2" >
 
     <item
-        jar="/home/snooze/workspace/java/Verín/Entroido-Verin/app/build/intermediates/exploded-aar/com.android.support/cardview-v7/23.1.0/jars/classes.jar"
+        jar="/home/snooze/workspace/java/Entroido-Verin/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/23.1.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="3f151e49c316a5ab2c065969a3b3b55ef9b393fc">
+        <dex dex="/home/snooze/workspace/java/Entroido-Verin/app/build/intermediates/pre-dexed/debug/classes-dae2548af3dd1af026cc4c6d0c1cec133672148f.jar" />
+    </item>
+    <item
+        jar="/home/snooze/workspace/java/Entroido-Verin/app/build/intermediates/exploded-aar/com.android.support/cardview-v7/23.1.0/jars/classes.jar"
         jumboMode="false"
         revision="23.0.2"
         sha1="d96886efea7cc74fbb3abd0e3b51d5638fc57be0">
-        <dex dex="/home/snooze/workspace/java/Verín/Entroido-Verin/app/build/intermediates/pre-dexed/debug/classes-765beccc6f063f8f8d19b683265281470d7afb19.jar" />
-    </item>
-    <item
-        jar="/home/snooze/workspace/java/Verín/Entroido-Verin/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.0/jars/classes.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="57ae0d750ff83f0c738d21720224ac7ea866a094">
-        <dex dex="/home/snooze/workspace/java/Verín/Entroido-Verin/app/build/intermediates/pre-dexed/debug/classes-9a795c28b50e6152fc6af80a42a083fd5afda288.jar" />
-    </item>
-    <item
-        jar="/opt/android-sdk/extras/android/m2repository/com/android/support/support-annotations/23.1.0/support-annotations-23.1.0.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="92e3fc113ec3ee36b64603a38857b95700025633">
-        <dex dex="/home/snooze/workspace/java/Verín/Entroido-Verin/app/build/intermediates/pre-dexed/debug/support-annotations-23.1.0-d41efdc78caad0b96629ae0ef638ea52db411703.jar" />
-    </item>
-    <item
-        jar="/home/snooze/workspace/java/Verín/Entroido-Verin/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.0/jars/classes.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="ddde541c289c8b816a8f8fd6c325d80788c522a6">
-        <dex dex="/home/snooze/workspace/java/Verín/Entroido-Verin/app/build/intermediates/pre-dexed/debug/classes-06019d8f3eb54dbb3cabf3d67c9de59fa425e122.jar" />
-    </item>
-    <item
-        jar="/home/snooze/workspace/java/Verín/Entroido-Verin/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.0/jars/libs/internal_impl-23.1.0.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="8716243bf04bae8d6c9ca94d27b9a9be7236f0a3">
-        <dex dex="/home/snooze/workspace/java/Verín/Entroido-Verin/app/build/intermediates/pre-dexed/debug/internal_impl-23.1.0-367057737aa68a3143a3c162011bc9a83175ca48.jar" />
-    </item>
-    <item
-        jar="/home/snooze/workspace/java/Verín/Entroido-Verin/app/build/intermediates/exploded-aar/com.android.support/design/23.1.0/jars/classes.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="19026d31f5d3ae868db81319671a642be5fbba08">
-        <dex dex="/home/snooze/workspace/java/Verín/Entroido-Verin/app/build/intermediates/pre-dexed/debug/classes-33cf5f1250096af852f1daa98f5b8f4a091e908a.jar" />
+        <dex dex="/home/snooze/workspace/java/Entroido-Verin/app/build/intermediates/pre-dexed/debug/classes-87d1b128bbd170b6be314e8e7e4d5918279e7613.jar" />
     </item>
     <item
         jar="/home/snooze/.gradle/caches/modules-2/files-2.1/com.squareup.picasso/picasso/2.5.2/7446d06ec8d4f7ffcc53f1da37c95f200dcb9387/picasso-2.5.2.jar"
         jumboMode="false"
         revision="23.0.2"
         sha1="7446d06ec8d4f7ffcc53f1da37c95f200dcb9387">
-        <dex dex="/home/snooze/workspace/java/Verín/Entroido-Verin/app/build/intermediates/pre-dexed/debug/picasso-2.5.2-2fb8aca59ba3804adeeff8fab286053475a8629c.jar" />
+        <dex dex="/home/snooze/workspace/java/Entroido-Verin/app/build/intermediates/pre-dexed/debug/picasso-2.5.2-2fb8aca59ba3804adeeff8fab286053475a8629c.jar" />
     </item>
     <item
-        jar="/home/snooze/workspace/java/Verín/Entroido-Verin/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/23.1.0/jars/classes.jar"
+        jar="/home/snooze/workspace/java/Entroido-Verin/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.0/jars/classes.jar"
         jumboMode="false"
         revision="23.0.2"
-        sha1="3f151e49c316a5ab2c065969a3b3b55ef9b393fc">
-        <dex dex="/home/snooze/workspace/java/Verín/Entroido-Verin/app/build/intermediates/pre-dexed/debug/classes-8ad0f99beb3b875b9f193e10de55290be257ba5d.jar" />
+        sha1="ddde541c289c8b816a8f8fd6c325d80788c522a6">
+        <dex dex="/home/snooze/workspace/java/Entroido-Verin/app/build/intermediates/pre-dexed/debug/classes-b2e4a5498501f6fc0f8092a074c9f3df441795b5.jar" />
+    </item>
+    <item
+        jar="/home/snooze/workspace/java/Entroido-Verin/app/build/intermediates/exploded-aar/com.android.support/design/23.1.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="19026d31f5d3ae868db81319671a642be5fbba08">
+        <dex dex="/home/snooze/workspace/java/Entroido-Verin/app/build/intermediates/pre-dexed/debug/classes-e00bc76a7e91260370618bdab2e8080ca9912f13.jar" />
+    </item>
+    <item
+        jar="/opt/android-sdk/extras/android/m2repository/com/android/support/support-annotations/23.1.0/support-annotations-23.1.0.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="92e3fc113ec3ee36b64603a38857b95700025633">
+        <dex dex="/home/snooze/workspace/java/Entroido-Verin/app/build/intermediates/pre-dexed/debug/support-annotations-23.1.0-d41efdc78caad0b96629ae0ef638ea52db411703.jar" />
+    </item>
+    <item
+        jar="/home/snooze/workspace/java/Entroido-Verin/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="57ae0d750ff83f0c738d21720224ac7ea866a094">
+        <dex dex="/home/snooze/workspace/java/Entroido-Verin/app/build/intermediates/pre-dexed/debug/classes-f0566fa39c377479d02927474640af2811fef78a.jar" />
+    </item>
+    <item
+        jar="/home/snooze/workspace/java/Entroido-Verin/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.0/jars/libs/internal_impl-23.1.0.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="8716243bf04bae8d6c9ca94d27b9a9be7236f0a3">
+        <dex dex="/home/snooze/workspace/java/Entroido-Verin/app/build/intermediates/pre-dexed/debug/internal_impl-23.1.0-9d6c92500478291d1bd2b7287260f642f1fe0de3.jar" />
     </item>
 
 </items>

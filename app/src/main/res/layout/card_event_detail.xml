@@ -36,7 +36,7 @@
                 android:padding="10dp">
 
                 <ImageView
-                    android:id="@+id/item_image_special"
+                    android:id="@+id/card_network_image"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/item_title_special"
@@ -64,7 +64,7 @@
                     android:layout_height="wrap_content"
                     android:padding="10dp"
                     android:layout_centerHorizontal="true"
-                    android:layout_below="@+id/item_image_special"
+                    android:layout_below="@+id/card_network_image"
                     android:text="Lorem fistrum torpedo pecador jarl se calle ustée jarl llevame al sircoo se calle ustée. Ese pedazo de diodenoo no te digo trigo por no llamarte Rodrigor diodenoo no puedor a wan llevame al sircoo pupita. Fistro benemeritaar de la pradera pupita al ataquerl amatomaa se calle ustée al ataquerl jarl. Apetecan ese hombree diodeno diodeno. Llevame al sircoo benemeritaar ahorarr me cago en tus muelas va usté muy cargadoo se calle ustée a gramenawer ese que llega por la gloria de mi madre jarl la caidita. Jarl ese pedazo de caballo blanco caballo negroorl diodeno a wan apetecan a peich."
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:textSize="20sp"

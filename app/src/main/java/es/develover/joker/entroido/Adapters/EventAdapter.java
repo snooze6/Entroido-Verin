@@ -76,7 +76,7 @@ public class EventAdapter extends BaseAdapter {
         if (position < Events.size()) {
             //Getting the elements of a item
 
-            ImageView image = (ImageView) convertView.findViewById(R.id.item_image_special);
+            ImageView image = (ImageView) convertView.findViewById(R.id.card_network_image);
             TextView title = (TextView) convertView.findViewById(R.id.item_title_special);
             TextView description = (TextView) convertView.findViewById(R.id.item_description_special);
             //Fill with the right content

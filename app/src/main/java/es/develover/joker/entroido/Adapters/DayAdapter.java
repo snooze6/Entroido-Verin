@@ -8,13 +8,11 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.squareup.picasso.Picasso;
-
-import java.util.ArrayList;
-
 import es.develover.joker.entroido.Model.Day;
 import es.develover.joker.entroido.R;
+
+import java.util.ArrayList;
 
 /**
  * Created by Denis on 25/01/2016.
@@ -28,11 +26,6 @@ public class DayAdapter extends BaseAdapter {
     public DayAdapter(ArrayList<Day> days, Activity activity) {
 
         this.days = days;
-/*        this.days = new ArrayList<Day>();
-        Day day = new Day("8 de Febrero", R.drawable.domingo, "Domingo de carnaval", "Cabalgata espectacular en el pequeño gran pueblo de Verín", null);
-        for (int i = 0; i < 20; i++) {
-            this.days.add(day);
-        }*/
         this.activity = activity;
         layoutInflater = (LayoutInflater) activity
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -63,7 +56,6 @@ public class DayAdapter extends BaseAdapter {
                 } else {
                     convertView = layoutInflater.inflate(R.layout.card_item, parent, false);
                 }
-
             } else {
                 convertView = layoutInflater.inflate(R.layout.blank, parent, false);
             }
@@ -78,14 +70,6 @@ public class DayAdapter extends BaseAdapter {
                         convertView = layoutInflater.inflate(R.layout.card_item, parent, false);
                     }
                 }
-
-/*                if (convertView.findViewById(R.id.item_title) == null) {
-                    if (position == positionSpecial) {
-                        convertView = layoutInflater.inflate(R.layout.card_item_special, parent, false);
-                    } else {
-                        convertView = layoutInflater.inflate(R.layout.card_item, parent, false);
-                    }
-                }*/
             } else {
                 convertView = layoutInflater.inflate(R.layout.blank, parent, false);
             }
@@ -94,8 +78,7 @@ public class DayAdapter extends BaseAdapter {
         if (position < days.size()) {
             //Getting the elements of a item
             if (position == positionSpecial) {
-                convertView = layoutInflater.inflate(R.layout.card_item_special, parent, false);
-                ImageView image = (ImageView) convertView.findViewById(R.id.item_image_special);
+                ImageView image = (ImageView) convertView.findViewById(R.id.card_network_image);
                 TextView title = (TextView) convertView.findViewById(R.id.item_title_special);
                 //Fill with the right content
                 Day day = (Day) getItem(position);

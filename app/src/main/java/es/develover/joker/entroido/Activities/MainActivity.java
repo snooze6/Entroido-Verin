@@ -15,13 +15,16 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.*;
 import android.widget.GridView;
-import android.widget.TextView;
+import es.develover.joker.entroido.Adapters.NetworkAdapter;
 import es.develover.joker.entroido.Adapters.PartyAdapter;
 import es.develover.joker.entroido.Fragments.ItemDetailFragment;
 import es.develover.joker.entroido.Fragments.ItemListFragment;
 import es.develover.joker.entroido.Model.ContentProvider;
-import es.develover.joker.entroido.Network.Twitah;
+import es.develover.joker.entroido.Model.NetworkContent;
+import es.develover.joker.entroido.Model.Tweet;
 import es.develover.joker.entroido.R;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity
         implements ItemListFragment.Callbacks {
@@ -222,17 +225,26 @@ public class MainActivity extends AppCompatActivity
                     if (social == null) {
                         rootView = inflater.inflate(R.layout.fragment_social, container, false);
 
-                        TextView debug = (TextView) rootView.findViewById(R.id.debug);
-                        String msg = null;
-                        try {
-                            msg =   "[API_KEY]:     "+Twitah.API_KEY+"\n"+
-                                    "[API_SECRET]:  "+Twitah.API_SECRET+"\n"+
-                                    "[TOKEN_URL]:   "+Twitah.TOKEN_URL+"\n"+
-                                    "[Encoded]:     "+Twitah.encodeKeys(Twitah.API_KEY, Twitah.API_SECRET);
-                        } catch (Twitah.Oauth2Exception e) {
-                            e.printStackTrace();
+                        GridView grid = (GridView) rootView.findViewById(R.id.network_grid);
+                        ArrayList<NetworkContent> aux = new ArrayList<NetworkContent>();
+                        for (int i=0; i<3; i++){
+                            aux.add(new Tweet(i+" @yo", "primer tweet", "https://kubekings.com/3382-large_default/yj-fisher-cube.jpg"));
                         }
-                        debug.setText(msg);
+                        grid.setAdapter(new NetworkAdapter(aux, getActivity()));
+
+                        if (mTwoPane) {
+                            Point p = new Point();
+                            getActivity().getWindowManager().getDefaultDisplay().getSize(p);
+                            int col = 0;
+                            if (grid.getRequestedColumnWidth()>0) {
+                                col = (int) p.x/grid.getRequestedColumnWidth();
+                            }
+                            Log.e("[Ancho]: ","[Pantalla: "+p.x+"] - [Columna: "+grid.getRequestedColumnWidth()+"] - [Columnas: "+col+"]");
+                            ((NetworkAdapter)grid.getAdapter()).setNUM_COL(col);
+                            grid.setNumColumns(col);
+                        } else {
+                            grid.setNumColumns(1);
+                        }
 
                         social = rootView;
                     } else {

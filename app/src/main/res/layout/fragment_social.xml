@@ -8,72 +8,8 @@
     android:paddingLeft="@dimen/listview_horizontal_margin">
 
 
-    <ScrollView
-            android:layout_width="wrap_content"
+    <GridView
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/scrollView">
-
-        <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-                                                xmlns:card_view="http://schemas.android.com/apk/res-auto"
-                                                android:id="@+id/cv"
-                                                android:layout_width="match_parent"
-                                                android:layout_height="wrap_content"
-                                                android:orientation="vertical"
-                                                android:paddingBottom="@dimen/activity_vertical_margin"
-                                                android:paddingLeft="@dimen/activity_horizontal_margin"
-                                                android:paddingRight="@dimen/activity_horizontal_margin"
-                                                android:paddingTop="@dimen/activity_vertical_margin"
-                                                card_view:cardCornerRadius="8dp">
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:baselineAligned="false"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:padding="10dp">
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="10dp">
-
-                    <ImageView
-                        android:id="@+id/item_image_special"
-                        android:layout_width="match_parent"
-                        android:layout_height="200dp"
-
-
-
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/icon" />
-
-
-                    <TextView
-                        android:id="@+id/item_title_special"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:padding="10dp"
-                        android:layout_centerHorizontal="true"
-                        android:layout_below="@+id/item_image_special"
-                        android:text="Jueves de Comadres - 2 de Febrero"
-                        android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="20dp"
-                        android:textStyle="bold" />
-
-                </RelativeLayout>
-            </LinearLayout>
-
-        </android.support.v7.widget.CardView>
-    </ScrollView>
-
-    <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="Small Text"
-            android:id="@+id/debug"
-            android:layout_gravity="center_horizontal"/>
-
+            android:id="@+id/network_grid"/>
 </LinearLayout>

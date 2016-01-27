@@ -73,7 +73,7 @@ public class PartyAdapter extends BaseAdapter {
             });
 
         }
-        ImageView image = (ImageView) convertView.findViewById(R.id.item_image_special);
+        ImageView image = (ImageView) convertView.findViewById(R.id.card_network_image);
         if (image != null) {    
             image.setOnClickListener(new View.OnClickListener() {
                 @Override

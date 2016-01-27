@@ -1,5 +1,7 @@
 package es.develover.joker.entroido.Network;
 
+import android.content.Context;
+import android.net.Uri;
 import android.util.Base64;
 import android.util.Log;
 import es.develover.joker.entroido.Model.Tweet;
@@ -34,7 +36,11 @@ public class Twitah {
 
     private static String bearerToken;
 
+    private Context c = null;
+
     public Twitah(){}
+
+    public Twitah(Context c){ this.c = c;}
 
     //codifica a consumerkey e o consumer secret ao formato especificado pola api te twitter
     private String encodeKeys(String consumerKey, String consumerSecret) throws Oauth2Exception{
@@ -66,13 +72,13 @@ public class Twitah {
         //codificanse as credenciales ao formato establecido por twitter
         String encodedCredentials = encodeKeys(API_KEY, API_SECRET);
 
-        Log.d(DEBUG_API, "Credenciales codificadas: " + encodedCredentials);
+        //Log.d(DEBUG_API, "Credenciales codificadas: " + encodedCredentials);
 
         try {
             URL url = new URL(endPointUrl);
             connection = (HttpsURLConnection) url.openConnection();
 
-            Log.d(DEBUG_API, "Conexion: " + connection);
+            //Log.d(DEBUG_API, "Conexion: " + connection);
 
             connection.setDoOutput(true);
             connection.setDoInput(true);
@@ -91,7 +97,7 @@ public class Twitah {
 
             //Obtense como resppsta un string formateado como un json
             String jsonString = readResponse(connection);
-            Log.d(DEBUG_API, "Respuesta: " + jsonString);
+            //Log.d(DEBUG_API, "Respuesta: " + jsonString);
 
             //Parsease o string a un json e obtense o bearerToken recibido
 
@@ -102,8 +108,8 @@ public class Twitah {
                     String tokenType = (String) obj.get("token_type");
                     String token = (String) obj.get("access_token");
 
-                    Log.d(DEBUG_API,"Token Type: "+tokenType);
-                    Log.d(DEBUG_API,"Token: "+token);
+                    //Log.d(DEBUG_API,"Token Type: "+tokenType);
+                    //Log.d(DEBUG_API,"Token: "+token);
 
                     return ((tokenType.equals("bearer")) && (token != null)) ? token
                             : "";
@@ -154,8 +160,7 @@ public class Twitah {
         StringBuilder str = new StringBuilder();
 
         //obtense o lector do fluxo de datos
-        BufferedReader br = new BufferedReader(new InputStreamReader(
-                connection.getInputStream()));
+        BufferedReader br = new BufferedReader(new InputStreamReader(connection.getInputStream()));
 
         //leese o fluxo de datos obtido liña a liña,engadindo cada linea a varaible line
         //ata que se consuma todo o fluxo
@@ -178,21 +183,21 @@ public class Twitah {
         return bearerToken;
     }
 
-    public ArrayList<Tweet> tweetsPorHashtag(String hashtag,int cantidad) throws IOException,Oauth2Exception{
+    public ArrayList<Tweet> tweetsPorHashtag(String hashtag, int cantidad) throws IOException,Oauth2Exception{
         HttpsURLConnection connection = null;
 
         //codificanse as credenciales ao formato establecido por twitter
         String encodedCredentials = encodeKeys(API_KEY, API_SECRET);
 
-        Log.d(DEBUG_API, "Credenciales codificadas: " + encodedCredentials);
+        //Log.d(DEBUG_API, "Credenciales codificadas: " + encodedCredentials);
 
         try {
 
             //TODO: REFACTORIZAR
-            URL url = new URL("https://api.twitter.com/1.1/search/tweets.json?q=%23"+hashtag+"&count="+cantidad);
+            URL url = new URL("https://api.twitter.com/1.1/search/tweets.json?q=%23"+hashtag+"&count="+cantidad+"&result_type=recent&include_rts=false");
             connection = (HttpsURLConnection) url.openConnection();
 
-            Log.d(DEBUG_API, "Conexion: " + connection);
+            //Log.d(DEBUG_API, "Conexion: " + connection);
 
             connection.setDoOutput(false);//ao ser unha peticion de tipo GET non leva contido no corpo da mensaxe polo que este campo debe estar a false
             connection.setDoInput(true);
@@ -206,7 +211,7 @@ public class Twitah {
 
             //Obtense como resppsta un string formateado como un json
             String jsonString = readResponse(connection);
-            Log.d(DEBUG_API, "Respuesta: " + jsonString);
+            //Log.d(DEBUG_API, "Respuesta: " + jsonString);
 
             //Parsease o string a un json e obtense o bearerToken recibido
             try {
@@ -238,21 +243,22 @@ public class Twitah {
         }
     }
 
-    public ArrayList<Tweet> tweetsPorHashtag(String hashtag,int cantidad,int desde) throws IOException,Oauth2Exception {
+    public ArrayList<Tweet> tweetsPorHashtag(String hashtag,int cantidad, long desde) throws IOException,Oauth2Exception {
         HttpsURLConnection connection = null;
 
         //codificanse as credenciales ao formato establecido por twitter
         String encodedCredentials = encodeKeys(API_KEY, API_SECRET);
 
-        Log.d(DEBUG_API, "Credenciales codificadas: " + encodedCredentials);
+        //Log.d(DEBUG_API, "Credenciales codificadas: " + encodedCredentials);
 
         try {
 
             //TODO: REFACTORIZAR
-            URL url = new URL("https://api.twitter.com/1.1/search/tweets.json?q=%23" + hashtag + "&count=" + cantidad + "&since_id=" + desde);
+            //URL url = new URL("https://api.twitter.com/1.1/search/tweets.json?q=%23" + hashtag + "&count=" + cantidad + "&since_id=" + desde +"&result_type=recent");
+            URL url = new URL("https://api.twitter.com/1.1/search/tweets.json?q=%23" + hashtag + "&count=" + cantidad + "&max_id=" + desde +"&result_type=recent&include_rts=false");
             connection = (HttpsURLConnection) url.openConnection();
 
-            Log.d(DEBUG_API, "Conexion: " + connection);
+            Log.d(DEBUG_API, "[Conexion: " + url.toString() + "]");
 
             connection.setDoOutput(false);//ao ser unha peticion de tipo GET non leva contido no corpo da mensaxe polo que este campo debe estar a false
             connection.setDoInput(true);
@@ -266,7 +272,26 @@ public class Twitah {
 
             //Obtense como resppsta un string formateado como un json
             String jsonString = readResponse(connection);
-            Log.d(DEBUG_API, "Respuesta: " + jsonString);
+            //Log.d(DEBUG_API, "Respuesta: " + jsonString);
+
+                if (c!=null) {
+                    File file;
+                    try {
+                        String fileName = Uri.parse("/DEPURACION").getLastPathSegment();
+                        file = File.createTempFile(fileName, null, c.getCacheDir());
+
+                        Log.d("DEBUG_API", "DEBUG: File path --> " + file.getAbsolutePath());
+
+                        FileOutputStream outputStream = c.openFileOutput(fileName, Context.MODE_PRIVATE);
+                        outputStream.write(jsonString.getBytes());
+                        outputStream.close();
+
+                        //Log.d("DEBUG_API", "Aarchivo creado");
+
+                    } catch (IOException e) {
+                        // Error while creating file
+                    }
+                }
 
             //Parsease o string a un json e obtense o bearerToken recibido
             try {
@@ -275,9 +300,7 @@ public class Twitah {
 
                 ArrayList<Tweet> tweets = new ArrayList<Tweet>(arrayJsonsTweets.length());
                 for (int i = 0; i < arrayJsonsTweets.length(); i++) {
-
                     tweets.add(new Tweet(arrayJsonsTweets.getJSONObject(i)));
-
                 }
 
                 return tweets;

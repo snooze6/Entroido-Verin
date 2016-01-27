@@ -3,10 +3,8 @@ package es.develover.joker.entroido.Fragments;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.ListFragment;
-import android.util.Log;
 import android.view.View;
 import android.widget.ListView;
-
 import es.develover.joker.entroido.Adapters.DayAdapter;
 import es.develover.joker.entroido.Model.ContentProvider;
 import es.develover.joker.entroido.Model.DummyContent;
@@ -70,7 +68,7 @@ public class ItemListFragment extends ListFragment {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        Log.e("ItemListFragment", "ItemListFragment");
+        //Log.e("ItemListFragment", "ItemListFragment");
         super.onCreate(savedInstanceState);
 
         // TODO: replace with a real list adapter.

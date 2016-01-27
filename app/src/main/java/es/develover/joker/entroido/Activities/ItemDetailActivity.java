@@ -5,9 +5,7 @@ import android.os.Bundle;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.MenuItem;
-
 import es.develover.joker.entroido.Fragments.ItemDetailFragment;
 import es.develover.joker.entroido.Model.ContentProvider;
 import es.develover.joker.entroido.R;
@@ -25,7 +23,7 @@ public class ItemDetailActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Log.e("DetailActivity", "DetailActivity");
+        //Log.e("DetailActivity", "DetailActivity");
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_item_detail);

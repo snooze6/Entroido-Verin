@@ -4,8 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
-
 import es.develover.joker.entroido.Fragments.ItemDetailFragment;
 import es.develover.joker.entroido.Fragments.ItemListFragment;
 import es.develover.joker.entroido.R;
@@ -38,7 +36,7 @@ public class ItemListActivity extends AppCompatActivity
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Log.e("ItemListActivity", "ItemListActivity");
+        //Log.e("ItemListActivity", "ItemListActivity");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_item_app_bar);
 

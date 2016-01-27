@@ -3,12 +3,10 @@ package es.develover.joker.entroido.Fragments;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
-
 import es.develover.joker.entroido.Activities.ItemDetailActivity;
 import es.develover.joker.entroido.Activities.ItemListActivity;
 import es.develover.joker.entroido.Adapters.EventAdapter;
@@ -46,7 +44,7 @@ public class ItemDetailFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Log.e("DetailFragment", "DetailFragment");
+        //Log.e("DetailFragment", "DetailFragment");
         if (getArguments().containsKey(ARG_ITEM_ID)) {
             // Load the dummy content specified by the fragment
             // arguments. In a real-world scenario, use a Loader
@@ -66,7 +64,7 @@ public class ItemDetailFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        Log.e("DetailFragment", "siuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu");
+        //Log.e("DetailFragment", "siuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu");
         View rootView = inflater.inflate(R.layout.fragment_item_detail, container, false);
         ListView listView = (ListView) rootView.findViewById(R.id.listview_events);
 

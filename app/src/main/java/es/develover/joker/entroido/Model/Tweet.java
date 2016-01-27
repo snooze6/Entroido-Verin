@@ -10,7 +10,7 @@ public class Tweet implements NetworkContent{
     private String nombreUsuario;
     private String texto;
     private String urlImagen;
-    private int id;
+    private long id;
 
     @Override
     public String getUser() {
@@ -28,17 +28,21 @@ public class Tweet implements NetworkContent{
     }
 
     @Override
-    public int getId() {return id;}
+    public long getId() {return id;}
 
     public Tweet(JSONObject json) {
         try {
-            id = json.getInt("id");
+            id = json.getLong("id");
             nombreUsuario = json.getJSONObject("user").getString("name");
             texto = json.getString("text");
             try {
-                urlImagen = json.getJSONObject("entities").getJSONObject("media").getString("media_url");
+                //urlImagen = json.getJSONObject("entities").getJSONObject("media").getString("media_url");
+                urlImagen = json.getJSONObject("entities").getJSONArray("media").getJSONObject(0).getString("media_url");
             } catch (Exception e) { //non se encontrou a imagen
                 urlImagen = null;
+                if (nombreUsuario.equals("Javier Tresguerras")) {
+                    e.printStackTrace();
+                }
             }
         }catch (JSONException e){
             e.printStackTrace();
@@ -49,6 +53,7 @@ public class Tweet implements NetworkContent{
         this.nombreUsuario = nombreUsuario;
         this.texto = texto;
         this.urlImagen = urlImagen;
+        id = 1;
     }
 }
 

@@ -10,9 +10,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import com.squareup.picasso.Picasso;
 import es.develover.joker.entroido.Model.NetworkContent;
+import es.develover.joker.entroido.Model.Tweet;
+import es.develover.joker.entroido.Network.TwitterGetterId;
 import es.develover.joker.entroido.R;
 
 import java.util.ArrayList;
+import java.util.concurrent.ExecutionException;
 
 /**
  * Created by snooze on 27/01/16.
@@ -24,56 +27,20 @@ public class NetworkAdapter extends BaseAdapter {
     private LayoutInflater layoutInflater = null;
     private int NUM_COL = 1;
     private int ITEMS_AT_SAME = 20;
+    private long min_id;
 
     public NetworkAdapter(ArrayList<NetworkContent> contenido, Activity activity) {
         this.activity = activity;
         this.contenido = contenido;
         this.layoutInflater = activity.getLayoutInflater();
-    }
 
-    public int getITEMS_AT_SAME() {
-        return ITEMS_AT_SAME;
-    }
-
-    public NetworkAdapter setITEMS_AT_SAME(int ITEMS_AT_SAME) {
-        this.ITEMS_AT_SAME = ITEMS_AT_SAME;
-        return this;
-    }
-
-    public ArrayList<NetworkContent> getContenido() {
-        return contenido;
-    }
-
-    public NetworkAdapter setContenido(ArrayList<NetworkContent> contenido) {
-        this.contenido = contenido;
-        return this;
-    }
-
-    public Activity getActivity() {
-        return activity;
-    }
-
-    public NetworkAdapter setActivity(Activity activity) {
-        this.activity = activity;
-        return this;
-    }
-
-    public LayoutInflater getLayoutInflater() {
-        return layoutInflater;
-    }
-
-    public NetworkAdapter setLayoutInflater(LayoutInflater layoutInflater) {
-        this.layoutInflater = layoutInflater;
-        return this;
-    }
-
-    public int getNUM_COL() {
-        return NUM_COL;
-    }
-
-    public NetworkAdapter setNUM_COL(int NUM_COL) {
-        this.NUM_COL = NUM_COL;
-        return this;
+        min_id = contenido.get(0).getId();
+        for (int i=0; i<contenido.size(); i++){
+            Log.d("DEBUG_API", "[Tweet: "+i+" - Id: "+contenido.get(i).getId());
+            if (contenido.get(i).getId()<min_id){
+                min_id = contenido.get(i).getId();
+            }
+        }
     }
 
     @Override
@@ -92,19 +59,31 @@ public class NetworkAdapter extends BaseAdapter {
     }
 
     private void doTheLoad(){
-//        TwitterGetter t = new TwitterGetter();
-//        try {
-//            ArrayList<Tweet> arr = t.execute("entroidoVerin").get();
+        Log.d("DEBUG_API","  -- Voy a cargar más");
+        try {
+            ArrayList<Tweet> arr = new TwitterGetterId(activity.getApplicationContext()).execute(min_id-1).get();
+            contenido.addAll(arr);
+
+            for (int i=0; i<arr.size(); i++){
+                if (arr.get(i).getId() < min_id){
+                    min_id = arr.get(i).getId();
+                }
+            }
+
+//            ArrayList<Tweet> arr = new TwitterGetter().execute("FelizMiercoles").get();
 //            contenido.addAll(arr);
-//        } catch (InterruptedException e) {
-//            e.printStackTrace();
-//        } catch (ExecutionException e) {
-//            e.printStackTrace();
-//        }
-        for (int i=0; i<=ITEMS_AT_SAME; i++){
-            contenido.add(contenido.get(i));
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
         }
         notifyDataSetChanged();
+        Log.d("DEBUG_API", "[Min_id: "+min_id+"]");
+        for (int i=0; i<contenido.size(); i++){
+            if (i==0 || i==(contenido.size()-1)) {
+                Log.d("DEBUG_API", "[Tweet: "+i+" - Id: " + contenido.get(i).getId());
+            }
+        }
     }
 
     @Override
@@ -112,8 +91,6 @@ public class NetworkAdapter extends BaseAdapter {
         if (position+NUM_COL>=contenido.size()){
             doTheLoad();
         }
-        Log.e("[Posición]: ",""+position+" - "+contenido.size());
-
         if (convertView==null){
             convertView = layoutInflater.inflate(R.layout.card_network, parent, false);
         }
@@ -125,7 +102,15 @@ public class NetworkAdapter extends BaseAdapter {
         NetworkContent n = contenido.get(position);
         author.setText(n.getUser());
         text.setText(n.getTexto());
-        Picasso.with(activity).load(n.getUrlImagen()).into(image);
+
+        if (n.getUrlImagen()!=null) {
+            Picasso.with(activity).load(n.getUrlImagen()).into(image);
+            image.setVisibility(View.VISIBLE);
+        } else {
+            image.setImageResource(R.drawable.hermione);
+            Picasso.with(activity).load(R.drawable.hermione).into(image);
+            image.setVisibility(View.GONE);
+        }
 
         return convertView;
     }

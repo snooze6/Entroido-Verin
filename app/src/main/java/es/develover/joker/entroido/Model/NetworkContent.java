@@ -8,6 +8,6 @@ public interface NetworkContent {
     public String getUser();
     public String getTexto();
     public String getUrlImagen();
-    public int getId();
+    public long getId();
 
 }

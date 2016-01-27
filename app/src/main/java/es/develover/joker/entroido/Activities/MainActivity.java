@@ -12,19 +12,20 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.*;
 import android.widget.GridView;
+import android.widget.ListView;
 import es.develover.joker.entroido.Adapters.NetworkAdapter;
 import es.develover.joker.entroido.Adapters.PartyAdapter;
 import es.develover.joker.entroido.Fragments.ItemDetailFragment;
 import es.develover.joker.entroido.Fragments.ItemListFragment;
 import es.develover.joker.entroido.Model.ContentProvider;
 import es.develover.joker.entroido.Model.NetworkContent;
-import es.develover.joker.entroido.Model.Tweet;
+import es.develover.joker.entroido.Network.TwitterGetter;
 import es.develover.joker.entroido.R;
 
 import java.util.ArrayList;
+import java.util.concurrent.ExecutionException;
 
 public class MainActivity extends AppCompatActivity
         implements ItemListFragment.Callbacks {
@@ -39,7 +40,7 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void onItemSelected(String id) {
-        Log.e("[Tocado]: ", "" + mTwoPane + " - " + id);
+        //Log.e("[Tocado]: ", "" + mTwoPane + " - " + id);
         item = Integer.parseInt(id);
         if (mTwoPane) {
             // In two-pane mode, show the detail view in this activity by
@@ -123,7 +124,7 @@ public class MainActivity extends AppCompatActivity
         if (mTwoPane) {
             item = savedInstanceState.getInt("Item");
             this.onItemSelected("" + item);
-            Log.e("Item>>>>>>>>>", "" + item);
+            //Log.e("Item>>>>>>>>>", "" + item);
         }
 
     }
@@ -225,27 +226,19 @@ public class MainActivity extends AppCompatActivity
                     if (social == null) {
                         rootView = inflater.inflate(R.layout.fragment_social, container, false);
 
-                        GridView grid = (GridView) rootView.findViewById(R.id.network_grid);
+                        ListView grid = (ListView) rootView.findViewById(R.id.network_grid);
                         ArrayList<NetworkContent> aux = new ArrayList<NetworkContent>();
-                        for (int i=0; i<14; i++){
-                            aux.add(new Tweet(i+" @yo", "primer tweet", "https://kubekings.com/3382-large_default/yj-fisher-cube.jpg"));
+                        try {
+//                            ArrayList<Tweet> arr = new TwitterGetterId(getActivity().getApplicationContext()).execute(691641259618775041L).get();
+//                            aux.addAll(arr);
+
+                            aux.addAll(new TwitterGetter().execute("verin").get());
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        } catch (ExecutionException e) {
+                            e.printStackTrace();
                         }
                         grid.setAdapter(new NetworkAdapter(aux, getActivity()));
-
-                        if (mTwoPane) {
-                            Point p = new Point();
-                            getActivity().getWindowManager().getDefaultDisplay().getSize(p);
-                            int col = 0;
-                            if (grid.getRequestedColumnWidth()>0) {
-                                col = (int) p.x/grid.getRequestedColumnWidth();
-                            }
-                            Log.e("[AnchoI] ","[Pantalla: "+p.x+"] - [Columna: "+grid.getRequestedColumnWidth()+"] - [Columnas: "+col+"]");
-                            ((NetworkAdapter)grid.getAdapter()).setNUM_COL(col);
-                            grid.setNumColumns(col);
-                        } else {
-                            grid.setNumColumns(1);
-                        }
-
                         social = rootView;
                     } else {
                         return social;
@@ -285,7 +278,7 @@ public class MainActivity extends AppCompatActivity
                               if (grid.getRequestedColumnWidth()>0) {
                                   col = (int) p.x/grid.getRequestedColumnWidth();
                               }
-                              Log.e("[Ancho]: ","[Pantalla: "+p.x+"] - [Columna: "+grid.getRequestedColumnWidth()+"] - [Columnas: "+col+"]");
+                              //Log.e("[Ancho]: ","[Pantalla: "+p.x+"] - [Columna: "+grid.getRequestedColumnWidth()+"] - [Columnas: "+col+"]");
 
                             grid.setNumColumns(col);
                         } else {

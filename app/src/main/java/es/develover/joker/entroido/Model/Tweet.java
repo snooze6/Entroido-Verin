@@ -1,5 +1,6 @@
 package es.develover.joker.entroido.Model;
 
+import android.util.Log;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -65,6 +66,10 @@ public class Tweet implements NetworkContent{
         this.texto = texto;
         this.urlImagen = urlImagen;
         id = 1;
+    }
+
+    public void print(){
+        Log.d("[TWEET]","[Id: "+id+"] - ["+nombreUsuario+"]");
     }
 }
 

@@ -2,6 +2,7 @@ package es.develover.joker.entroido.Network;
 
 import android.content.Context;
 import android.os.AsyncTask;
+import android.util.Log;
 import es.develover.joker.entroido.Model.Tweet;
 
 import java.io.IOException;
@@ -31,7 +32,8 @@ public class TwitterGetterId extends AsyncTask<Long, String, ArrayList<Tweet>> {
                 t = new Twitah();
             }
             t.autentificarOAUTH2();
-            return t.tweetsPorHashtag("verin", 30, params[0]);
+            Log.d("[TWEET]","  -- Voy a cargar a partir de id:"+params[0]);
+            return t.tweetsPorHashtag("verin", 15, params[0]);
         } catch (IOException e) {
             e.printStackTrace();
         } catch (Twitah.Oauth2Exception e) {

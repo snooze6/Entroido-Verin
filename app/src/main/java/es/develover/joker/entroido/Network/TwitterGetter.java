@@ -28,13 +28,9 @@ public class TwitterGetter extends AsyncTask<String, String, ArrayList<Tweet>> {
 
             ArrayList<Tweet> tweets=new ArrayList<Tweet>();
             ArrayList<NetworkContent> tweets2=new ArrayList<NetworkContent>();
-
-            tweets=t.tweetsPorHashtag("verin", 30);
-
+            tweets=t.tweetsPorHashtag("verin", 7);
             tweets2.addAll(tweets);
-
             netAdap.setContenido(tweets2);
-
             return tweets;
         } catch (IOException e) {
             e.printStackTrace();

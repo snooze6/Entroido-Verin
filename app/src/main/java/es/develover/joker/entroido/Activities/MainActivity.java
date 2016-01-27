@@ -5,13 +5,16 @@ import android.content.Intent;
 import android.graphics.Point;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.*;
 import android.widget.GridView;
 import android.widget.ListView;
@@ -227,14 +230,47 @@ public class MainActivity extends AppCompatActivity
                     if (social == null) {
                         rootView = inflater.inflate(R.layout.fragment_social, container, false);
 
-                        ListView list = (ListView) rootView.findViewById(R.id.network_grid);
+                        final SwipeRefreshLayout swipe = (SwipeRefreshLayout) rootView.findViewById(R.id.refreshLayout);
 
-                        ArrayList<NetworkContent> dummyContent=new ArrayList<NetworkContent>();
-                        dummyContent.add(new Tweet("","",""));
+                        final ListView list = (ListView) rootView.findViewById(R.id.network_grid);
 
-                        list.setAdapter(new NetworkAdapter(dummyContent, getActivity()));
+                        list.setAdapter(new NetworkAdapter(new ArrayList<NetworkContent>(), getActivity()));
 
-                        new TwitterGetter((NetworkAdapter)list.getAdapter()).execute("verin");
+                        swipe.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+                            @Override
+                            public void onRefresh() {
+                                ((NetworkAdapter)list.getAdapter()).doTheUpdate();
+                                //Toast.makeText(getContext(), "Chocolate", Toast.LENGTH_SHORT).show();
+                                new Handler().postDelayed(new Runnable(){
+                                    @Override
+                                    public void run() {
+                                        swipe.setRefreshing(false);
+                                    }
+                                },1000);
+                            }
+                        });
+
+                        try {
+                            ArrayList<Tweet> t = new TwitterGetter((NetworkAdapter)list.getAdapter()).execute("verin").get();
+                            ArrayList<NetworkContent> t1 = new ArrayList<NetworkContent>();
+                            t1.addAll(t);
+                            ((NetworkAdapter)list.getAdapter()).setContenido(t1);
+                            ((NetworkAdapter) list.getAdapter()).notifyDataSetChanged();
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        } catch (ExecutionException e) {
+                            e.printStackTrace();
+                        }
+
+
+
+                        if (((NetworkAdapter)list.getAdapter()).getContenido().size()!=0) {
+                            for (int i = 0; i < ((NetworkAdapter) list.getAdapter()).getContenido().size(); i++) {
+                                ((Tweet) ((NetworkAdapter) list.getAdapter()).getContenido().get(i)).print();
+                            }
+                        } else {
+                            Log.d("[TWEET]", "No hay");
+                        }
 
                         social = rootView;
                     } else {

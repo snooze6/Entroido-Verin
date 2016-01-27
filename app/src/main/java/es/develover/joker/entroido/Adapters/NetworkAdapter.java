@@ -33,6 +33,8 @@ public class NetworkAdapter extends BaseAdapter {
 
     public void setContenido(ArrayList<NetworkContent> contenido) {
         this.contenido = contenido;
+        min_id = contenido.get(contenido.size()-1).getId();
+        max_id = contenido.get(0).getId();
     }
 
     public ArrayList<NetworkContent> getContenido() {
@@ -44,15 +46,13 @@ public class NetworkAdapter extends BaseAdapter {
         this.contenido = contenido;
         this.layoutInflater = activity.getLayoutInflater();
 
-        min_id = contenido.get(0).getId();
-        max_id = contenido.get(0).getId();
-        for (int i=1; i<contenido.size(); i++){
-//            Log.d("DEBUG_API", "[Tweet: "+i+" - Id: "+contenido.get(i).getId());
-            if (contenido.get(i).getId()<min_id){
-                min_id = contenido.get(i).getId();
-            }
-            if (contenido.get(i).getId()>max_id){
-                max_id = contenido.get(i).getId();
+        for (int i=0; i<contenido.size(); i++){
+            ((Tweet)contenido.get(i)).print();
+        }
+        if (contenido!=null) {
+            if (contenido.size() != 0) {
+                min_id = contenido.get(contenido.size() - 1).getId();
+                max_id = contenido.get(0).getId();
             }
         }
     }
@@ -73,20 +73,15 @@ public class NetworkAdapter extends BaseAdapter {
     }
 
     private void doTheLoad(){
-        Log.d("DEBUG_API","  -- Voy a cargar más");
+        Log.d("[TWEET]","  -- Voy a cargar más por abajo");
+        for (int i=0; i<contenido.size(); i++){
+            ((Tweet)contenido.get(i)).print();
+        }
 
         try {
             ArrayList<Tweet> arr = new TwitterGetterId().execute(min_id-1).get();
             contenido.addAll(arr);
-
-            for (int i=0; i<arr.size(); i++){
-                if (arr.get(i).getId() < min_id){
-                    min_id = arr.get(i).getId();
-                }
-                if (contenido.get(i).getId()>max_id){
-                    max_id = contenido.get(i).getId();
-                }
-            }
+            min_id = contenido.get(contenido.size()-1).getId();
             notifyDataSetChanged();
 
 //            ArrayList<Tweet> arr = new TwitterGetter().execute("FelizMiercoles").get();
@@ -96,26 +91,16 @@ public class NetworkAdapter extends BaseAdapter {
         } catch (ExecutionException e) {
             e.printStackTrace();
         }
-//        Log.d("DEBUG_API", "[Min_id: "+min_id+"]");
-//        for (int i=0; i<contenido.size(); i++){
-//            if (i==0 || i==(contenido.size()-1)) {
-//                Log.d("DEBUG_API", "[Tweet: "+i+" - Id: " + contenido.get(i).getId());
-//            }
-//        }
     }
 
-    private void doTheUpdate(){
+    public void doTheUpdate(){
+        Log.d("[TWEET]","  -- Voy a cargar más por arriba");
+        for (int i=0; i<contenido.size(); i++){
+            ((Tweet)contenido.get(i)).print();
+        }
         try {
-            ArrayList<Tweet> arr = new TwitterUpdater(this).execute(max_id).get();
-            for (int i=0; i<arr.size(); i++){
-                if (arr.get(i).getId() < min_id){
-                    min_id = arr.get(i).getId();
-                }
-                if (contenido.get(i).getId()>max_id){
-                    max_id = contenido.get(i).getId();
-                }
-                contenido.add(0,arr.get(i));
-            }
+            new TwitterUpdater(this).execute(max_id+1).get();
+
             notifyDataSetChanged();
 
         } catch (InterruptedException e) {
@@ -127,11 +112,8 @@ public class NetworkAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        if (position+NUM_COL>=contenido.size()){
+        if (position+NUM_COL>=contenido.size() && contenido.size()>2){
             doTheLoad();
-        }
-        if (position==0){
-//            doTheUpdate();
         }
         if (convertView==null){
             convertView = layoutInflater.inflate(R.layout.card_network, parent, false);
@@ -145,7 +127,7 @@ public class NetworkAdapter extends BaseAdapter {
         author.setText(n.getUser());
         text.setText(n.getTexto());
 
-        if (n.getUrlImagen()!=null) {
+        if (n.getUrlImagen()!=null && !n.getUrlImagen().isEmpty()) {
             Picasso.with(activity).load(n.getUrlImagen()).into(image);
             image.setVisibility(View.VISIBLE);
         } else {
@@ -155,5 +137,15 @@ public class NetworkAdapter extends BaseAdapter {
         }
 
         return convertView;
+    }
+
+    public NetworkAdapter setMin_id(long min_id) {
+        this.min_id = min_id;
+        return this;
+    }
+
+    public NetworkAdapter setMax_id(long max_id) {
+        this.max_id = max_id;
+        return this;
     }
 }

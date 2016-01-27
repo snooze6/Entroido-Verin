@@ -19,6 +19,8 @@ import java.util.ArrayList;
 
 public class Twitah {
 
+    private static final String TYPE = "mixed";
+
     //SUBCLASE PARA XESTIONAR E DELEGAR ERRORES
     public class Oauth2Exception extends Exception{
         public Oauth2Exception(String message) {
@@ -194,7 +196,7 @@ public class Twitah {
         try {
 
             //TODO: REFACTORIZAR
-            URL url = new URL("https://api.twitter.com/1.1/search/tweets.json?q=%23"+hashtag+"&count="+cantidad+"&result_type=recent&include_rts=false");
+            URL url = new URL("https://api.twitter.com/1.1/search/tweets.json?q=%23"+hashtag+"-filter:retweets&count="+cantidad+"&result_type="+TYPE);
             connection = (HttpsURLConnection) url.openConnection();
 
             //Log.d(DEBUG_API, "Conexion: " + connection);
@@ -220,9 +222,7 @@ public class Twitah {
 
                 ArrayList<Tweet> tweets=new ArrayList<Tweet>(arrayJsonsTweets.length());
                 for (int i = 0; i < arrayJsonsTweets.length(); i++) {
-
                     tweets.add(new Tweet(arrayJsonsTweets.getJSONObject(i)));
-
                 }
 
                 return tweets;
@@ -255,7 +255,7 @@ public class Twitah {
 
             //TODO: REFACTORIZAR
             //URL url = new URL("https://api.twitter.com/1.1/search/tweets.json?q=%23" + hashtag + "&count=" + cantidad + "&since_id=" + desde +"&result_type=recent");
-            URL url = new URL("https://api.twitter.com/1.1/search/tweets.json?q=%23" + hashtag + "&count=" + cantidad + "&max_id=" + desde +"&result_type=recent&include_rts=false");
+            URL url = new URL("https://api.twitter.com/1.1/search/tweets.json?q=%23" + hashtag + "-filter:retweets&count=" + cantidad + "&max_id=" + desde + "&result_type="+TYPE);
             connection = (HttpsURLConnection) url.openConnection();
 
             Log.d(DEBUG_API, "[Conexion: " + url.toString() + "]");

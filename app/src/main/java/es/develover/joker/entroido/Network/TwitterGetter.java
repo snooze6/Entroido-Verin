@@ -16,7 +16,7 @@ public class TwitterGetter extends AsyncTask<String, String, ArrayList<Tweet>> {
         try {
             Twitah t = new Twitah();
               t.autentificarOAUTH2();
-            return t.tweetsPorHashtag(params[0], 10);
+            return t.tweetsPorHashtag("verin", 30);
         } catch (IOException e) {
             e.printStackTrace();
         } catch (Twitah.Oauth2Exception e) {

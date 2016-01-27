@@ -31,7 +31,7 @@ public class TwitterGetterId extends AsyncTask<Long, String, ArrayList<Tweet>> {
                 t = new Twitah();
             }
             t.autentificarOAUTH2();
-            return t.tweetsPorHashtag("verin", 10, params[0]);
+            return t.tweetsPorHashtag("verin", 30, params[0]);
         } catch (IOException e) {
             e.printStackTrace();
         } catch (Twitah.Oauth2Exception e) {

@@ -60,6 +60,17 @@ public class NetworkAdapter extends BaseAdapter {
 
     private void doTheLoad(){
         Log.d("DEBUG_API","  -- Voy a cargar más");
+
+//        for (int j=0; j<1000; j++){
+//            try {
+//                ArrayList<Tweet> qwe = new TwitterGetterId(activity.getApplicationContext()).execute(min_id-1).get();
+//            } catch (InterruptedException e) {
+//                e.printStackTrace();
+//            } catch (ExecutionException e) {
+//                e.printStackTrace();
+//            }
+//        }
+
         try {
             ArrayList<Tweet> arr = new TwitterGetterId(activity.getApplicationContext()).execute(min_id-1).get();
             contenido.addAll(arr);

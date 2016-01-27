@@ -18,26 +18,26 @@ import java.util.ArrayList;
 public class Twitah {
 
     //SUBCLASE PARA XESTIONAR E DELEGAR ERRORES
-    public static class Oauth2Exception extends Exception{
+    public class Oauth2Exception extends Exception{
         public Oauth2Exception(String message) {
             super(message);
         }
     }
 
     //<DEBUG>
-    public final static String DEBUG_API="DEBUG_API";
+    private final static String DEBUG_API="DEBUG_API";
     //</DEBUG>
 
-    public final static String API_KEY ="VIJrM2ZUPIsG7Qs1qRidaYeD1";
-    public final static String API_SECRET ="apAqSn4nMzGqi5yH6i4ThOiM6IWC2w7B1Lrr9RdBT2iXEPsTJq";
-    public final static String TOKEN_URL = "https://api.twitter.com/oauth2/token";
+    private final static String API_KEY ="VIJrM2ZUPIsG7Qs1qRidaYeD1";
+    private final static String API_SECRET ="apAqSn4nMzGqi5yH6i4ThOiM6IWC2w7B1Lrr9RdBT2iXEPsTJq";
+    private final static String TOKEN_URL = "https://api.twitter.com/oauth2/token";
 
-    public static String bearerToken;
+    private static String bearerToken;
 
     public Twitah(){}
 
     //codifica a consumerkey e o consumer secret ao formato especificado pola api te twitter
-    public static String encodeKeys(String consumerKey, String consumerSecret) throws Oauth2Exception{
+    private String encodeKeys(String consumerKey, String consumerSecret) throws Oauth2Exception{
         String encodedConsumerKey ="";
         String encodedConsumerSecret ="";
 
@@ -58,7 +58,7 @@ public class Twitah {
     }
 
     //construe o token de autentificación
-    public static String requestBearerToken(String endPointUrl)
+    private String requestBearerToken(String endPointUrl)
             throws IOException,Oauth2Exception {
 
         HttpsURLConnection connection = null;
@@ -127,7 +127,7 @@ public class Twitah {
     }
 
     // Writes a request to a connection
-    public static boolean writeRequest(HttpURLConnection connection,
+    private boolean writeRequest(HttpURLConnection connection,
                                  String textBody) throws Oauth2Exception{
         try {
             //obtense o fluxo de datos da conexion
@@ -149,7 +149,7 @@ public class Twitah {
     }
 
     // Lee a resposta obtida por unha conexion e a devolve como un string
-    public static String readResponse(HttpURLConnection connection) throws IOException{
+    private String readResponse(HttpURLConnection connection) throws IOException{
 
         StringBuilder str = new StringBuilder();
 
@@ -173,12 +173,12 @@ public class Twitah {
     }
 
     //TAL VEZ SEXA NECESARIO REFACTORIZAR ESTA FUNCION
-    public static String autentificarOAUTH2() throws IOException,Oauth2Exception{
+    public String autentificarOAUTH2() throws IOException,Oauth2Exception{
         bearerToken = requestBearerToken(TOKEN_URL); //autentificación
         return bearerToken;
     }
 
-    public static ArrayList<Tweet> tweetsPorHashtag(String hashtag) throws IOException,Oauth2Exception{
+    public ArrayList<Tweet> tweetsPorHashtag(String hashtag,int cantidad) throws IOException,Oauth2Exception{
         HttpsURLConnection connection = null;
 
         //codificanse as credenciales ao formato establecido por twitter
@@ -189,7 +189,7 @@ public class Twitah {
         try {
 
             //TODO: REFACTORIZAR
-            URL url = new URL("https://api.twitter.com/1.1/search/tweets.json?q=%23"+hashtag+"&count=10");
+            URL url = new URL("https://api.twitter.com/1.1/search/tweets.json?q=%23"+hashtag+"&count="+cantidad);
             connection = (HttpsURLConnection) url.openConnection();
 
             Log.d(DEBUG_API, "Conexion: " + connection);
@@ -214,6 +214,66 @@ public class Twitah {
                 JSONArray arrayJsonsTweets=json.getJSONArray("statuses");
 
                 ArrayList<Tweet> tweets=new ArrayList<Tweet>(arrayJsonsTweets.length());
+                for (int i = 0; i < arrayJsonsTweets.length(); i++) {
+
+                    tweets.add(new Tweet(arrayJsonsTweets.getJSONObject(i)));
+
+                }
+
+                return tweets;
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+            throw new Oauth2Exception("Erro ao parsear os datos do json recibido");
+
+        } catch (MalformedURLException e) {
+            throw new IOException("Endpoint inválido especificado n aurl", e);
+
+        } finally {
+            if (connection != null) {
+                connection.disconnect();
+            }
+        }
+    }
+
+    public ArrayList<Tweet> tweetsPorHashtag(String hashtag,int cantidad,int desde) throws IOException,Oauth2Exception {
+        HttpsURLConnection connection = null;
+
+        //codificanse as credenciales ao formato establecido por twitter
+        String encodedCredentials = encodeKeys(API_KEY, API_SECRET);
+
+        Log.d(DEBUG_API, "Credenciales codificadas: " + encodedCredentials);
+
+        try {
+
+            //TODO: REFACTORIZAR
+            URL url = new URL("https://api.twitter.com/1.1/search/tweets.json?q=%23" + hashtag + "&count=" + cantidad + "&since_id=" + desde);
+            connection = (HttpsURLConnection) url.openConnection();
+
+            Log.d(DEBUG_API, "Conexion: " + connection);
+
+            connection.setDoOutput(false);//ao ser unha peticion de tipo GET non leva contido no corpo da mensaxe polo que este campo debe estar a false
+            connection.setDoInput(true);
+            connection.setRequestMethod("GET");
+            connection.setRequestProperty("Host", "api.twitter.com");
+            connection.setRequestProperty("User-Agent", "anyApplication");
+            connection.setRequestProperty("Authorization", "Bearer "
+                    + bearerToken);
+            connection.setUseCaches(false);
+
+
+            //Obtense como resppsta un string formateado como un json
+            String jsonString = readResponse(connection);
+            Log.d(DEBUG_API, "Respuesta: " + jsonString);
+
+            //Parsease o string a un json e obtense o bearerToken recibido
+            try {
+                JSONObject json = new JSONObject(jsonString);
+                JSONArray arrayJsonsTweets = json.getJSONArray("statuses");
+
+                ArrayList<Tweet> tweets = new ArrayList<Tweet>(arrayJsonsTweets.length());
                 for (int i = 0; i < arrayJsonsTweets.length(); i++) {
 
                     tweets.add(new Tweet(arrayJsonsTweets.getJSONObject(i)));

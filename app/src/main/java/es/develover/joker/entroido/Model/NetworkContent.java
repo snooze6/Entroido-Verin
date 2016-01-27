@@ -9,5 +9,6 @@ public interface NetworkContent {
     public String getTexto();
     public String getUrlImagen();
     public long getId();
+    public String getUserImage();
 
 }

@@ -320,4 +320,82 @@ public class Twitah {
             }
         }
     }
+
+    public ArrayList<Tweet> update(String hashtag,int cantidad, long desde) throws IOException,Oauth2Exception {
+        HttpsURLConnection connection = null;
+
+        //codificanse as credenciales ao formato establecido por twitter
+        String encodedCredentials = encodeKeys(API_KEY, API_SECRET);
+
+        //Log.d(DEBUG_API, "Credenciales codificadas: " + encodedCredentials);
+
+        try {
+
+            //TODO: REFACTORIZAR
+            //URL url = new URL("https://api.twitter.com/1.1/search/tweets.json?q=%23" + hashtag + "&count=" + cantidad + "&since_id=" + desde +"&result_type=recent");
+            URL url = new URL("https://api.twitter.com/1.1/search/tweets.json?q=%23" + hashtag + "-filter:retweets&count=" + cantidad + "&since_id=" + desde + "&result_type="+TYPE);
+            connection = (HttpsURLConnection) url.openConnection();
+
+            Log.d(DEBUG_API, "[Conexion: " + url.toString() + "]");
+
+            connection.setDoOutput(false);//ao ser unha peticion de tipo GET non leva contido no corpo da mensaxe polo que este campo debe estar a false
+            connection.setDoInput(true);
+            connection.setRequestMethod("GET");
+            connection.setRequestProperty("Host", "api.twitter.com");
+            connection.setRequestProperty("User-Agent", "anyApplication");
+            connection.setRequestProperty("Authorization", "Bearer "
+                    + bearerToken);
+            connection.setUseCaches(false);
+
+
+            //Obtense como resppsta un string formateado como un json
+            String jsonString = readResponse(connection);
+            //Log.d(DEBUG_API, "Respuesta: " + jsonString);
+
+            if (c!=null) {
+                File file;
+                try {
+                    String fileName = Uri.parse("/DEPURACION").getLastPathSegment();
+                    file = File.createTempFile(fileName, null, c.getCacheDir());
+
+                    Log.d("DEBUG_API", "DEBUG: File path --> " + file.getAbsolutePath());
+
+                    FileOutputStream outputStream = c.openFileOutput(fileName, Context.MODE_PRIVATE);
+                    outputStream.write(jsonString.getBytes());
+                    outputStream.close();
+
+                    //Log.d("DEBUG_API", "Aarchivo creado");
+
+                } catch (IOException e) {
+                    // Error while creating file
+                }
+            }
+
+            //Parsease o string a un json e obtense o bearerToken recibido
+            try {
+                JSONObject json = new JSONObject(jsonString);
+                JSONArray arrayJsonsTweets = json.getJSONArray("statuses");
+
+                ArrayList<Tweet> tweets = new ArrayList<Tweet>(arrayJsonsTweets.length());
+                for (int i = 0; i < arrayJsonsTweets.length(); i++) {
+                    tweets.add(new Tweet(arrayJsonsTweets.getJSONObject(i)));
+                }
+
+                return tweets;
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+            throw new Oauth2Exception("Erro ao parsear os datos do json recibido");
+
+        } catch (MalformedURLException e) {
+            throw new IOException("Endpoint inválido especificado n aurl", e);
+
+        } finally {
+            if (connection != null) {
+                connection.disconnect();
+            }
+        }
+    }
 }

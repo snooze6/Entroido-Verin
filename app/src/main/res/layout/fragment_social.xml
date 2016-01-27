@@ -11,5 +11,9 @@
     <GridView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/network_grid"/>
+            android:id="@+id/network_grid"
+            android:numColumns="auto_fit"
+            android:choiceMode="none"
+            android:columnWidth="@dimen/column_width"
+            android:stretchMode="columnWidth"/>
 </LinearLayout>

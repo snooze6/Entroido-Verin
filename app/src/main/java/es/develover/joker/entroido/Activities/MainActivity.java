@@ -182,7 +182,7 @@ public class MainActivity extends AppCompatActivity
                 case 1:
                     return "AGENDA";
                 case 2:
-                    return "FIESTA";
+                    return "ORQUESTAS";
             }
             return null;
         }
@@ -227,7 +227,7 @@ public class MainActivity extends AppCompatActivity
 
                         GridView grid = (GridView) rootView.findViewById(R.id.network_grid);
                         ArrayList<NetworkContent> aux = new ArrayList<NetworkContent>();
-                        for (int i=0; i<3; i++){
+                        for (int i=0; i<14; i++){
                             aux.add(new Tweet(i+" @yo", "primer tweet", "https://kubekings.com/3382-large_default/yj-fisher-cube.jpg"));
                         }
                         grid.setAdapter(new NetworkAdapter(aux, getActivity()));
@@ -239,7 +239,7 @@ public class MainActivity extends AppCompatActivity
                             if (grid.getRequestedColumnWidth()>0) {
                                 col = (int) p.x/grid.getRequestedColumnWidth();
                             }
-                            Log.e("[Ancho]: ","[Pantalla: "+p.x+"] - [Columna: "+grid.getRequestedColumnWidth()+"] - [Columnas: "+col+"]");
+                            Log.e("[AnchoI] ","[Pantalla: "+p.x+"] - [Columna: "+grid.getRequestedColumnWidth()+"] - [Columnas: "+col+"]");
                             ((NetworkAdapter)grid.getAdapter()).setNUM_COL(col);
                             grid.setNumColumns(col);
                         } else {

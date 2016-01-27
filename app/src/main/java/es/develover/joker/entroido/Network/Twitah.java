@@ -2,7 +2,7 @@ package es.develover.joker.entroido.Network;
 
 import android.util.Base64;
 import android.util.Log;
-
+import es.develover.joker.entroido.Model.Tweet;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -15,31 +15,29 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 
-import es.develover.joker.entroido.Model.Tweet;
-
 public class Twitah {
 
     //SUBCLASE PARA XESTIONAR E DELEGAR ERRORES
-    public class Oauth2Exception extends Exception{
+    public static class Oauth2Exception extends Exception{
         public Oauth2Exception(String message) {
             super(message);
         }
     }
 
     //<DEBUG>
-    private final static String DEBUG_API="DEBUG_API";
+    public final static String DEBUG_API="DEBUG_API";
     //</DEBUG>
 
-    private final static String API_KEY ="VIJrM2ZUPIsG7Qs1qRidaYeD1";
-    private final static String API_SECRET ="apAqSn4nMzGqi5yH6i4ThOiM6IWC2w7B1Lrr9RdBT2iXEPsTJq";
-    private final static String TOKEN_URL = "https://api.twitter.com/oauth2/token";
+    public final static String API_KEY ="VIJrM2ZUPIsG7Qs1qRidaYeD1";
+    public final static String API_SECRET ="apAqSn4nMzGqi5yH6i4ThOiM6IWC2w7B1Lrr9RdBT2iXEPsTJq";
+    public final static String TOKEN_URL = "https://api.twitter.com/oauth2/token";
 
-    private static String bearerToken;
+    public static String bearerToken;
 
     public Twitah(){}
 
     //codifica a consumerkey e o consumer secret ao formato especificado pola api te twitter
-    private String encodeKeys(String consumerKey, String consumerSecret) throws Oauth2Exception{
+    public static String encodeKeys(String consumerKey, String consumerSecret) throws Oauth2Exception{
         String encodedConsumerKey ="";
         String encodedConsumerSecret ="";
 
@@ -60,7 +58,7 @@ public class Twitah {
     }
 
     //construe o token de autentificación
-    private String requestBearerToken(String endPointUrl)
+    public static String requestBearerToken(String endPointUrl)
             throws IOException,Oauth2Exception {
 
         HttpsURLConnection connection = null;
@@ -129,7 +127,7 @@ public class Twitah {
     }
 
     // Writes a request to a connection
-    private boolean writeRequest(HttpURLConnection connection,
+    public static boolean writeRequest(HttpURLConnection connection,
                                  String textBody) throws Oauth2Exception{
         try {
             //obtense o fluxo de datos da conexion
@@ -151,7 +149,7 @@ public class Twitah {
     }
 
     // Lee a resposta obtida por unha conexion e a devolve como un string
-    private String readResponse(HttpURLConnection connection) throws IOException{
+    public static String readResponse(HttpURLConnection connection) throws IOException{
 
         StringBuilder str = new StringBuilder();
 
@@ -175,12 +173,12 @@ public class Twitah {
     }
 
     //TAL VEZ SEXA NECESARIO REFACTORIZAR ESTA FUNCION
-    public String autentificarOAUTH2() throws IOException,Oauth2Exception{
+    public static String autentificarOAUTH2() throws IOException,Oauth2Exception{
         bearerToken = requestBearerToken(TOKEN_URL); //autentificación
         return bearerToken;
     }
 
-    public ArrayList<Tweet> tweetsPorHashtag(String hashtag) throws IOException,Oauth2Exception{
+    public static ArrayList<Tweet> tweetsPorHashtag(String hashtag) throws IOException,Oauth2Exception{
         HttpsURLConnection connection = null;
 
         //codificanse as credenciales ao formato establecido por twitter

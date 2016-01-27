@@ -10,22 +10,29 @@ public class Tweet implements NetworkContent{
     private String nombreUsuario;
     private String texto;
     private String urlImagen;
+    private int id;
 
     @Override
     public String getUser() {
         return nombreUsuario;
     }
 
+    @Override
     public String getTexto() {
         return texto;
     }
 
+    @Override
     public String  getUrlImagen() {
         return urlImagen;
     }
 
+    @Override
+    public int getId() {return id;}
+
     public Tweet(JSONObject json) {
         try {
+            id = json.getInt("id");
             nombreUsuario = json.getJSONObject("user").getString("name");
             texto = json.getString("text");
             try {

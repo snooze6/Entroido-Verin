@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+import com.squareup.picasso.Picasso;
 import es.develover.joker.entroido.Model.NetworkContent;
 import es.develover.joker.entroido.R;
 
@@ -91,6 +92,15 @@ public class NetworkAdapter extends BaseAdapter {
     }
 
     private void doTheLoad(){
+//        TwitterGetter t = new TwitterGetter();
+//        try {
+//            ArrayList<Tweet> arr = t.execute("entroidoVerin").get();
+//            contenido.addAll(arr);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        } catch (ExecutionException e) {
+//            e.printStackTrace();
+//        }
         for (int i=0; i<=ITEMS_AT_SAME; i++){
             contenido.add(contenido.get(i));
         }
@@ -115,7 +125,7 @@ public class NetworkAdapter extends BaseAdapter {
         NetworkContent n = contenido.get(position);
         author.setText(n.getUser());
         text.setText(n.getTexto());
-        //Picasso.with(activity).load(n.getUrlImagen()).into(image);
+        Picasso.with(activity).load(n.getUrlImagen()).into(image);
 
         return convertView;
     }

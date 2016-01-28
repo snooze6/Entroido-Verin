@@ -39,7 +39,7 @@
         android:src="@drawable/icon_tweeter"
         android:layout_width="60dp"
         android:layout_height="60dp"
-        android:elevation="15dp"
+        android:elevation="8dp"
 
 
         android:scaleType="centerCrop"

@@ -1,12 +1,15 @@
 package es.develover.joker.entroido.Activities;
 
 import android.annotation.TargetApi;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Point;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.provider.Settings;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -24,6 +27,7 @@ import android.view.ViewGroup;
 import android.widget.GridView;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
@@ -37,6 +41,7 @@ import es.develover.joker.entroido.Fragments.ItemListFragment;
 import es.develover.joker.entroido.Model.ContentProvider;
 import es.develover.joker.entroido.Model.NetworkContent;
 import es.develover.joker.entroido.Model.Tweet;
+import es.develover.joker.entroido.Network.ConnectionDetector;
 import es.develover.joker.entroido.Network.TwitterGetter;
 import es.develover.joker.entroido.R;
 
@@ -48,8 +53,18 @@ public class MainActivity extends AppCompatActivity
     public static View social = null;
     public static View agenda = null;
     public static View fiesta = null;
-
     public static int item = 1;
+
+    public static Fragment socialFragment;
+    public static TabLayout tabLayout;
+
+    public void refreshSocialTab() {
+        this.recreate();
+/*        Bundle args = new Bundle();
+        args.putInt(PlaceholderFragment.ARG_SECTION_NUMBER, 0);
+        getSupportFragmentManager().beginTransaction().remove(socialFragment).commit();*/
+
+    }
 
     @Override
     public void onItemSelected(String id) {
@@ -73,6 +88,29 @@ public class MainActivity extends AppCompatActivity
             Intent detailIntent = new Intent(this, ItemDetailActivity.class);
             detailIntent.putExtra(ItemDetailFragment.ARG_ITEM_ID, id);
             startActivity(detailIntent);
+        }
+    }
+
+
+    public void internetDialog() {
+        ConnectionDetector cd = new ConnectionDetector(this);
+        if (!cd.isConnectingToInternet()) {
+            final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+            alertDialogBuilder.setPositiveButton("Conectarse a internet", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int which) {
+                    Intent intent = new Intent(Settings.ACTION_SETTINGS);
+                    startActivity(intent);
+                }
+            });
+            alertDialogBuilder.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int which) {
+                }
+            });
+            alertDialogBuilder.setTitle("Necesitas conexión a internet para ver el contenido");
+            alertDialogBuilder.show();
+
+            final TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
+            tabLayout.setupWithViewPager(mViewPager);
         }
     }
 
@@ -111,11 +149,36 @@ public class MainActivity extends AppCompatActivity
         // Set up the ViewPager with the sections adapter.
         mViewPager = (ViewPager) findViewById(R.id.container);
         mViewPager.setAdapter(mSectionsPagerAdapter);
-
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
+        tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(mViewPager);
         //Item 0 by default
         tabLayout.getTabAt(1).select();
+
+        /*tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            private boolean internet = new ConnectionDetector(getBaseContext()).isConnectingToInternet();
+
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                if (internet){
+                } else {
+                    if (tab.getPosition()==0){
+                        internetDialog();
+                        Log.e("No hay internet", "No hay internet");
+                        internet = true;
+                    }
+                }
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });*/
     }
 
     @Override
@@ -177,6 +240,7 @@ public class MainActivity extends AppCompatActivity
 
         @Override
         public Fragment getItem(int position) {
+
             // getItem is called to instantiate the fragment for the given page.
             // Return a PlaceholderFragment (defined as a static inner class below).
             return PlaceholderFragment.newInstance(position + 1);
@@ -192,7 +256,9 @@ public class MainActivity extends AppCompatActivity
         public CharSequence getPageTitle(int position) {
             switch (position) {
                 case 0:
+
                     return "SOCIAL";
+
                 case 1:
                     return "AGENDA";
                 case 2:
@@ -218,9 +284,15 @@ public class MainActivity extends AppCompatActivity
          */
         public static PlaceholderFragment newInstance(int sectionNumber) {
             PlaceholderFragment fragment = new PlaceholderFragment();
+            if (sectionNumber == 0) {
+                socialFragment = fragment;
+            }
+
             Bundle args = new Bundle();
             args.putInt(ARG_SECTION_NUMBER, sectionNumber);
             fragment.setArguments(args);
+
+
             return fragment;
         }
 
@@ -238,87 +310,112 @@ public class MainActivity extends AppCompatActivity
 
         @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
         @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container,
+        public View onCreateView(LayoutInflater inflater, final ViewGroup container,
                                  Bundle savedInstanceState) {
             View rootView = null;
             int section = getArguments().getInt(ARG_SECTION_NUMBER);
 
             switch (section) {
                 case 1:
-                    if (social == null) {
-                        rootView = inflater.inflate(R.layout.fragment_social, container, false);
-                        ImageButton twitterButton = (ImageButton) rootView.findViewById(R.id.icon_twitter);
-                        twitterButton.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                // Create intent using ACTION_VIEW and a normal Twitter url:
-                                String tweetUrl =
-                                        String.format("https://twitter.com/intent/tweet?text=%s&url=%s",
-                                                urlEncode("#entroidoVerin"), urlEncode(""));
-                                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(tweetUrl));
+                    ConnectionDetector cd = new ConnectionDetector(getContext());
+                    if (cd.isConnectingToInternet()) {
+                        // call your AsyncTask
 
+                        if (social == null) {
+                            rootView = inflater.inflate(R.layout.fragment_social, container, false);
+                            ImageButton twitterButton = (ImageButton) rootView.findViewById(R.id.icon_twitter);
+                            twitterButton.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    // Create intent using ACTION_VIEW and a normal Twitter url:
+                                    String tweetUrl =
+                                            String.format("https://twitter.com/intent/tweet?text=%s&url=%s",
+                                                    urlEncode("#entroidoVerin"), urlEncode(""));
+                                    Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(tweetUrl));
+                                    startActivity(intent);
+                                }
+                            });
+                            final SwipeRefreshLayout swipe = (SwipeRefreshLayout) rootView.findViewById(R.id.refreshLayout);
 
-                                // Narrow down to official Twitter app, if available:
-         /*                       List<ResolveInfo> matches = getContext().getPackageManager().queryIntentActivities(intent, 0);
-                                for (ResolveInfo info : matches) {
-                                    if (info.activityInfo.packageName.toLowerCase().startsWith("com.twitter")) {
-                                        intent.setPackage(info.activityInfo.packageName);
-                                    }
-                                }*/
+                            final ListView list = (ListView) rootView.findViewById(R.id.network_grid);
 
-                                startActivity(intent);
+                            list.setAdapter(new NetworkAdapter(new ArrayList<NetworkContent>(), getActivity()));
+
+                            swipe.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+                                @Override
+                                public void onRefresh() {
+                                    ((NetworkAdapter) list.getAdapter()).doTheUpdate();
+                                    //Toast.makeText(getContext(), "Chocolate", Toast.LENGTH_SHORT).show();
+                                    new Handler().postDelayed(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            swipe.setRefreshing(false);
+                                        }
+                                    }, 1000);
+                                }
+                            });
+
+                            try {
+                                ArrayList<Tweet> t = new TwitterGetter((NetworkAdapter) list.getAdapter()).execute("verin").get();
+                                ArrayList<NetworkContent> t1 = new ArrayList<NetworkContent>();
+                                t1.addAll(t);
+                                ((NetworkAdapter) list.getAdapter()).setContenido(t1);
+                                ((NetworkAdapter) list.getAdapter()).notifyDataSetChanged();
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            } catch (ExecutionException e) {
+                                e.printStackTrace();
                             }
-                        });
-                        final SwipeRefreshLayout swipe = (SwipeRefreshLayout) rootView.findViewById(R.id.refreshLayout);
 
-                        final ListView list = (ListView) rootView.findViewById(R.id.network_grid);
 
-                        list.setAdapter(new NetworkAdapter(new ArrayList<NetworkContent>(), getActivity()));
+                            if (((NetworkAdapter) list.getAdapter()).getContenido().size() != 0) {
+                                for (int i = 0; i < ((NetworkAdapter) list.getAdapter()).getContenido().size(); i++) {
+                                    ((Tweet) ((NetworkAdapter) list.getAdapter()).getContenido().get(i)).print();
+                                }
+                            } else {
+                                Log.d("[TWEET]", "No hay");
+                            }
 
+                            social = rootView;
+                        } else {
+                            return social;
+                        }
+                    } else {
+
+
+                        final View caca = inflater.inflate(R.layout.card_no_connection, container, false);
+                        final SwipeRefreshLayout swipe = (SwipeRefreshLayout) caca.findViewById(R.id.refreshLayout);
                         swipe.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
                             @Override
                             public void onRefresh() {
-                                ((NetworkAdapter) list.getAdapter()).doTheUpdate();
-                                //Toast.makeText(getContext(), "Chocolate", Toast.LENGTH_SHORT).show();
+                               /* ((NetworkAdapter) list.getAdapter()).doTheUpdate();*/
+
+                                Toast.makeText(getContext(), "Chocolate", Toast.LENGTH_SHORT).show();
                                 new Handler().postDelayed(new Runnable() {
                                     @Override
                                     public void run() {
                                         swipe.setRefreshing(false);
+
+
+                                        ((MainActivity) getActivity()).refreshSocialTab();
+
+
+
                                     }
                                 }, 1000);
                             }
+
                         });
-
-                        try {
-                            ArrayList<Tweet> t = new TwitterGetter((NetworkAdapter) list.getAdapter()).execute("verin").get();
-                            ArrayList<NetworkContent> t1 = new ArrayList<NetworkContent>();
-                            t1.addAll(t);
-                            ((NetworkAdapter) list.getAdapter()).setContenido(t1);
-                            ((NetworkAdapter) list.getAdapter()).notifyDataSetChanged();
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        } catch (ExecutionException e) {
-                            e.printStackTrace();
-                        }
-
-
-                        if (((NetworkAdapter) list.getAdapter()).getContenido().size() != 0) {
-                            for (int i = 0; i < ((NetworkAdapter) list.getAdapter()).getContenido().size(); i++) {
-                                ((Tweet) ((NetworkAdapter) list.getAdapter()).getContenido().get(i)).print();
-                            }
-                        } else {
-                            Log.d("[TWEET]", "No hay");
-                        }
-
-                        social = rootView;
-                    } else {
-                        return social;
+                        social = null;
+                        return caca;
                     }
+
                     break;
                 case 2:
                     if (agenda == null) {
                         rootView = inflater.inflate(R.layout.activity_item_list, container, false);
                         agenda = rootView;
+
                         if (rootView.findViewById(R.id.item_detail_container) != null) {
                             // The detail container view will be present only in the
                             // large-screen layouts (res/values-large and

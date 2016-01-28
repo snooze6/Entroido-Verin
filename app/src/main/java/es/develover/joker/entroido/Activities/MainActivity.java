@@ -398,7 +398,7 @@ public class MainActivity extends AppCompatActivity
                             });
 
                             try {
-                                ArrayList<Tweet> t = new TwitterGetter((NetworkAdapter) list.getAdapter()).execute("verin").get();
+                                ArrayList<Tweet> t = new TwitterGetter((NetworkAdapter) list.getAdapter()).execute("verin","entroidoverin","entroidoverin2016","verin2016","entroidoverin16").get();
                                 ArrayList<NetworkContent> t1 = new ArrayList<NetworkContent>();
                                 t1.addAll(t);
                                 ((NetworkAdapter) list.getAdapter()).setContenido(t1);
@@ -431,7 +431,7 @@ public class MainActivity extends AppCompatActivity
                             public void onRefresh() {
                                /* ((NetworkAdapter) list.getAdapter()).doTheUpdate();*/
 
-                                Toast.makeText(getContext(), "Chocolate", Toast.LENGTH_SHORT).show();
+                                //Toast.makeText(getContext(), "Chocolate", Toast.LENGTH_SHORT).show();
                                 new Handler().postDelayed(new Runnable() {
                                     @Override
                                     public void run() {

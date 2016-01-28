@@ -185,7 +185,7 @@ public class Twitah {
         return bearerToken;
     }
 
-    public ArrayList<Tweet> tweetsPorHashtag(String hashtag, int cantidad) throws IOException,Oauth2Exception{
+    public ArrayList<Tweet> tweetsPorHashtag(int cantidad,String... hashtags) throws IOException,Oauth2Exception{
         HttpsURLConnection connection = null;
 
         //codificanse as credenciales ao formato establecido por twitter
@@ -196,10 +196,17 @@ public class Twitah {
         try {
 
             //TODO: REFACTORIZAR
-            URL url = new URL("https://api.twitter.com/1.1/search/tweets.json?q=%23"+hashtag+"-filter:retweets&count="+cantidad+"&result_type="+TYPE);
+
+            String cadenaHashtags="%23"+hashtags[0];
+
+            for (int i=1;i<hashtags.length;i++) {
+                cadenaHashtags+="%2BOR%2B%23"+hashtags[i];
+            }
+
+            URL url = new URL("https://api.twitter.com/1.1/search/tweets.json?q="+cadenaHashtags+"-filter:retweets&count="+cantidad+"&result_type="+TYPE);
             connection = (HttpsURLConnection) url.openConnection();
 
-            //Log.d(DEBUG_API, "Conexion: " + connection);
+            Log.d(DEBUG_API, "Conexion: " + connection);
 
             connection.setDoOutput(false);//ao ser unha peticion de tipo GET non leva contido no corpo da mensaxe polo que este campo debe estar a false
             connection.setDoInput(true);
@@ -234,7 +241,7 @@ public class Twitah {
             throw new Oauth2Exception("Erro ao parsear os datos do json recibido");
 
         } catch (MalformedURLException e) {
-            throw new IOException("Endpoint inválido especificado n aurl", e);
+            throw new IOException("Endpoint inválido especificado na url", e);
 
         } finally {
             if (connection != null) {
@@ -243,7 +250,7 @@ public class Twitah {
         }
     }
 
-    public ArrayList<Tweet> tweetsPorHashtag(String hashtag,int cantidad, long desde) throws IOException,Oauth2Exception {
+    public ArrayList<Tweet> tweetsPorHashtag(int cantidad, long desde,String... hashtags) throws IOException,Oauth2Exception {
         HttpsURLConnection connection = null;
 
         //codificanse as credenciales ao formato establecido por twitter
@@ -253,9 +260,15 @@ public class Twitah {
 
         try {
 
+            String cadenaHashtags="%23"+hashtags[0];
+
+            for (int i=1;i<hashtags.length;i++) {
+                cadenaHashtags+="%2BOR%2B%23"+hashtags[i];
+            }
+
             //TODO: REFACTORIZAR
             //URL url = new URL("https://api.twitter.com/1.1/search/tweets.json?q=%23" + hashtag + "&count=" + cantidad + "&since_id=" + desde +"&result_type=recent");
-            URL url = new URL("https://api.twitter.com/1.1/search/tweets.json?q=%23" + hashtag + "-filter:retweets&count=" + cantidad + "&max_id=" + desde + "&result_type="+TYPE);
+            URL url = new URL("https://api.twitter.com/1.1/search/tweets.json?q=" + cadenaHashtags + "-filter:retweets&count=" + cantidad + "&max_id=" + desde + "&result_type="+TYPE);
             connection = (HttpsURLConnection) url.openConnection();
 
             Log.d(DEBUG_API, "[Conexion: " + url.toString() + "]");
@@ -321,7 +334,7 @@ public class Twitah {
         }
     }
 
-    public ArrayList<Tweet> update(String hashtag,int cantidad, long desde) throws IOException,Oauth2Exception {
+    public ArrayList<Tweet> update(int cantidad, long desde, String... hashtags) throws IOException,Oauth2Exception {
         HttpsURLConnection connection = null;
 
         //codificanse as credenciales ao formato establecido por twitter
@@ -332,8 +345,14 @@ public class Twitah {
         try {
 
             //TODO: REFACTORIZAR
+
+            String cadenaHashtags="%23"+hashtags[0];
+
+            for (int i=1;i<hashtags.length;i++) {
+                cadenaHashtags+="%2BOR%2B%23"+hashtags[i];
+            }
             //URL url = new URL("https://api.twitter.com/1.1/search/tweets.json?q=%23" + hashtag + "&count=" + cantidad + "&since_id=" + desde +"&result_type=recent");
-            URL url = new URL("https://api.twitter.com/1.1/search/tweets.json?q=%23" + hashtag + "-filter:retweets&count=" + cantidad + "&since_id=" + desde + "&result_type="+TYPE);
+            URL url = new URL("https://api.twitter.com/1.1/search/tweets.json?q=" + cadenaHashtags + "-filter:retweets&count=" + cantidad + "&since_id=" + desde + "&result_type="+TYPE);
             connection = (HttpsURLConnection) url.openConnection();
 
             Log.d(DEBUG_API, "[Conexion: " + url.toString() + "]");

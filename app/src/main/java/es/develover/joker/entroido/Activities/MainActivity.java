@@ -54,7 +54,10 @@ public class MainActivity extends AppCompatActivity
     public static View agenda = null;
     public static View fiesta = null;
     public static int item = 1;
+
     public static int currentTab=1;
+
+    public static Menu menuTopBar=null;
 
     public static Fragment socialFragment;
     public static TabLayout tabLayout;
@@ -157,11 +160,20 @@ public class MainActivity extends AppCompatActivity
 
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
+                //TENSE QUE CAMBIARNO CASO  DE QUE O PRIMER ELEMENTODO MENU NON SEA ODEACTUALIZAR TWEETS
+                MenuItem opcionActualizarTweets = menuTopBar.getItem(0);
+
                 if(tab.getPosition() == 0) {
-                    Log.e("[TEST]", "PESTAÑA SOCIAL");
+
+                    opcionActualizarTweets.setVisible(true);
 
                     if(!internet)
                         internetDialog();
+                }else{
+
+                    if(opcionActualizarTweets.isVisible())
+                        opcionActualizarTweets.setVisible(false);
+
                 }
                 currentTab=0;
                 /*if (internet){
@@ -214,6 +226,32 @@ public class MainActivity extends AppCompatActivity
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
+
+        menuTopBar=menu;
+
+        //TENSE QUE CAMBIARNO CASO  DE QUE O PRIMER ELEMENTODO MENU NON SEA ODEACTUALIZAR TWEETS
+        MenuItem opcionActualizarTweets = menuTopBar.getItem(0);
+
+        final SwipeRefreshLayout swipe = (SwipeRefreshLayout) social.findViewById(R.id.refreshLayout);
+        final ListView list = (ListView) social.findViewById(R.id.network_grid);
+        opcionActualizarTweets.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+
+                swipe.setRefreshing(true);
+                ((NetworkAdapter) list.getAdapter()).doTheUpdate();
+                //Toast.makeText(getContext(), "Chocolate", Toast.LENGTH_SHORT).show();
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        swipe.setRefreshing(false);
+                    }
+                }, 1000);
+
+                return false;
+            }
+        });
+
         return true;
     }
 
@@ -341,7 +379,6 @@ public class MainActivity extends AppCompatActivity
                                 }
                             });
                             final SwipeRefreshLayout swipe = (SwipeRefreshLayout) rootView.findViewById(R.id.refreshLayout);
-
                             final ListView list = (ListView) rootView.findViewById(R.id.network_grid);
 
                             list.setAdapter(new NetworkAdapter(new ArrayList<NetworkContent>(), getActivity()));
@@ -387,7 +424,6 @@ public class MainActivity extends AppCompatActivity
                         }
                     } else {
 
-
                         final View caca = inflater.inflate(R.layout.card_no_connection, container, false);
                         final SwipeRefreshLayout swipe = (SwipeRefreshLayout) caca.findViewById(R.id.refreshLayout);
                         swipe.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
@@ -405,11 +441,9 @@ public class MainActivity extends AppCompatActivity
                                         ((MainActivity) getActivity()).refreshSocialTab();
 
 
-
                                     }
                                 }, 1000);
                             }
-
                         });
                         social = null;
                         return caca;
@@ -466,6 +500,7 @@ public class MainActivity extends AppCompatActivity
 
 
             }
+
             return rootView;
         }
 

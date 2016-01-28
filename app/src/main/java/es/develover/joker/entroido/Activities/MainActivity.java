@@ -229,25 +229,27 @@ public class MainActivity extends AppCompatActivity
         //TENSE QUE CAMBIARNO CASO  DE QUE O PRIMER ELEMENTODO MENU NON SEA ODEACTUALIZAR TWEETS
         MenuItem opcionActualizarTweets = menuTopBar.getItem(0);
 
-        final SwipeRefreshLayout swipe = (SwipeRefreshLayout) social.findViewById(R.id.refreshLayout);
-        final ListView list = (ListView) social.findViewById(R.id.network_grid);
-        opcionActualizarTweets.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(MenuItem item) {
+        if (social != null) {
+            final SwipeRefreshLayout swipe = (SwipeRefreshLayout) social.findViewById(R.id.refreshLayout);
+            final ListView list = (ListView) social.findViewById(R.id.network_grid);
+            opcionActualizarTweets.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+                @Override
+                public boolean onMenuItemClick(MenuItem item) {
 
-                swipe.setRefreshing(true);
-                ((NetworkAdapter) list.getAdapter()).doTheUpdate();
-                //Toast.makeText(getContext(), "Chocolate", Toast.LENGTH_SHORT).show();
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        swipe.setRefreshing(false);
-                    }
-                }, 1000);
+                    swipe.setRefreshing(true);
+                    ((NetworkAdapter) list.getAdapter()).doTheUpdate();
+                    //Toast.makeText(getContext(), "Chocolate", Toast.LENGTH_SHORT).show();
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            swipe.setRefreshing(false);
+                        }
+                    }, 1000);
 
-                return false;
-            }
-        });
+                    return false;
+                }
+            });
+        }
 
         return true;
     }

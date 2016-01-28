@@ -11,6 +11,36 @@ public class ContentProvider {
 
     public static ArrayList<Day> days = doTheDay();
     public static ArrayList<Party> parties = doTheParty();
+    public static ArrayList<Miscelaneus> miscelaneuses= doTheMiscelaneus();
+    public static ArrayList<Event> history= doTheHistory();
+    public static ArrayList<Event> cigarron= doTheCigarron();
+
+    public static ArrayList<Event> doTheHistory() {
+        ArrayList<Event> eventsHistory= new ArrayList<Event>();
+        Event event1 = new Event("Origen","El origen es lo que mas mola porque es el principio y a todos nos gusta el principio jejeje, es el prinicpio",R.drawable.day08);
+        Event event2 = new Event("Origen","El origen es lo que mas mola porque es el principio y a todos nos gusta el principio jejeje, es el prinicpio",R.drawable.day08);
+
+        Event event3= new Event("Origen","El origen es lo que mas mola porque es el principio y a todos nos gusta el principio jejeje, es el prinicpio",R.drawable.day08);
+
+        Event event4 = new Event("Origen","El origen es lo que mas mola porque es el principio y a todos nos gusta el principio jejeje, es el prinicpio",R.drawable.day08);
+eventsHistory.add(event1);
+        eventsHistory.add(event2);
+        eventsHistory.add(event3);
+        eventsHistory.add(event4);
+        return eventsHistory;
+    }
+
+    public static ArrayList<Event> doTheCigarron() {
+        ArrayList<Event> eventsHistory= new ArrayList<Event>();
+        Event event1 = new Event("Cigarron","Los cigarrones molan muchisimo y aqui ira su contenido muahahahahahahhaha",R.drawable.hermione);
+        Event event2 = new Event("Cigarron","Los cigarrones molan muchisimo y aqui ira su contenido muahahahahahahhaha",R.drawable.hermione);
+        Event event3 = new Event("Cigarron","Los cigarrones molan muchisimo y aqui ira su contenido muahahahahahahhaha",R.drawable.hermione);
+        Event event4 = new Event("Cigarron","Los cigarrones molan muchisimo y aqui ira su contenido muahahahahahahhaha",R.drawable.hermione);        eventsHistory.add(event1);
+        eventsHistory.add(event2);
+        eventsHistory.add(event3);
+        eventsHistory.add(event4);
+        return eventsHistory;
+    }
 
     /*public static ArrayList<Day> doTheDay() {
 
@@ -185,4 +215,18 @@ public class ContentProvider {
 
         return dataDays;
     }
+
+    public static ArrayList<Miscelaneus> doTheMiscelaneus() {
+        ArrayList<Miscelaneus> miscelaneusData = new ArrayList<Miscelaneus>();
+        Miscelaneus miscelaneus1= new Miscelaneus("Orquestas",Miscelaneus.ORQUESTA,R.drawable.hermione);
+        Miscelaneus miscelaneus2= new Miscelaneus("Historia",Miscelaneus.HISTORIA,R.drawable.day04);
+        Miscelaneus miscelaneus3= new Miscelaneus("Cigarrón",Miscelaneus.CIGARRON,R.drawable.day05);
+
+        miscelaneusData.add(miscelaneus1);
+        miscelaneusData.add(miscelaneus2);
+        miscelaneusData.add(miscelaneus3);
+        return miscelaneusData;
+    }
+
+
 }

@@ -20,13 +20,13 @@ import es.develover.joker.entroido.R;
 /**
  * Created by Denis on 25/01/2016.
  */
-public class EventAdapter extends BaseAdapter {
+public class HistoryAdapter extends BaseAdapter {
     private Day day;
     private ArrayList<Event> Events;
     private Activity activity;
     private LayoutInflater layoutInflater = null;
 
-    public EventAdapter(Day day, Activity activity) {
+    public HistoryAdapter(Day day, Activity activity) {
         this.day = day;
         this.Events = this.day.getEvents();
 
@@ -36,7 +36,7 @@ public class EventAdapter extends BaseAdapter {
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
-    public EventAdapter(ArrayList<Event> events,Activity activity){
+    public HistoryAdapter(ArrayList<Event> events, Activity activity){
         this.Events=events;
         this.activity = activity;
         layoutInflater = (LayoutInflater) activity
@@ -62,7 +62,7 @@ public class EventAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         if (convertView == null) {
             if (position < Events.size()) {
-                convertView = layoutInflater.inflate(R.layout.card_event_detail, parent, false);
+                convertView = layoutInflater.inflate(R.layout.card_history_event, parent, false);
 
 
             } else {
@@ -72,7 +72,7 @@ public class EventAdapter extends BaseAdapter {
             if (position < Events.size()) {
 
                 if (convertView.findViewById(R.id.item_title) == null) {
-                    convertView = layoutInflater.inflate(R.layout.card_event_detail, parent, false);
+                    convertView = layoutInflater.inflate(R.layout.card_history_event, parent, false);
                 }
 
             } else {

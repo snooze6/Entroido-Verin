@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v4.app.ListFragment;
 import android.view.View;
 import android.widget.ListView;
+
 import es.develover.joker.entroido.Adapters.DayAdapter;
 import es.develover.joker.entroido.Model.ContentProvider;
 import es.develover.joker.entroido.Model.DummyContent;
@@ -36,7 +37,7 @@ public class ItemListFragment extends ListFragment {
      * The current activated item position. Only used on tablets.
      */
     private int mActivatedPosition = ListView.INVALID_POSITION;
-
+    public DayAdapter dayAdapter;
     /**
      * A callback interface that all activities containing this fragment must
      * implement. This mechanism allows activities to be notified of item
@@ -73,7 +74,7 @@ public class ItemListFragment extends ListFragment {
 
         // TODO: replace with a real list adapter.
 
-        DayAdapter dayAdapter = new DayAdapter(ContentProvider.days,this.getActivity());
+         dayAdapter = new DayAdapter(ContentProvider.days,this.getActivity());
         setListAdapter(dayAdapter);
 
     }
@@ -112,6 +113,8 @@ public class ItemListFragment extends ListFragment {
     @Override
     public void onListItemClick(ListView listView, View view, int position, long id) {
         super.onListItemClick(listView, view, position, id);
+        //Log.e("[Tocado]: ", "" + position + " - " + id);
+
 
         // Notify the active callbacks interface (the activity, if the
         // fragment is attached to one) that an item has been selected.

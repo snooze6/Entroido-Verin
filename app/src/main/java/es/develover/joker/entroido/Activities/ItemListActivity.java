@@ -1,9 +1,11 @@
 package es.develover.joker.entroido.Activities;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+
 import es.develover.joker.entroido.Fragments.ItemDetailFragment;
 import es.develover.joker.entroido.Fragments.ItemListFragment;
 import es.develover.joker.entroido.R;
@@ -60,7 +62,9 @@ public class ItemListActivity extends AppCompatActivity
                     .setActivateOnItemClick(true);
         }
 
-        // TODO: If exposing deep links into your app, handle intents here.
+        if(getResources().getBoolean(R.bool.portrait_only)){
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        }
     }
 
     /**

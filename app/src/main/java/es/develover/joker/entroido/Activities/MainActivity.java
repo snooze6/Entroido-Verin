@@ -4,6 +4,7 @@ import android.annotation.TargetApi;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.graphics.Point;
 import android.net.Uri;
 import android.os.Build;
@@ -34,8 +35,8 @@ import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
 
+import es.develover.joker.entroido.Adapters.MiscelaneusAdapter;
 import es.develover.joker.entroido.Adapters.NetworkAdapter;
-import es.develover.joker.entroido.Adapters.PartyAdapter;
 import es.develover.joker.entroido.Fragments.ItemDetailFragment;
 import es.develover.joker.entroido.Fragments.ItemListFragment;
 import es.develover.joker.entroido.Model.ContentProvider;
@@ -68,7 +69,8 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void onItemSelected(String id) {
-        //Log.e("[Tocado]: ", "" + mTwoPane + " - " + id);
+        /*Log.e("[Tocado]: ", "" + mTwoPane + " - " + id);*/
+
         item = Integer.parseInt(id);
         if (mTwoPane) {
             // In two-pane mode, show the detail view in this activity by
@@ -179,6 +181,10 @@ public class MainActivity extends AppCompatActivity
 
             }
         });*/
+
+        if(getResources().getBoolean(R.bool.portrait_only)){
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        }
     }
 
     @Override
@@ -262,7 +268,7 @@ public class MainActivity extends AppCompatActivity
                 case 1:
                     return "AGENDA";
                 case 2:
-                    return "ORQUESTAS";
+                    return "ENTROIDO";
             }
             return null;
         }
@@ -437,8 +443,8 @@ public class MainActivity extends AppCompatActivity
                         rootView = inflater.inflate(R.layout.fragment_fiesta, container, false);
 
                         GridView grid = (GridView) rootView.findViewById(R.id.grid);
-                        grid.setAdapter(new PartyAdapter(ContentProvider.parties, getActivity()));
-
+                      //  grid.setAdapter(new PartyAdapter(ContentProvider.parties, getActivity()));
+                        grid.setAdapter(new MiscelaneusAdapter(ContentProvider.miscelaneuses, getActivity()));
                         if (mTwoPane) {
                             Point p = new Point();
                             getActivity().getWindowManager().getDefaultDisplay().getSize(p);

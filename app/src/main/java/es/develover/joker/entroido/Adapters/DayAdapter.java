@@ -8,11 +8,14 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import com.squareup.picasso.Picasso;
-import es.develover.joker.entroido.Model.Day;
-import es.develover.joker.entroido.R;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+
+import es.develover.joker.entroido.Model.Day;
+import es.develover.joker.entroido.R;
 
 /**
  * Created by Denis on 25/01/2016.
@@ -22,13 +25,65 @@ public class DayAdapter extends BaseAdapter {
     private ArrayList<Day> days;
     private Activity activity;
     private LayoutInflater layoutInflater = null;
+private int positionSpecial=3;
 
     public DayAdapter(ArrayList<Day> days, Activity activity) {
+
+
 
         this.days = days;
         this.activity = activity;
         layoutInflater = (LayoutInflater) activity
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+    }
+
+    private void refreshSpecialPosition() {
+        Calendar cal = Calendar.getInstance();
+        int day = cal.get(Calendar.DAY_OF_MONTH);
+        switch(day){
+            case 28:
+                positionSpecial=0;
+                break;
+
+            case 29:
+            case 30:
+            case 31:
+                positionSpecial=1;
+                break;
+            case 1:
+            case 2:
+            case 3:
+            case 4:
+                positionSpecial=2;
+                break;
+            case 5:
+                positionSpecial=3;
+                break;
+            case 6:
+                positionSpecial=4;
+                break;
+            case 7:
+                positionSpecial=5;
+                break;
+            case 8:
+                positionSpecial=6;
+                break;
+            case 9:
+                positionSpecial=7;
+                break;
+            default:
+                positionSpecial=8;
+
+        }
+
+    }
+
+    public int getPositionSpecial() {
+        return positionSpecial;
+    }
+
+    public void setPositionSpecial(int positionSpecial) {
+        this.positionSpecial = positionSpecial;
     }
 
     @Override
@@ -48,7 +103,7 @@ public class DayAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        int positionSpecial=3;
+        refreshSpecialPosition();
         if (convertView == null) {
             if (position < days.size()) {
                 if (position == positionSpecial) {

@@ -3,6 +3,7 @@ package es.develover.joker.entroido.Activities;
 import android.annotation.TargetApi;
 import android.content.Intent;
 import android.graphics.Point;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -15,9 +16,20 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.*;
+import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.GridView;
+import android.widget.ImageButton;
 import android.widget.ListView;
+
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.util.ArrayList;
+import java.util.concurrent.ExecutionException;
+
 import es.develover.joker.entroido.Adapters.NetworkAdapter;
 import es.develover.joker.entroido.Adapters.PartyAdapter;
 import es.develover.joker.entroido.Fragments.ItemDetailFragment;
@@ -27,9 +39,6 @@ import es.develover.joker.entroido.Model.NetworkContent;
 import es.develover.joker.entroido.Model.Tweet;
 import es.develover.joker.entroido.Network.TwitterGetter;
 import es.develover.joker.entroido.R;
-
-import java.util.ArrayList;
-import java.util.concurrent.ExecutionException;
 
 public class MainActivity extends AppCompatActivity
         implements ItemListFragment.Callbacks {
@@ -215,6 +224,15 @@ public class MainActivity extends AppCompatActivity
             return fragment;
         }
 
+        public static String urlEncode(String s) {
+            try {
+                return URLEncoder.encode(s, "UTF-8");
+            } catch (UnsupportedEncodingException e) {
+                Log.e("Fuck", "UTF-8 should always be supported", e);
+                throw new RuntimeException("URLEncoder.encode() failed for " + s);
+            }
+        }
+
         public PlaceholderFragment() {
         }
 
@@ -229,7 +247,28 @@ public class MainActivity extends AppCompatActivity
                 case 1:
                     if (social == null) {
                         rootView = inflater.inflate(R.layout.fragment_social, container, false);
+                        ImageButton twitterButton = (ImageButton) rootView.findViewById(R.id.icon_twitter);
+                        twitterButton.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                // Create intent using ACTION_VIEW and a normal Twitter url:
+                                String tweetUrl =
+                                        String.format("https://twitter.com/intent/tweet?text=%s&url=%s",
+                                                urlEncode("#entroidoVerin"), urlEncode(""));
+                                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(tweetUrl));
 
+
+                                // Narrow down to official Twitter app, if available:
+         /*                       List<ResolveInfo> matches = getContext().getPackageManager().queryIntentActivities(intent, 0);
+                                for (ResolveInfo info : matches) {
+                                    if (info.activityInfo.packageName.toLowerCase().startsWith("com.twitter")) {
+                                        intent.setPackage(info.activityInfo.packageName);
+                                    }
+                                }*/
+
+                                startActivity(intent);
+                            }
+                        });
                         final SwipeRefreshLayout swipe = (SwipeRefreshLayout) rootView.findViewById(R.id.refreshLayout);
 
                         final ListView list = (ListView) rootView.findViewById(R.id.network_grid);
@@ -239,22 +278,22 @@ public class MainActivity extends AppCompatActivity
                         swipe.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
                             @Override
                             public void onRefresh() {
-                                ((NetworkAdapter)list.getAdapter()).doTheUpdate();
+                                ((NetworkAdapter) list.getAdapter()).doTheUpdate();
                                 //Toast.makeText(getContext(), "Chocolate", Toast.LENGTH_SHORT).show();
-                                new Handler().postDelayed(new Runnable(){
+                                new Handler().postDelayed(new Runnable() {
                                     @Override
                                     public void run() {
                                         swipe.setRefreshing(false);
                                     }
-                                },1000);
+                                }, 1000);
                             }
                         });
 
                         try {
-                            ArrayList<Tweet> t = new TwitterGetter((NetworkAdapter)list.getAdapter()).execute("verin").get();
+                            ArrayList<Tweet> t = new TwitterGetter((NetworkAdapter) list.getAdapter()).execute("verin").get();
                             ArrayList<NetworkContent> t1 = new ArrayList<NetworkContent>();
                             t1.addAll(t);
-                            ((NetworkAdapter)list.getAdapter()).setContenido(t1);
+                            ((NetworkAdapter) list.getAdapter()).setContenido(t1);
                             ((NetworkAdapter) list.getAdapter()).notifyDataSetChanged();
                         } catch (InterruptedException e) {
                             e.printStackTrace();
@@ -263,8 +302,7 @@ public class MainActivity extends AppCompatActivity
                         }
 
 
-
-                        if (((NetworkAdapter)list.getAdapter()).getContenido().size()!=0) {
+                        if (((NetworkAdapter) list.getAdapter()).getContenido().size() != 0) {
                             for (int i = 0; i < ((NetworkAdapter) list.getAdapter()).getContenido().size(); i++) {
                                 ((Tweet) ((NetworkAdapter) list.getAdapter()).getContenido().get(i)).print();
                             }
@@ -306,12 +344,12 @@ public class MainActivity extends AppCompatActivity
 
                         if (mTwoPane) {
                             Point p = new Point();
-                              getActivity().getWindowManager().getDefaultDisplay().getSize(p);
-                              int col = 0;
-                              if (grid.getRequestedColumnWidth()>0) {
-                                  col = (int) p.x/grid.getRequestedColumnWidth();
-                              }
-                              //Log.e("[Ancho]: ","[Pantalla: "+p.x+"] - [Columna: "+grid.getRequestedColumnWidth()+"] - [Columnas: "+col+"]");
+                            getActivity().getWindowManager().getDefaultDisplay().getSize(p);
+                            int col = 0;
+                            if (grid.getRequestedColumnWidth() > 0) {
+                                col = (int) p.x / grid.getRequestedColumnWidth();
+                            }
+                            //Log.e("[Ancho]: ","[Pantalla: "+p.x+"] - [Columna: "+grid.getRequestedColumnWidth()+"] - [Columnas: "+col+"]");
 
                             grid.setNumColumns(col);
                         } else {

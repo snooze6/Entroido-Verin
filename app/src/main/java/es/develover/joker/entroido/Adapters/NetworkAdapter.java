@@ -8,15 +8,17 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import com.squareup.picasso.Picasso;
+
+import java.util.ArrayList;
+import java.util.concurrent.ExecutionException;
+
 import es.develover.joker.entroido.Model.NetworkContent;
 import es.develover.joker.entroido.Model.Tweet;
 import es.develover.joker.entroido.Network.TwitterGetterId;
 import es.develover.joker.entroido.Network.TwitterUpdater;
 import es.develover.joker.entroido.R;
-
-import java.util.ArrayList;
-import java.util.concurrent.ExecutionException;
 
 /**
  * Created by snooze on 27/01/16.
@@ -94,7 +96,7 @@ public class NetworkAdapter extends BaseAdapter {
     }
 
     public void doTheUpdate(){
-        Log.d("[TWEET]","  -- Voy a cargar más por arriba");
+        Log.d("[TWEET]", "  -- Voy a cargar más por arriba");
         for (int i=0; i<contenido.size(); i++){
             ((Tweet)contenido.get(i)).print();
         }
@@ -120,13 +122,20 @@ public class NetworkAdapter extends BaseAdapter {
         }
 
         ImageView image = (ImageView) convertView.findViewById(R.id.card_network_image);
+        ImageView imageProfile = (ImageView) convertView.findViewById(R.id.card_network_profile_image);
         TextView author = (TextView) convertView.findViewById(R.id.card_network_title);
         TextView text = (TextView) convertView.findViewById(R.id.card_network_texto);
+
+
 
         NetworkContent n = contenido.get(position);
         author.setText(n.getUser());
         text.setText(n.getTexto());
 
+        if(n.getUserImage()!=null){
+            Picasso.with(activity).load(n.getUserImage()).into(imageProfile);
+
+        }
         if (n.getUrlImagen()!=null && !n.getUrlImagen().isEmpty()) {
             Picasso.with(activity).load(n.getUrlImagen()).into(image);
             image.setVisibility(View.VISIBLE);
@@ -136,7 +145,8 @@ public class NetworkAdapter extends BaseAdapter {
             image.setVisibility(View.GONE);
         }
 
-        return convertView;
+       return convertView;
+
     }
 
     public NetworkAdapter setMin_id(long min_id) {

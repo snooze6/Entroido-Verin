@@ -74,7 +74,7 @@
                         android:src="@drawable/hermione" />
 
                     <ImageView
-                        android:id="@+id/card_network_image2"
+                        android:id="@+id/card_network_profile_image"
                         android:layout_width="50dp"
                         android:layout_height="50dp"
                         android:layout_alignParentLeft="true"
@@ -89,25 +89,26 @@
                         android:id="@+id/card_network_title"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_alignParentTop="true"
-                        android:layout_marginLeft="10dp"
-                        android:layout_toEndOf="@+id/card_network_image2"
-                        android:layout_toRightOf="@+id/card_network_image2"
+                        android:layout_marginLeft="19dp"
                         android:text="\@user"
                         android:textAppearance="?android:attr/textAppearanceMedium"
                         android:textSize="20dp"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        android:layout_alignParentTop="true"
+                        android:layout_toRightOf="@+id/card_network_profile_image"
+                        android:layout_toEndOf="@+id/card_network_profile_image"
+                        android:layout_marginStart="19dp" />
 
                     <TextView
                         android:id="@+id/card_network_texto"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_alignLeft="@+id/card_network_title"
-                        android:layout_alignStart="@+id/card_network_title"
-                        android:layout_below="@+id/card_network_title"
                         android:text="Lorem Ipsum dolor sit amet aosdhf pah dfposihaiosd ghaos sdog nsdpofg nsaf sinsfd psasodf npfnasdf safpd s fsaf sfdf s fa "
                         android:textAppearance="?android:attr/textAppearanceSmall"
-                        android:textSize="15dp" />
+                        android:textSize="15dp"
+                        android:layout_below="@+id/card_network_title"
+                        android:layout_alignLeft="@+id/card_network_title"
+                        android:layout_alignStart="@+id/card_network_title" />
 
 
                 </RelativeLayout>

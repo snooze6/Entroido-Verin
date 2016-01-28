@@ -72,14 +72,43 @@ public class ContentProvider {
     public static ArrayList<Party> doTheParty() {
         ArrayList<Party> partyData = new ArrayList<Party>();
         String uriVideo="qh-mwjF-OMo";
-        partyData.add(new Party("Mapa", R.drawable.mapita,"02/02/15", "www.panaderiaroscas.com",uriVideo));
-        partyData.add(new Party("Orquesta Panorama", R.drawable.panorama, "02/02/15", "www.panaderiaroscas.com",uriVideo));
+        //Mapa
+        partyData.add(new Party("Localización Orquestas", R.drawable.mapita,"", "www.entroidoverin.com",uriVideo));
+        //Jueves de compadres
+        partyData.add(new Party("Charanga Tamega",R.drawable.charanga_tamega,"28/01 Jueves de Compadres","www.orquestasyfiestas.com/charanga-tamega/","KQv_w2HEPWI"));
+        partyData.add(new Party("Banda de Gaitas de Verín",R.drawable.banda_de_gaitas_de_verin,"28/01 Jueves de Compadres","http://www.verin.es/","1697zUVEOwo"));
+        partyData.add(new Party("Disco movil Jorge",R.drawable.disco_movil_jorge,"28/01 Jueves de Compadres","www.discomoviljorge.com/","87vZe4G2zoM"));
+
+        //Domingo de corredoiro
+        partyData.add(new Party("Grupo Aramio",R.drawable.grupo_aramio,"31/01 Domingo de corredoiro","www.aramio.es/","EvlTqavVv8Q"));
+
+        //Jueves de compadres
+        partyData.add(new Party("Orquesta Capitol",R.drawable.orquesta_capitol,"04/02 Jueves de Comadres 1:00","www.orquestasdegalicia.es/formaciones/orquesta_capitol","OYrLz_efk-Q"));
+
+        //Viernes de compadreo
+        partyData.add(new Party("Discomovil a Gramola",R.drawable.disco_movil_gramola,"05/02 Viernes de Compadreo - Noche ","www.orquestasdegalicia.es/fiesta_02-08-2015_disco-movil_a-gramola_pazos-verin-ourense","QWOqAOpKpeE"));
+
+        //Sabado de Carnaval
+        partyData.add(new Party("Orquesta Trebol",R.drawable.orquesta_trebol,"06/02 Sabado de carnaval","www.orquestatrebol.net","UJwu2DIY37c"));
+        partyData.add(new Party("Orquesta America",R.drawable.orquesta_america,"06/02 Sabado de carnaval","www.orquestasdegalicia.es/formaciones/grupo_america-de-vigo","Lwjzio2O6_M"));
+
+
+        //Domingo de carnaval
+        partyData.add(new Party("Orquesta Grupo de Moda",R.drawable.orquesta_de_moda,"07/02 Orquesta Grupo de Moda","www.orquestasdegalicia.es/formaciones/grupo_d%C2%B4moda","M_uUN9gV42Yc"));
+
+        //Lunes de carnaval
+        partyData.add(new Party("Orquesta Compostela",R.drawable.orquesta_compostela,"08/02 Orquesta Compostela","www.orquestasdegalicia.es/formaciones/orquesta_compostela","HWAFT21Zins"));
+
+//Lunes de carnaval
+        partyData.add(new Party("Orquesta Ciclón",R.drawable.orquesta_ciclon,"08/02 Orquesta Compostela","www.es-la.facebook.com/ciclongrupo","bKdrz7UXXpE"));
+
+/*        partyData.add(new Party("Orquesta Panorama", R.drawable.panorama, "02/02/15", "www.panaderiaroscas.com",uriVideo));
         partyData.add(new Party("Orquesta Paris de Noia", R.drawable.parisdenoia, "02/02/15", "www.panaderiaroscas.com",uriVideo));
-        partyData.add(new Party("Orquesta Marbella", R.drawable.marbella, "02/02/15", "www.panaderiaroscas.com","www.panaderiaroscas.com"));
-        partyData.add(new Party("Orquesta Panorama", R.drawable.panorama, "02/02/15", "www.panaderiaroscas.com","www.panaderiaroscas.com"));
-        partyData.add(new Party("Orquesta Paris de Noia", R.drawable.parisdenoia, "02/02/15", "www.panaderiaroscas.com","www.panaderiaroscas.com"));
+        partyData.add(new Party("Orquesta Marbella", R.drawable.day04, "02/02/15", "www.panaderiaroscas.com","www.panaderiaroscas.com"));
+        partyData.add(new Party("Orquesta Panorama", R.drawable.day05, "02/02/15", "www.panaderiaroscas.com","www.panaderiaroscas.com"));
+        partyData.add(new Party("Orquesta Paris de Noia", R.drawable.day06, "02/02/15", "www.panaderiaroscas.com","www.panaderiaroscas.com"));
         partyData.add(new Party("Mapa", R.drawable.mapita, "02/02/15", "www.panaderiaroscas.com","www.panaderiaroscas.com"));
-        partyData.add(new Party("Orquesta Marbella", R.drawable.marbella, "02/02/15", "www.panaderiaroscas.com","www.panaderiaroscas.com"));
+        partyData.add(new Party("Orquesta Marbella", R.drawable.marbella, "02/02/15", "www.panaderiaroscas.com","www.panaderiaroscas.com"));*/
 
         return partyData;
     }

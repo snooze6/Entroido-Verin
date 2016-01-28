@@ -19,4 +19,38 @@
     <dimen name="fragment_fiesta_paddingTop">0dp</dimen>
     <dimen name="fragment_fiesta_paddingRight">0dp</dimen>
     <dimen name="fragment_fiesta_paddingLeft">0dp</dimen>
+
+    <!--car_item.xml and card_item_special.xml -->
+    <dimen name="card_item_paddingBottom">0dp</dimen>
+    <dimen name="card_item_paddingTop">0dp</dimen>
+    <dimen name="card_item_paddingRight">6dp</dimen>
+    <dimen name="card_item_paddingLeft">6dp</dimen>
+    <dimen name="card_item_relative_padding">0dp</dimen>
+    <dimen name="card_item_corner_radius">8dp</dimen>
+    <dimen name="card_item_view_elevation">8dp</dimen>
+    <dimen name="card_item_view_elevation_special">12dp</dimen>
+    <dimen name="card_item_linear_padding">3dp</dimen>
+
+    <!--car_event_detail.xml and card_item_special.xml -->
+    <dimen name="card_event_detail_paddingBottom">0dp</dimen>
+    <dimen name="card_event_detail_paddingTop">0dp</dimen>
+    <dimen name="card_event_detail_paddingRight">0dp</dimen>
+    <dimen name="card_event_detail_paddingLeft">0dp</dimen>
+    <dimen name="card_event_detail_corner_radius">16dp</dimen>
+    <dimen name="card_event_detail_view_elevation">10dp</dimen>
+    <dimen name="card_event_detail_linearPadding">0dp</dimen>
+    <dimen name="card_event_detail_imgHeight">180dp</dimen>
+    <dimen name="card_event_detail_imgMargin">5dp</dimen>
+
+
+    <!--car_party.xml and card_item_special.xml -->
+    <dimen name="card_party_paddingBottom">0dp</dimen>
+    <dimen name="card_party_paddingTop">0dp</dimen>
+    <dimen name="card_party_paddingRight">6dp</dimen>
+    <dimen name="card_party_paddingLeft">6dp</dimen>
+
+    <!--car_network.xml and card_item_special.xml -->
+    <dimen name="card_network_marginRight">0dp</dimen>
+    <dimen name="card_network_marginLeft">0dp</dimen>
+    <dimen name="card_network_marginTop">0dp</dimen>
 </resources>

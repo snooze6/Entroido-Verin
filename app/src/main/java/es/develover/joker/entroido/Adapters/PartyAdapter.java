@@ -58,8 +58,20 @@ public class PartyAdapter extends BaseAdapter {
         }
         final int positionFinal = position;
         final ImageButton imageButton = (ImageButton) convertView.findViewById(R.id.imageButton);
+        ImageView youtubeIcon = (ImageView) convertView.findViewById(R.id.youtubeIcon);
         if (positionFinal == 0) {
             imageButton.setVisibility(View.INVISIBLE);
+            if(youtubeIcon!=null){
+                youtubeIcon.setVisibility(View.INVISIBLE);
+            }
+
+
+        }
+        else{
+            if(youtubeIcon!=null){
+                youtubeIcon.setVisibility(View.VISIBLE);
+            }
+            imageButton.setVisibility(View.VISIBLE);
         }
 
         if (imageButton != null) {
@@ -96,6 +108,7 @@ public class PartyAdapter extends BaseAdapter {
         TextView date = (TextView) convertView.findViewById(R.id.item_date_special);
         Picasso.with(activity).load(parties.get(position).getImage()).into(image);
         title.setText(parties.get(position).getTitle());
+        date.setText(parties.get(position).getDate());
 
 
         return convertView;

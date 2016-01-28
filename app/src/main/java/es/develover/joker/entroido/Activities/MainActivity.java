@@ -431,7 +431,7 @@ public class MainActivity extends AppCompatActivity
                             public void onRefresh() {
                                /* ((NetworkAdapter) list.getAdapter()).doTheUpdate();*/
 
-                                Toast.makeText(getContext(), "Chocolate", Toast.LENGTH_SHORT).show();
+                                //Toast.makeText(getContext(), "Chocolate", Toast.LENGTH_SHORT).show();
                                 new Handler().postDelayed(new Runnable() {
                                     @Override
                                     public void run() {

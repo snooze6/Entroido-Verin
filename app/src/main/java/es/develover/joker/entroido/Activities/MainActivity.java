@@ -54,6 +54,7 @@ public class MainActivity extends AppCompatActivity
     public static View agenda = null;
     public static View fiesta = null;
     public static int item = 1;
+    public static int currentTab=1;
 
     public static Fragment socialFragment;
     public static TabLayout tabLayout;
@@ -108,9 +109,6 @@ public class MainActivity extends AppCompatActivity
             });
             alertDialogBuilder.setTitle("Necesitas conexión a internet para ver el contenido");
             alertDialogBuilder.show();
-
-            final TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
-            tabLayout.setupWithViewPager(mViewPager);
         }
     }
 
@@ -154,19 +152,26 @@ public class MainActivity extends AppCompatActivity
         //Item 0 by default
         tabLayout.getTabAt(1).select();
 
-        /*tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+        tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             private boolean internet = new ConnectionDetector(getBaseContext()).isConnectingToInternet();
 
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
-                if (internet){
+                if(tab.getPosition() == 0) {
+                    Log.e("[TEST]", "PESTAÑA SOCIAL");
+
+                    if(!internet)
+                        internetDialog();
+                }
+                currentTab=0;
+                /*if (internet){
                 } else {
                     if (tab.getPosition()==0){
                         internetDialog();
                         Log.e("No hay internet", "No hay internet");
                         internet = true;
                     }
-                }
+                }*/
             }
 
             @Override
@@ -178,7 +183,7 @@ public class MainActivity extends AppCompatActivity
             public void onTabReselected(TabLayout.Tab tab) {
 
             }
-        });*/
+        });
     }
 
     @Override

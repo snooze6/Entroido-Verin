@@ -41,7 +41,7 @@
     <dimen name="card_event_detail_linearPadding">0dp</dimen>
     <dimen name="card_event_detail_imgHeight">180dp</dimen>
     <dimen name="card_event_detail_imgMargin">5dp</dimen>
-
+    <dimen name="card_event_detail_txt_size">15dp</dimen>
 
     <!--car_party.xml and card_item_special.xml -->
     <dimen name="card_party_paddingBottom">0dp</dimen>

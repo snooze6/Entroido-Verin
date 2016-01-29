@@ -35,7 +35,7 @@
 <dimen name="card_event_detail_linearPadding">3dp</dimen>
 <dimen name="card_event_detail_imgHeight">300dp</dimen>
 <dimen name="card_event_detail_imgMargin">10dp</dimen>
-
+    <dimen name="card_event_detail_txt_size">20dp</dimen>
 <!--car_network.xml and card_item_special.xml -->
 <dimen name="card_network_marginRight">15dp</dimen>
 <dimen name="card_network_marginLeft">15dp</dimen>

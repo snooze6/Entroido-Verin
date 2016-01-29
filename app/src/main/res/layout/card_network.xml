@@ -90,6 +90,7 @@
                     android:text="Lorem Ipsum dolor sit amet aosdhf pah dfposihaiosd ghaos sdog nsdpofg nsaf sinsfd psasodf npfnasdf safpd s fsaf sfdf s fa "
                     android:textAppearance="?android:attr/textAppearanceSmall"
                     android:layout_toEndOf="@+id/card_network_title"
+                    android:layout_toRightOf="@+id/card_network_title"
                     android:layout_alignLeft="@+id/card_network_title"
                     android:layout_alignStart="@+id/card_network_title" />
 

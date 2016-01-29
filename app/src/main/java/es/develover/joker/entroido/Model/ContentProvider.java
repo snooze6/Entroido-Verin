@@ -17,28 +17,30 @@ public class ContentProvider {
 
     public static ArrayList<Event> doTheHistory() {
         ArrayList<Event> eventsHistory= new ArrayList<Event>();
-        Event event1 = new Event("Origen","El origen es lo que mas mola porque es el principio y a todos nos gusta el principio jejeje, es el prinicpio",R.drawable.day08);
-        Event event2 = new Event("Origen","El origen es lo que mas mola porque es el principio y a todos nos gusta el principio jejeje, es el prinicpio",R.drawable.day08);
-
-        Event event3= new Event("Origen","El origen es lo que mas mola porque es el principio y a todos nos gusta el principio jejeje, es el prinicpio",R.drawable.day08);
-
-        Event event4 = new Event("Origen","El origen es lo que mas mola porque es el principio y a todos nos gusta el principio jejeje, es el prinicpio",R.drawable.day08);
+        Event event1 = new Event("2016","",R.drawable.entroido2016);
+        Event event2 = new Event("2015","",R.drawable.entroido2015);
+        Event event3 = new Event("2014","",R.drawable.entroido2014);
+        Event event4 = new Event("2013","",R.drawable.entroido2013);
+        Event event5 = new Event("2012","",R.drawable.entroido2012);
 eventsHistory.add(event1);
         eventsHistory.add(event2);
         eventsHistory.add(event3);
         eventsHistory.add(event4);
+        eventsHistory.add(event5);
         return eventsHistory;
     }
 
     public static ArrayList<Event> doTheCigarron() {
         ArrayList<Event> eventsHistory= new ArrayList<Event>();
-        Event event1 = new Event("Cigarron","Los cigarrones molan muchisimo y aqui ira su contenido muahahahahahahhaha",R.drawable.hermione);
-        Event event2 = new Event("Cigarron","Los cigarrones molan muchisimo y aqui ira su contenido muahahahahahahhaha",R.drawable.hermione);
-        Event event3 = new Event("Cigarron","Los cigarrones molan muchisimo y aqui ira su contenido muahahahahahahhaha",R.drawable.hermione);
-        Event event4 = new Event("Cigarron","Los cigarrones molan muchisimo y aqui ira su contenido muahahahahahahhaha",R.drawable.hermione);        eventsHistory.add(event1);
+        Event event1 = new Event("Origen","A principios del siglo XX, tan solo existían unos pocos trajes de cigarrón en la comarca y éstos eran alquilados a las casas que los poseían en castro. El traje en sí, se mantuvo igual hasta después de la guerra, tiempo en el que se descuidó un poco la estética. En los últimos tiempos se promovieron iniciativas para poder mejorar la presencia del cigarrón y a día de hoy tiene determinados unos elementos básicos que deben mantenerse intactos, como el pantalón, los zapatos, la camisa (permitidas algunas variantes pero dentro de la estética básica) y la estructura básica de la chaquetilla (los veremos en el apartado traje). Dentro de esa estética básica se permite un libre albedrío de colores tanto en medias, como pañoletas, fajas, ligas, pompones y elementos de las caretas como los motivos que aparecen en las mitras o las pieles empleadas en ellas. ",R.drawable.cigarron_1);
+        Event event2 = new Event("Importancia","Siempre ha sido la figura central del Entroido de Verín y debe ser venerada y respetada como tal, la tradición manda que se les debe dejar paso y que no se les puede tirar  la harina o ceniza tan típica del carnaval.\n" +
+                "El cigarrón es un personaje que hace exaltación de su poderío y fuerza mediante las carreras y los saltos, los movimientos ágiles y certeros y la destreza al mover y emplear su zamarra, la cual tiene un uso exclusivamente limitado desde antaño en apartar a la gente que se interpone en el camino o perseguir y azotar a todo aquel que insulta al cigarrón o a la persona que lo porta.\n",R.drawable.cigarron_2);
+        Event event3 = new Event("De padres a hijos","Entendiendo tradición como la herencia de padres a hijos, en Verín se ha conservado desde antaño el vestir el traje de cigarrón. Para la gente de Verín el cigarrón es la figura idiosincrática del Entroido y vestirlo es un honor para todo aquel que puede hacerlo. Más que un traje, es un sentimiento que va más allá de lo que la razón puede entender. \n" +
+                "Cigarróns son todas las personas que a lo largo de los siglos han conseguido mantener viva la tradición y vestirlo con el mayor orgullo, respeto y amor posible.  En Verín todo el mundo es cigarrón, desde el que lo viste, el que ayuda a vestirlo, el que lo admira, el que siente pasión por él aunque no lo vista y todas aquellas personas que lo llevan en el alma aunque jamás lo hayan vestido.\n",R.drawable.cigarron_3);
+               eventsHistory.add(event1);
         eventsHistory.add(event2);
         eventsHistory.add(event3);
-        eventsHistory.add(event4);
+
         return eventsHistory;
     }
 
@@ -218,9 +220,9 @@ eventsHistory.add(event1);
 
     public static ArrayList<Miscelaneus> doTheMiscelaneus() {
         ArrayList<Miscelaneus> miscelaneusData = new ArrayList<Miscelaneus>();
-        Miscelaneus miscelaneus1= new Miscelaneus("Orquestas",Miscelaneus.ORQUESTA,R.drawable.hermione);
-        Miscelaneus miscelaneus2= new Miscelaneus("Historia",Miscelaneus.HISTORIA,R.drawable.day04);
-        Miscelaneus miscelaneus3= new Miscelaneus("Cigarrón",Miscelaneus.CIGARRON,R.drawable.day05);
+        Miscelaneus miscelaneus1= new Miscelaneus("Eventos Musicales",Miscelaneus.ORQUESTA,R.drawable.orquestas);
+        Miscelaneus miscelaneus2= new Miscelaneus("Carteles Del Carnaval",Miscelaneus.HISTORIA,R.drawable.carteles);
+        Miscelaneus miscelaneus3= new Miscelaneus("Cigarrones y Tradición",Miscelaneus.CIGARRON,R.drawable.cigarron);
 
         miscelaneusData.add(miscelaneus1);
         miscelaneusData.add(miscelaneus2);

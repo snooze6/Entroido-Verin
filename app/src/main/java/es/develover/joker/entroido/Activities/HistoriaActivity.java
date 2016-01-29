@@ -18,7 +18,7 @@ public class HistoriaActivity extends AppCompatActivity {
         setContentView(R.layout.activity_historia);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        this.setTitle("Historia");
+        this.setTitle("Carteles");
 
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);

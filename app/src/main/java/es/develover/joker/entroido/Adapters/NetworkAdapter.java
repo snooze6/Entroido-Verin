@@ -1,6 +1,9 @@
 package es.develover.joker.entroido.Adapters;
 
 import android.app.Activity;
+import android.content.ActivityNotFoundException;
+import android.content.Intent;
+import android.net.Uri;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -113,7 +116,7 @@ public class NetworkAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
         if (position+NUM_COL>=contenido.size() && contenido.size()>2){
             doTheLoad();
         }
@@ -143,6 +146,24 @@ public class NetworkAdapter extends BaseAdapter {
             image.setImageResource(R.drawable.hermione);
             Picasso.with(activity).load(R.drawable.hermione).into(image);
             image.setVisibility(View.GONE);
+        }
+
+        convertView.setClickable(true);
+        for (View v:convertView.getTouchables()) {
+            v.setClickable(true);
+            v.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    try {
+                        Log.d("[TEST_TWEET]", "HOOOOOOOOOOOOOOOOOOOOLA");
+                        Intent tweet_in_native_app = new Intent(Intent.ACTION_VIEW, Uri.parse("twitter://status?status_id=" + contenido.get(position).getId()));
+                        activity.startActivity(tweet_in_native_app);
+                    }catch (ActivityNotFoundException e){
+                        Intent tweet_in_browser = new Intent(Intent.ACTION_VIEW, Uri.parse("http://twitter.com/"+contenido.get(position).getUser()+"/status/"+contenido.get(position).getId()));
+                        activity.startActivity(tweet_in_browser);
+                    }
+                }
+            });
         }
 
        return convertView;

@@ -284,7 +284,7 @@ public class MainActivity extends AppCompatActivity
 
             Intent sendIntent = new Intent();
             sendIntent.setAction(Intent.ACTION_SEND);
-            sendIntent.putExtra(Intent.EXTRA_TEXT, "https://play.google.com/store/apps/details?id=es.develover.joker.entroido");
+            sendIntent.putExtra(Intent.EXTRA_TEXT, "Descarga la aplicación del carnaval de verín: https://play.google.com/store/apps/details?id=es.develover.joker.entroido");
             sendIntent.setType("text/plain");
             startActivity(sendIntent);
             return true;

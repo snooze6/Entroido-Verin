@@ -72,7 +72,7 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void onItemSelected(String id) {
-        /*Log.e("[Tocado]: ", "" + mTwoPane + " - " + id);*/
+        Log.e("[Tocado]: ", "" + mTwoPane + " - " + id);
 
         item = Integer.parseInt(id);
         if (mTwoPane) {
@@ -161,6 +161,7 @@ public class MainActivity extends AppCompatActivity
 
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
+
                 //TENSE QUE CAMBIARNO CASO  DE QUE O PRIMER ELEMENTODO MENU NON SEA ODEACTUALIZAR TWEETS
                 MenuItem opcionActualizarTweets = menuTopBar.getItem(0);
 
@@ -176,7 +177,9 @@ public class MainActivity extends AppCompatActivity
                         opcionActualizarTweets.setVisible(false);
 
                 }
-                currentTab=0;
+                currentTab=tab.getPosition();
+                mViewPager.setCurrentItem(currentTab);
+
             }
 
             @Override

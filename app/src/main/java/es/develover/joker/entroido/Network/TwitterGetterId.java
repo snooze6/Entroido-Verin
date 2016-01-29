@@ -33,7 +33,7 @@ public class TwitterGetterId extends AsyncTask<Long, String, ArrayList<Tweet>> {
             }
             t.autentificarOAUTH2();
             Log.d("[TWEET]", "  -- Voy a cargar a partir de id:" + params[0]);
-            ArrayList<Tweet> tw=t.tweetsPorHashtag(15, params[0], "verin", "entroidoverin", "entroidoverin2016", "verin2016","entroidoverin16");
+            ArrayList<Tweet> tw=t.tweetsPorHashtag(15, params[0], "verin", "entroidoverin", "entroidoverin2016", "verin2016","entroidoverin16","carnavalVerin","carnavalVerin16");
             Log.d("DFJKÑFH","ARRAY SIZE: "+tw.size());
             return tw;
         } catch (IOException e) {

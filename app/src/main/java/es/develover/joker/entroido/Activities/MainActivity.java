@@ -219,7 +219,12 @@ public class MainActivity extends AppCompatActivity
             this.onItemSelected("" + item);
             //Log.e("Item>>>>>>>>>", "" + item);
         }
+    }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mViewPager.setCurrentItem(currentTab);
     }
 
     @Override

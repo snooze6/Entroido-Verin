@@ -5,6 +5,9 @@
     <item android:id="@+id/action_about_us" android:title="Sobre nosotros"
         android:orderInCategory="100" app:showAsAction="never" />
 
+    <item android:id="@+id/action_share" android:title="Comparte la aplicación"
+        android:orderInCategory="100" app:showAsAction="never" />
+
     <item
         android:id="@+id/menu_refresh"
         app:showAsAction="never"

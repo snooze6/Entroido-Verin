@@ -273,6 +273,20 @@ public class MainActivity extends AppCompatActivity
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_about_us) {
+            Intent intent = new Intent(this, AboutUsActivity.class);
+            this.startActivity(intent);
+
+
+
+            return true;
+        }
+        else if (id == R.id.action_share) {
+
+            Intent sendIntent = new Intent();
+            sendIntent.setAction(Intent.ACTION_SEND);
+            sendIntent.putExtra(Intent.EXTRA_TEXT, "https://play.google.com/store/apps/details?id=es.develover.joker.entroido");
+            sendIntent.setType("text/plain");
+            startActivity(sendIntent);
             return true;
         }
 

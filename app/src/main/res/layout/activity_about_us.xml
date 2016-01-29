@@ -21,9 +21,15 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <ListView
-        android:id="@+id/listview_events"
+    <TextView
+        android:padding="5dp"
+        android:id="@+id/item_title"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:includeFontPadding="false"
+
+        android:text="Gracias por haber descargado la aplicación del Entroido de Verín. Agradecemos que nos envies cualquier queja, sugerencia o aquello que más te apetezca decirnos a jokersdevelopers@gmail.com"
+        android:textSize="20sp" />
 
 </android.support.design.widget.CoordinatorLayout>

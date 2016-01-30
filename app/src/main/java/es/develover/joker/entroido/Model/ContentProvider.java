@@ -13,19 +13,20 @@ public class ContentProvider {
 
     public static ArrayList<Day> days = doTheDay();
     public static ArrayList<Party> orquestas = doTheOrquestas();
-    public static ArrayList<Miscelaneus> miscelaneuses= doTheMiscelaneus();
-    public static ArrayList<Event> history= doTheHistory();
-    public static ArrayList<Event> cigarron= doTheCigarron();
-    public static ArrayList<Colaborador> colaboradores= doTheColaboradores();
-    public static ArrayList<Event> parties= doTheParty();
+    public static ArrayList<Miscelaneus> miscelaneuses = doTheMiscelaneus();
+    public static ArrayList<Event> history = doTheHistory();
+    public static ArrayList<Event> cigarron = doTheCigarron();
+    public static ArrayList<Colaborador> colaboradores = doTheColaboradores();
+    public static ArrayList<Event> parties = doTheParty();
+
     private static ArrayList<Event> doTheHistory() {
-        ArrayList<Event> eventsHistory= new ArrayList<Event>();
-        Event event1 = new Event("2016","",R.drawable.entroido2016);
-        Event event2 = new Event("2015","",R.drawable.entroido2015);
-        Event event3 = new Event("2014","",R.drawable.entroido2014);
-        Event event4 = new Event("2013","",R.drawable.entroido2013);
-        Event event5 = new Event("2012","",R.drawable.entroido2012);
-eventsHistory.add(event1);
+        ArrayList<Event> eventsHistory = new ArrayList<Event>();
+        Event event1 = new Event("2016", "", R.drawable.entroido2016);
+        Event event2 = new Event("2015", "", R.drawable.entroido2015);
+        Event event3 = new Event("2014", "", R.drawable.entroido2014);
+        Event event4 = new Event("2013", "", R.drawable.entroido2013);
+        Event event5 = new Event("2012", "", R.drawable.entroido2012);
+        eventsHistory.add(event1);
         eventsHistory.add(event2);
         eventsHistory.add(event3);
         eventsHistory.add(event4);
@@ -34,13 +35,13 @@ eventsHistory.add(event1);
     }
 
     private static ArrayList<Event> doTheCigarron() {
-        ArrayList<Event> eventsHistory= new ArrayList<Event>();
-        Event event1 = new Event("Origen","A principios del siglo XX, tan solo existían unos pocos trajes de cigarrón en la comarca y éstos eran alquilados a las casas que los poseían en castro. El traje en sí, se mantuvo igual hasta después de la guerra, tiempo en el que se descuidó un poco la estética. En los últimos tiempos se promovieron iniciativas para poder mejorar la presencia del cigarrón y a día de hoy tiene determinados unos elementos básicos que deben mantenerse intactos, como el pantalón, los zapatos, la camisa (permitidas algunas variantes pero dentro de la estética básica) y la estructura básica de la chaquetilla (los veremos en el apartado traje). Dentro de esa estética básica se permite un libre albedrío de colores tanto en medias, como pañoletas, fajas, ligas, pompones y elementos de las caretas como los motivos que aparecen en las mitras o las pieles empleadas en ellas. ",R.drawable.cigarron_1);
-        Event event2 = new Event("Importancia","Siempre ha sido la figura central del Entroido de Verín y debe ser venerada y respetada como tal, la tradición manda que se les debe dejar paso y que no se les puede tirar  la harina o ceniza tan típica del carnaval.\n" +
-                "El cigarrón es un personaje que hace exaltación de su poderío y fuerza mediante las carreras y los saltos, los movimientos ágiles y certeros y la destreza al mover y emplear su zamarra, la cual tiene un uso exclusivamente limitado desde antaño en apartar a la gente que se interpone en el camino o perseguir y azotar a todo aquel que insulta al cigarrón o a la persona que lo porta.\n",R.drawable.cigarron_2);
-        Event event3 = new Event("De padres a hijos","Entendiendo tradición como la herencia de padres a hijos, en Verín se ha conservado desde antaño el vestir el traje de cigarrón. Para la gente de Verín el cigarrón es la figura idiosincrática del Entroido y vestirlo es un honor para todo aquel que puede hacerlo. Más que un traje, es un sentimiento que va más allá de lo que la razón puede entender. \n" +
-                "Cigarróns son todas las personas que a lo largo de los siglos han conseguido mantener viva la tradición y vestirlo con el mayor orgullo, respeto y amor posible.  En Verín todo el mundo es cigarrón, desde el que lo viste, el que ayuda a vestirlo, el que lo admira, el que siente pasión por él aunque no lo vista y todas aquellas personas que lo llevan en el alma aunque jamás lo hayan vestido.\n",R.drawable.cigarron_3);
-               eventsHistory.add(event1);
+        ArrayList<Event> eventsHistory = new ArrayList<Event>();
+        Event event1 = new Event("Origen", "A principios del siglo XX, tan solo existían unos pocos trajes de cigarrón en la comarca y éstos eran alquilados a las casas que los poseían en castro. El traje en sí, se mantuvo igual hasta después de la guerra, tiempo en el que se descuidó un poco la estética. En los últimos tiempos se promovieron iniciativas para poder mejorar la presencia del cigarrón y a día de hoy tiene determinados unos elementos básicos que deben mantenerse intactos, como el pantalón, los zapatos, la camisa (permitidas algunas variantes pero dentro de la estética básica) y la estructura básica de la chaquetilla (los veremos en el apartado traje). Dentro de esa estética básica se permite un libre albedrío de colores tanto en medias, como pañoletas, fajas, ligas, pompones y elementos de las caretas como los motivos que aparecen en las mitras o las pieles empleadas en ellas. ", R.drawable.cigarron_1);
+        Event event2 = new Event("Importancia", "Siempre ha sido la figura central del Entroido de Verín y debe ser venerada y respetada como tal, la tradición manda que se les debe dejar paso y que no se les puede tirar  la harina o ceniza tan típica del carnaval.\n" +
+                "El cigarrón es un personaje que hace exaltación de su poderío y fuerza mediante las carreras y los saltos, los movimientos ágiles y certeros y la destreza al mover y emplear su zamarra, la cual tiene un uso exclusivamente limitado desde antaño en apartar a la gente que se interpone en el camino o perseguir y azotar a todo aquel que insulta al cigarrón o a la persona que lo porta.\n", R.drawable.cigarron_2);
+        Event event3 = new Event("De padres a hijos", "Entendiendo tradición como la herencia de padres a hijos, en Verín se ha conservado desde antaño el vestir el traje de cigarrón. Para la gente de Verín el cigarrón es la figura idiosincrática del Entroido y vestirlo es un honor para todo aquel que puede hacerlo. Más que un traje, es un sentimiento que va más allá de lo que la razón puede entender. \n" +
+                "Cigarróns son todas las personas que a lo largo de los siglos han conseguido mantener viva la tradición y vestirlo con el mayor orgullo, respeto y amor posible.  En Verín todo el mundo es cigarrón, desde el que lo viste, el que ayuda a vestirlo, el que lo admira, el que siente pasión por él aunque no lo vista y todas aquellas personas que lo llevan en el alma aunque jamás lo hayan vestido.\n", R.drawable.cigarron_3);
+        eventsHistory.add(event1);
         eventsHistory.add(event2);
         eventsHistory.add(event3);
 
@@ -51,11 +52,11 @@ eventsHistory.add(event1);
 
     private static ArrayList<Event> doTheParty() {
 
-        ArrayList<Event> eventsHistory= new ArrayList<Event>();
-        Event event1 = new Event("Zona orquestas","Descubre como llegar a la zona de orquestas",R.drawable.mapa_orquestas);
-        Event event2 = new Event("Zona de bares Rua Monte Maior","Descubre como llegar a la zona de bares de la calle Montemaior",R.drawable.mapa_zona_bares_1);
-        Event event3 = new Event("Zona de bares Rua Irmáns Moreno","Descubre como llegar a esta zona de bares de la calle Irmans Moreno",R.drawable.mapa_zona_bares2);
-        Event event4 = new Event("Zona de pubs y discotecas cerca de la Plaza Alameda","Descubre como llegar a la movida nocturna",R.drawable.mapa_discotes);
+        ArrayList<Event> eventsHistory = new ArrayList<Event>();
+        Event event1 = new Event("Zona orquestas", "Descubre como llegar a la zona de orquestas", R.drawable.mapa_orquestas);
+        Event event2 = new Event("Zona de bares Rua Monte Maior", "Descubre como llegar a la zona de bares de la calle Montemaior", R.drawable.mapa_zona_bares_1);
+        Event event3 = new Event("Zona de bares Rua Irmáns Moreno", "Descubre como llegar a esta zona de bares de la calle Irmans Moreno", R.drawable.mapa_zona_bares2);
+        Event event4 = new Event("Zona de pubs y discotecas cerca de la Plaza Alameda", "Descubre como llegar a la movida nocturna", R.drawable.mapa_discotes);
 
         eventsHistory.add(event1);
         eventsHistory.add(event2);
@@ -65,39 +66,38 @@ eventsHistory.add(event1);
     }
 
 
-
     public static ArrayList<Party> doTheOrquestas() {
         ArrayList<Party> partyData = new ArrayList<Party>();
-        String uriVideo="qh-mwjF-OMo";
+        String uriVideo = "qh-mwjF-OMo";
         //Mapa
-        partyData.add(new Party("Localización Orquestas", R.drawable.mapita,"", "www.entroidoverin.com",uriVideo));
+        partyData.add(new Party("Localización Orquestas", R.drawable.mapita, "", "www.entroidoverin.com", uriVideo));
         //Jueves de compadres
-        partyData.add(new Party("Charanga Tamega",R.drawable.charanga_tamega,"28/01 Jueves de Compadres","www.orquestasyfiestas.com/charanga-tamega/","KQv_w2HEPWI"));
-        partyData.add(new Party("Banda de Gaitas de Verín",R.drawable.banda_de_gaitas_de_verin,"28/01 Jueves de Compadres","http://www.verin.es/","1697zUVEOwo"));
-        partyData.add(new Party("Disco movil Jorge",R.drawable.disco_movil_jorge,"28/01 Jueves de Compadres","www.discomoviljorge.com/","87vZe4G2zoM"));
+        partyData.add(new Party("Charanga Tamega", R.drawable.charanga_tamega, "28/01 Jueves de Compadres", "www.orquestasyfiestas.com/charanga-tamega/", "KQv_w2HEPWI"));
+        partyData.add(new Party("Banda de Gaitas de Verín", R.drawable.banda_de_gaitas_de_verin, "28/01 Jueves de Compadres", "http://www.verin.es/", "1697zUVEOwo"));
+        partyData.add(new Party("Disco movil Jorge", R.drawable.disco_movil_jorge, "28/01 Jueves de Compadres", "www.discomoviljorge.com/", "87vZe4G2zoM"));
 
         //Domingo de corredoiro
-        partyData.add(new Party("Grupo Aramio",R.drawable.grupo_aramio,"31/01 Domingo de corredoiro","www.aramio.es/","EvlTqavVv8Q"));
+        partyData.add(new Party("Grupo Aramio", R.drawable.grupo_aramio, "31/01 Domingo de corredoiro", "www.aramio.es/", "EvlTqavVv8Q"));
 
         //Jueves de compadres
-        partyData.add(new Party("Orquesta Capitol",R.drawable.orquesta_capitol,"04/02 Jueves de Comadres 1:00","www.orquestasdegalicia.es/formaciones/orquesta_capitol","OYrLz_efk-Q"));
+        partyData.add(new Party("Orquesta Capitol", R.drawable.orquesta_capitol, "04/02 Jueves de Comadres 1:00", "www.orquestasdegalicia.es/formaciones/orquesta_capitol", "OYrLz_efk-Q"));
 
         //Viernes de compadreo
-        partyData.add(new Party("Discomovil a Gramola",R.drawable.disco_movil_gramola,"05/02 Viernes de Compadreo - Noche ","www.orquestasdegalicia.es/fiesta_02-08-2015_disco-movil_a-gramola_pazos-verin-ourense","Hi5j3-kuiTo"));
+        partyData.add(new Party("Discomovil a Gramola", R.drawable.disco_movil_gramola, "05/02 Viernes de Compadreo - Noche ", "www.orquestasdegalicia.es/fiesta_02-08-2015_disco-movil_a-gramola_pazos-verin-ourense", "Hi5j3-kuiTo"));
 
         //Sabado de Carnaval
-        partyData.add(new Party("Orquesta Trebol",R.drawable.orquesta_trebol,"06/02 Sabado de carnaval","www.orquestatrebol.net","UJwu2DIY37c"));
-        partyData.add(new Party("Orquesta America",R.drawable.orquesta_america,"06/02 Sabado de carnaval","www.orquestasdegalicia.es/formaciones/grupo_america-de-vigo","Lwjzio2O6_M"));
+        partyData.add(new Party("Orquesta Trebol", R.drawable.orquesta_trebol, "06/02 Sabado de carnaval", "www.orquestatrebol.net", "UJwu2DIY37c"));
+        partyData.add(new Party("Orquesta America", R.drawable.orquesta_america, "06/02 Sabado de carnaval", "www.orquestasdegalicia.es/formaciones/grupo_america-de-vigo", "Lwjzio2O6_M"));
 
 
         //Domingo de carnaval
-        partyData.add(new Party("Orquesta Grupo de Moda",R.drawable.orquesta_de_moda,"07/02 Orquesta Grupo de Moda","www.orquestasdegalicia.es/formaciones/grupo_d%C2%B4moda","M_uUN9gV42Yc"));
+        partyData.add(new Party("Orquesta Grupo de Moda", R.drawable.orquesta_de_moda, "07/02 Orquesta Grupo de Moda", "www.orquestasdegalicia.es/formaciones/grupo_d%C2%B4moda", "M_uUN9gV42Yc"));
 
         //Lunes de carnaval
-        partyData.add(new Party("Orquesta Compostela",R.drawable.orquesta_compostela,"08/02 Orquesta Compostela","www.orquestasdegalicia.es/formaciones/orquesta_compostela","HWAFT21Zins"));
+        partyData.add(new Party("Orquesta Compostela", R.drawable.orquesta_compostela, "08/02 Orquesta Compostela", "www.orquestasdegalicia.es/formaciones/orquesta_compostela", "HWAFT21Zins"));
 
 //Lunes de carnaval
-        partyData.add(new Party("Orquesta Ciclón",R.drawable.orquesta_ciclon,"08/02 Orquesta Compostela","www.es-la.facebook.com/ciclongrupo","bKdrz7UXXpE"));
+        partyData.add(new Party("Orquesta Ciclón", R.drawable.orquesta_ciclon, "08/02 Orquesta Compostela", "www.es-la.facebook.com/ciclongrupo", "bKdrz7UXXpE"));
 
 
         return partyData;
@@ -178,10 +178,10 @@ eventsHistory.add(event1);
 
     private static ArrayList<Miscelaneus> doTheMiscelaneus() {
         ArrayList<Miscelaneus> miscelaneusData = new ArrayList<Miscelaneus>();
-        Miscelaneus miscelaneus1= new Miscelaneus("Eventos Musicales",Miscelaneus.ORQUESTA,R.drawable.orquestas);
-        Miscelaneus miscelaneus2= new Miscelaneus("Carteles Del Carnaval",Miscelaneus.HISTORIA,R.drawable.carteles);
-        Miscelaneus miscelaneus3= new Miscelaneus("Cigarrones y Tradición",Miscelaneus.CIGARRON,R.drawable.cigarron);
-        Miscelaneus miscelaneus4= new Miscelaneus("Fiesta",Miscelaneus.FIESTA,R.drawable.fiesta);
+        Miscelaneus miscelaneus1 = new Miscelaneus("Eventos Musicales", Miscelaneus.ORQUESTA, R.drawable.orquestas);
+        Miscelaneus miscelaneus2 = new Miscelaneus("Carteles Del Carnaval", Miscelaneus.HISTORIA, R.drawable.carteles);
+        Miscelaneus miscelaneus3 = new Miscelaneus("Cigarrones y Tradición", Miscelaneus.CIGARRON, R.drawable.cigarron);
+        Miscelaneus miscelaneus4 = new Miscelaneus("Fiesta", Miscelaneus.FIESTA, R.drawable.fiesta);
         miscelaneusData.add(miscelaneus1);
         miscelaneusData.add(miscelaneus2);
         miscelaneusData.add(miscelaneus3);
@@ -192,8 +192,8 @@ eventsHistory.add(event1);
     private static ArrayList<Colaborador> doTheColaboradores() {
         ArrayList<Colaborador> colaboradores = new ArrayList<Colaborador>();
 
-        colaboradores.add(new Colaborador("Ayuntamiento de Verín",R.drawable.ayuntamiento_verin,Uri.parse("http://www.verin.es/"),"Difusión de la aplicación"));
-        colaboradores.add(new Colaborador("La Región",R.drawable.la_region,Uri.parse("http://www.laregion.es/"),"Difusión de la aplicación"));
+        colaboradores.add(new Colaborador("Ayuntamiento de Verín", R.drawable.ayuntamiento_verin, Uri.parse("http://www.verin.es/"), "Difusión de la aplicación"));
+        colaboradores.add(new Colaborador("La Región", R.drawable.la_region, Uri.parse("http://www.laregion.es/"), "Difusión de la aplicación"));
 
         return colaboradores;
     }

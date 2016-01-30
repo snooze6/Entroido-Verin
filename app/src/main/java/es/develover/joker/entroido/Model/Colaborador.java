@@ -8,7 +8,7 @@ import android.net.Uri;
 public class Colaborador {
     private Uri fuente;
     private String nombre;
-    private Uri imagen;
+    private int imagen;
     private String colaboración;
 
     public Uri getFuente() {
@@ -27,11 +27,11 @@ public class Colaborador {
         this.nombre = nombre;
     }
 
-    public Uri getImagen() {
+    public int getImagen() {
         return imagen;
     }
 
-    public void setImagen(Uri imagen) {
+    public void setImagen(int imagen) {
         this.imagen = imagen;
     }
 
@@ -43,7 +43,7 @@ public class Colaborador {
         this.colaboración = colaboración;
     }
 
-    public Colaborador(String nombre, Uri imagen, Uri fuente,String colaboración ) {
+    public Colaborador(String nombre, int imagen, Uri fuente,String colaboración ) {
         this.colaboración = colaboración;
         this.imagen = imagen;
         this.nombre = nombre;

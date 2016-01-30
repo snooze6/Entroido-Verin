@@ -17,8 +17,10 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
 
+import es.develover.joker.entroido.Activities.MainActivity;
 import es.develover.joker.entroido.Model.NetworkContent;
 import es.develover.joker.entroido.Model.Tweet;
+import es.develover.joker.entroido.Network.ConnectionDetector;
 import es.develover.joker.entroido.Network.TwitterGetterId;
 import es.develover.joker.entroido.Network.TwitterUpdater;
 import es.develover.joker.entroido.R;
@@ -78,23 +80,29 @@ public class NetworkAdapter extends BaseAdapter {
     }
 
     private void doTheLoad(){
-        Log.d("[TWEET]","  -- Voy a cargar más por abajo");
-        for (int i=0; i<contenido.size(); i++){
-            ((Tweet)contenido.get(i)).print();
-        }
 
-        try {
-            ArrayList<Tweet> arr = new TwitterGetterId().execute(min_id-1).get();
-            contenido.addAll(arr);
-            min_id = contenido.get(contenido.size()-1).getId();
-            notifyDataSetChanged();
+        ConnectionDetector cd = new ConnectionDetector(activity);
+        if (cd.isConnectingToInternet()) {
+            Log.d("[TWEET]", "  -- Voy a cargar más por abajo");
+            for (int i = 0; i < contenido.size(); i++) {
+                ((Tweet) contenido.get(i)).print();
+            }
+
+            try {
+                ArrayList<Tweet> arr = new TwitterGetterId().execute(min_id - 1).get();
+                contenido.addAll(arr);
+                min_id = contenido.get(contenido.size() - 1).getId();
+                notifyDataSetChanged();
 
 //            ArrayList<Tweet> arr = new TwitterGetter().execute("FelizMiercoles").get();
 //            contenido.addAll(arr);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (ExecutionException e) {
-            e.printStackTrace();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            } catch (ExecutionException e) {
+                e.printStackTrace();
+            }
+        }else{
+            ((MainActivity)activity).internetDialog();
         }
     }
 

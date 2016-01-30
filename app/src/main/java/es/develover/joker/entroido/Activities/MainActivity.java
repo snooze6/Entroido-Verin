@@ -499,7 +499,7 @@ public class MainActivity extends AppCompatActivity
                         rootView = inflater.inflate(R.layout.fragment_fiesta, container, false);
 
                         GridView grid = (GridView) rootView.findViewById(R.id.grid);
-                      //  grid.setAdapter(new PartyAdapter(ContentProvider.parties, getActivity()));
+                      //  grid.setAdapter(new PartyAdapter(ContentProvider.orquestas, getActivity()));
                         grid.setAdapter(new MiscelaneusAdapter(ContentProvider.miscelaneuses, getActivity()));
                         if (mTwoPane) {
                             Point p = new Point();

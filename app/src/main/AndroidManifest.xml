@@ -53,7 +53,6 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="es.develover.joker.entroido.Activities.MainActivity" />
         </activity>
-
         <activity
             android:name=".Activities.CigarronActivity"
             android:label="@string/title_activity_cigarron"
@@ -63,10 +62,18 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="es.develover.joker.entroido.Activities.MainActivity" />
         </activity>
-
         <activity
             android:name=".Activities.AboutUsActivity"
             android:label="@string/title_activity_about_us"
+            android:theme="@style/AppTheme.NoActionBar" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="es.develover.joker.entroido.Activities.MainActivity" />
+        </activity>
+        <activity
+            android:name=".Activities.PartyActivity"
+            android:label="@string/title_activity_party"
+            android:parentActivityName=".Activities.MainActivity"
             android:theme="@style/AppTheme.NoActionBar" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

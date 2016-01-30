@@ -18,6 +18,7 @@ import java.util.ArrayList;
 import es.develover.joker.entroido.Activities.CigarronActivity;
 import es.develover.joker.entroido.Activities.HistoriaActivity;
 import es.develover.joker.entroido.Activities.OrquestaActivity;
+import es.develover.joker.entroido.Activities.PartyActivity;
 import es.develover.joker.entroido.Model.Miscelaneus;
 import es.develover.joker.entroido.R;
 
@@ -82,6 +83,10 @@ public class MiscelaneusAdapter extends BaseAdapter {
                         activity.startActivity(intent);
                     } else if (id == Miscelaneus.CIGARRON) {
                         Intent intent = new Intent(activity, CigarronActivity.class);
+                        activity.startActivity(intent);
+                    }
+                    else if (id == Miscelaneus.FIESTA) {
+                        Intent intent = new Intent(activity, PartyActivity.class);
                         activity.startActivity(intent);
                     }
                 }

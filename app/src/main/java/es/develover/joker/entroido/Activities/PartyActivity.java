@@ -36,10 +36,16 @@ public class PartyActivity extends AppCompatActivity {
                         startActivity(intent);
                         break;
                     case 1:
+                        Intent intent2 = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.google.com/maps/d/viewer?mid=zyvEGOd-KfmM.kT4hjDEZr4vk"));
+                        startActivity(intent2);
                         break;
                     case 2:
+                        Intent intent3 = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.google.com/maps/d/viewer?mid=zyvEGOd-KfmM.kFoh2DZIiYgI"));
+                        startActivity(intent3);
                         break;
                     case 3:
+                        Intent intent4 = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.google.com/maps/d/viewer?mid=zyvEGOd-KfmM.krQNKfN9I99w"));
+                        startActivity(intent4);
                         break;
                     default:
                         break;

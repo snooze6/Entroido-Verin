@@ -47,11 +47,15 @@ eventsHistory.add(event1);
 
     public static ArrayList<Event> doTheParty() {
         ArrayList<Event> eventsHistory= new ArrayList<Event>();
-        Event event1 = new Event("Zona orquestas","Descubre como llegar a la zona de orquestas",R.drawable.mapa_orquesta);
+        Event event1 = new Event("Zona orquestas","Descubre como llegar a la zona de orquestas",R.drawable.mapa_orquestas);
+        Event event2 = new Event("Zona de bares Rua Monte Maior","Descubre como llegar a la zona de bares de la calle Montemaior",R.drawable.mapa_zona_bares_1);
+        Event event3 = new Event("Zona de bares Rua Irmáns Moreno","Descubre como llegar a esta zona de bares de la calle Irmans Moreno",R.drawable.mapa_zona_bares2);
+        Event event4 = new Event("Zona de pubs y discotecas cerca de la Plaza Alameda","Descubre como llegar a la movida nocturna",R.drawable.mapa_discotes);
+
         eventsHistory.add(event1);
-
-
-
+        eventsHistory.add(event2);
+        eventsHistory.add(event3);
+        eventsHistory.add(event4);
         return eventsHistory;
     }
 

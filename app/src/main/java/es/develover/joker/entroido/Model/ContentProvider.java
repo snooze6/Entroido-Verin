@@ -224,10 +224,12 @@ eventsHistory.add(event1);
         Miscelaneus miscelaneus1= new Miscelaneus("Eventos Musicales",Miscelaneus.ORQUESTA,R.drawable.orquestas);
         Miscelaneus miscelaneus2= new Miscelaneus("Carteles Del Carnaval",Miscelaneus.HISTORIA,R.drawable.carteles);
         Miscelaneus miscelaneus3= new Miscelaneus("Cigarrones y Tradición",Miscelaneus.CIGARRON,R.drawable.cigarron);
+        Miscelaneus miscelaneus4= new Miscelaneus("Concurso de disfraces",Miscelaneus.CONCURSO,R.drawable.hermione);
 
         miscelaneusData.add(miscelaneus1);
         miscelaneusData.add(miscelaneus2);
         miscelaneusData.add(miscelaneus3);
+        miscelaneusData.add(miscelaneus4);
         return miscelaneusData;
     }
 

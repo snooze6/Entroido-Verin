@@ -16,6 +16,7 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 
 import es.develover.joker.entroido.Activities.CigarronActivity;
+import es.develover.joker.entroido.Activities.ConcursoActivity;
 import es.develover.joker.entroido.Activities.HistoriaActivity;
 import es.develover.joker.entroido.Activities.OrquestaActivity;
 import es.develover.joker.entroido.Model.Miscelaneus;
@@ -74,15 +75,24 @@ public class MiscelaneusAdapter extends BaseAdapter {
             image.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if (id == Miscelaneus.HISTORIA) {
-                        Intent intent = new Intent(activity, HistoriaActivity.class);
-                        activity.startActivity(intent);
-                    } else if (id == Miscelaneus.ORQUESTA) {
-                        Intent intent = new Intent(activity, OrquestaActivity.class);
-                        activity.startActivity(intent);
-                    } else if (id == Miscelaneus.CIGARRON) {
-                        Intent intent = new Intent(activity, CigarronActivity.class);
-                        activity.startActivity(intent);
+                    Intent intent;
+                    switch (id){
+                        case Miscelaneus.HISTORIA:
+                            intent = new Intent(activity, HistoriaActivity.class);
+                            activity.startActivity(intent);
+                            break;
+                        case Miscelaneus.CIGARRON:
+                            intent = new Intent(activity, CigarronActivity.class);
+                            activity.startActivity(intent);
+                            break;
+                        case Miscelaneus.ORQUESTA:
+                            intent = new Intent(activity, OrquestaActivity.class);
+                            activity.startActivity(intent);
+                            break;
+                        case Miscelaneus.CONCURSO:
+                            intent = new Intent(activity, ConcursoActivity.class);
+                            activity.startActivity(intent);
+                            break;
                     }
                 }
             });

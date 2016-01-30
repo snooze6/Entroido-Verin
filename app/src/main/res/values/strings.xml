@@ -10,4 +10,7 @@
     <string name="title_activity_historia">HistoriaActivity</string>
     <string name="title_activity_cigarron">CigarronActivity</string>
     <string name="title_activity_about_us">AboutUsActivity</string>
+    <string name="title_activity_concurso">Concurso de Disfraces</string>
+
+    <string name="hello_world">Hello world!</string>
 </resources>

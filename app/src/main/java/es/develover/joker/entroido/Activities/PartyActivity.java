@@ -30,12 +30,19 @@ public class PartyActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Event event = ContentProvider.parties.get(position);
-                if (position == 0) {
-                    Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.google.com/maps/d/viewer?hl=es&hl=es&authuser=0&authuser=0&mid=zyvEGOd-KfmM.kJldpL7zlo5o"));
-                    startActivity(intent);
-                }
-                else if(position==1){
-                    
+                switch (position) {
+                    case 0:
+                        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.google.com/maps/d/viewer?hl=es&hl=es&authuser=0&authuser=0&mid=zyvEGOd-KfmM.kJldpL7zlo5o"));
+                        startActivity(intent);
+                        break;
+                    case 1:
+                        break;
+                    case 2:
+                        break;
+                    case 3:
+                        break;
+                    default:
+                        break;
                 }
 
             }

@@ -88,6 +88,9 @@ public class ItemListFragment extends ListFragment {
                 && savedInstanceState.containsKey(STATE_ACTIVATED_POSITION)) {
             setActivatedPosition(savedInstanceState.getInt(STATE_ACTIVATED_POSITION));
         }
+
+        //TODO:mover esto a un lugar adecuado
+        getListView().setDivider(null);
     }
 
     @Override

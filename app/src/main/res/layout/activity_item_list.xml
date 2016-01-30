@@ -11,5 +11,5 @@
 
 
     tools:layout="@android:layout/list_content"
-    android:divider="#E6E6E6"
+    android:divider="@android:color/transparent"
     android:dividerHeight="0px"/>

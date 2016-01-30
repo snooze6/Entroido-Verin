@@ -23,7 +23,6 @@ public class PartyActivity extends AppCompatActivity {
         setContentView(R.layout.activity_party);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
         ListView listView = (ListView) findViewById(R.id.listview_events);
         listView.setAdapter(new FiestaAdapter(ContentProvider.parties, this));
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {

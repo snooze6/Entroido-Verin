@@ -184,11 +184,10 @@ public class ContentProvider {
 
     private static ArrayList<Miscelaneus> doTheMiscelaneus() {
         ArrayList<Miscelaneus> miscelaneusData = new ArrayList<Miscelaneus>();
-
-        Miscelaneus miscelaneus1= new Miscelaneus("Eventos Musicales",Miscelaneus.ORQUESTA,R.drawable.orquestas);
-        Miscelaneus miscelaneus2= new Miscelaneus("Carteles Del Carnaval",Miscelaneus.HISTORIA,R.drawable.carteles);
+        Miscelaneus miscelaneus1= new Miscelaneus("Fiesta",Miscelaneus.FIESTA,R.drawable.fiesta);
+        Miscelaneus miscelaneus2= new Miscelaneus("Eventos Musicales",Miscelaneus.ORQUESTA,R.drawable.orquestas);
         Miscelaneus miscelaneus3= new Miscelaneus("Cigarrones y Tradición",Miscelaneus.CIGARRON,R.drawable.cigarron);
-        Miscelaneus miscelaneus4= new Miscelaneus("Fiesta",Miscelaneus.FIESTA,R.drawable.fiesta);
+        Miscelaneus miscelaneus4= new Miscelaneus("Carteles Del Carnaval",Miscelaneus.HISTORIA,R.drawable.carteles);
         //Miscelaneus miscelaneus5= new Miscelaneus("Concurso de disfraces",Miscelaneus.CONCURSO,R.drawable.hermione);
 
         miscelaneusData.add(miscelaneus1);

@@ -198,8 +198,9 @@ public class ContentProvider {
     private static ArrayList<Colaborador> doTheColaboradores() {
         ArrayList<Colaborador> colaboradores = new ArrayList<Colaborador>();
 
-        colaboradores.add(new Colaborador("Ayuntamiento de Verín", R.drawable.ayuntamiento_verin, Uri.parse("http://www.verin.es/"), "Difusión de la aplicación"));
-        colaboradores.add(new Colaborador("La Región", R.drawable.la_region, Uri.parse("http://www.laregion.es/"), "Difusión de la aplicación"));
+        colaboradores.add(new Colaborador("Ayuntamiento de Verín", R.drawable.ayuntamiento_verin, Uri.parse("http://www.verin.es/"), "Difusión de la aplicación","El ayuntamiento colaboró en la difusión de la aplicación"));
+        //colaboradores.add(new Colaborador("La Región", R.drawable.la_region, Uri.parse("http://www.laregion.es/"), "Difusión de la aplicación","DESCRIPCION"));
+
 
         return colaboradores;
     }

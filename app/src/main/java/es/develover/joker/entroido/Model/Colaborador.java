@@ -10,6 +10,7 @@ public class Colaborador {
     private String nombre;
     private int imagen;
     private String colaboración;
+    private String descripcionColaboracion;
 
     public Uri getFuente() {
         return fuente;
@@ -43,10 +44,19 @@ public class Colaborador {
         this.colaboración = colaboración;
     }
 
-    public Colaborador(String nombre, int imagen, Uri fuente,String colaboración ) {
+    public String getDescripcionColaboración() {
+        return descripcionColaboracion;
+    }
+
+    public void setDescripcionColaboración(String descripcioónColaboración) {
+        this.descripcionColaboracion = descripcioónColaboración;
+    }
+
+    public Colaborador(String nombre, int imagen, Uri fuente,String colaboración,String descripcionColaboracion) {
         this.colaboración = colaboración;
         this.imagen = imagen;
         this.nombre = nombre;
         this.fuente = fuente;
+        this.descripcionColaboracion = descripcionColaboracion;
     }
 }

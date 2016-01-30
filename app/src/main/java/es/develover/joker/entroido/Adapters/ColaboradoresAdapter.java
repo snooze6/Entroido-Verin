@@ -52,10 +52,12 @@ public class ColaboradoresAdapter extends BaseAdapter{
 
         ImageView img=(ImageView)convertView.findViewById(R.id.card_colaboradores_image);
         img.setImageResource(colaboradores.get(position).getImagen());
-        TextView text=(TextView)convertView.findViewById(R.id.card_colaboradores_colaboracion);
-        text.setText(colaboradores.get(position).getColaboración());
 
+        TextView tituloDescripcion=(TextView)convertView.findViewById(R.id.card_colaboradores_colaboracion);
+        tituloDescripcion.setText(colaboradores.get(position).getColaboración());
 
+        TextView descripcion=(TextView)convertView.findViewById(R.id.card_colaboradores_colaboracion_descripcion);
+        descripcion.setText(colaboradores.get(position).getDescripcionColaboración());
 
         return convertView;
 

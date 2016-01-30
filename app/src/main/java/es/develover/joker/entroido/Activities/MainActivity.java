@@ -269,25 +269,29 @@ public class MainActivity extends AppCompatActivity
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
+
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_about_us) {
-            Intent intent = new Intent(this, AboutUsActivity.class);
-            this.startActivity(intent);
+        switch (item.getItemId()) {
+            case R.id.action_about_us:
+                Intent intent = new Intent(this, AboutUsActivity.class);
+                this.startActivity(intent);
+                break;
 
+            case R.id.action_share:
 
+                Intent sendIntent = new Intent();
+                sendIntent.setAction(Intent.ACTION_SEND);
+                sendIntent.putExtra(Intent.EXTRA_TEXT, "Descarga la aplicación del carnaval de verín: https://play.google.com/store/apps/details?id=es.develover.joker.entroido");
+                sendIntent.setType("text/plain");
+                startActivity(sendIntent);
+                break;
 
-            return true;
-        }
-        else if (id == R.id.action_share) {
+            case R.id.action_colaboradores:
+                Intent i = new Intent(this, ColaboradoresActivity.class);
+                startActivity(i);
+                break;
 
-            Intent sendIntent = new Intent();
-            sendIntent.setAction(Intent.ACTION_SEND);
-            sendIntent.putExtra(Intent.EXTRA_TEXT, "Descarga la aplicación del carnaval de verín: https://play.google.com/store/apps/details?id=es.develover.joker.entroido");
-            sendIntent.setType("text/plain");
-            startActivity(sendIntent);
-            return true;
         }
 
         return super.onOptionsItemSelected(item);
@@ -499,7 +503,7 @@ public class MainActivity extends AppCompatActivity
                         rootView = inflater.inflate(R.layout.fragment_fiesta, container, false);
 
                         GridView grid = (GridView) rootView.findViewById(R.id.grid);
-                      //  grid.setAdapter(new PartyAdapter(ContentProvider.parties, getActivity()));
+                      //  grid.setAdapter(new PartyAdapter(ContentProvider.orquestas, getActivity()));
                         grid.setAdapter(new MiscelaneusAdapter(ContentProvider.miscelaneuses, getActivity()));
                         if (mTwoPane) {
                             Point p = new Point();

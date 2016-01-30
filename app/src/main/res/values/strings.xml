@@ -6,11 +6,13 @@
     <string name="title_item_detail">Item Detail</string>
     <string name="title_activity_main2">Main2Activity</string>
     <string name="menu_refresh">Actualizar Tweets</string>
-    <string name="title_activity_orquesta">OrquestaActivity</string>
-    <string name="title_activity_historia">HistoriaActivity</string>
-    <string name="title_activity_cigarron">CigarronActivity</string>
-    <string name="title_activity_about_us">AboutUsActivity</string>
+
+    <string name="title_activity_orquesta">Orquestas</string>
+    <string name="title_activity_historia">Historia</string>
+    <string name="title_activity_cigarron">Cigarron</string>
+    <string name="title_activity_about_us">AboutUs</string>
+    <string name="title_activity_colaboradores">Colaboradores</string>
+    <string name="title_activity_party">PartyActivity</string>
     <string name="title_activity_concurso">Concurso de Disfraces</string>
 
-    <string name="hello_world">Hello world!</string>
 </resources>

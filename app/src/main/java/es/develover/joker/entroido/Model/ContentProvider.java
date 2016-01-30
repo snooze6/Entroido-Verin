@@ -1,5 +1,7 @@
 package es.develover.joker.entroido.Model;
 
+import android.net.Uri;
+
 import java.util.ArrayList;
 
 import es.develover.joker.entroido.R;
@@ -10,19 +12,20 @@ import es.develover.joker.entroido.R;
 public class ContentProvider {
 
     public static ArrayList<Day> days = doTheDay();
-    public static ArrayList<Party> parties = doTheParty();
+    public static ArrayList<Party> orquestas = doTheOrquestas();
     public static ArrayList<Miscelaneus> miscelaneuses= doTheMiscelaneus();
     public static ArrayList<Event> history= doTheHistory();
     public static ArrayList<Event> cigarron= doTheCigarron();
-
-    public static ArrayList<Event> doTheHistory() {
+    public static ArrayList<Colaborador> colaboradores= doTheColaboradores();
+    public static ArrayList<Event> parties= doTheParty();
+    private static ArrayList<Event> doTheHistory() {
         ArrayList<Event> eventsHistory= new ArrayList<Event>();
         Event event1 = new Event("2016","",R.drawable.entroido2016);
         Event event2 = new Event("2015","",R.drawable.entroido2015);
         Event event3 = new Event("2014","",R.drawable.entroido2014);
         Event event4 = new Event("2013","",R.drawable.entroido2013);
         Event event5 = new Event("2012","",R.drawable.entroido2012);
-eventsHistory.add(event1);
+        eventsHistory.add(event1);
         eventsHistory.add(event2);
         eventsHistory.add(event3);
         eventsHistory.add(event4);
@@ -30,7 +33,7 @@ eventsHistory.add(event1);
         return eventsHistory;
     }
 
-    public static ArrayList<Event> doTheCigarron() {
+    private static ArrayList<Event> doTheCigarron() {
         ArrayList<Event> eventsHistory= new ArrayList<Event>();
         Event event1 = new Event("Origen","A principios del siglo XX, tan solo existían unos pocos trajes de cigarrón en la comarca y éstos eran alquilados a las casas que los poseían en castro. El traje en sí, se mantuvo igual hasta después de la guerra, tiempo en el que se descuidó un poco la estética. En los últimos tiempos se promovieron iniciativas para poder mejorar la presencia del cigarrón y a día de hoy tiene determinados unos elementos básicos que deben mantenerse intactos, como el pantalón, los zapatos, la camisa (permitidas algunas variantes pero dentro de la estética básica) y la estructura básica de la chaquetilla (los veremos en el apartado traje). Dentro de esa estética básica se permite un libre albedrío de colores tanto en medias, como pañoletas, fajas, ligas, pompones y elementos de las caretas como los motivos que aparecen en las mitras o las pieles empleadas en ellas. ",R.drawable.cigarron_1);
         Event event2 = new Event("Importancia","Siempre ha sido la figura central del Entroido de Verín y debe ser venerada y respetada como tal, la tradición manda que se les debe dejar paso y que no se les puede tirar  la harina o ceniza tan típica del carnaval.\n" +
@@ -45,64 +48,25 @@ eventsHistory.add(event1);
         return eventsHistory;
     }
 
-    /*public static ArrayList<Day> doTheDay() {
 
-        //Event creation
-        Event lunes1 = new Event("Evento 1", "Lunes evento jejejejejejejejejejejejejeje, metele más cosas", R.drawable.icon);
-        Event lunes2 = new Event("Evento 2", "Lunes evento jejejejejejejejejejejejejeje, metele más cosas", R.drawable.domingo);
-        Event martes1 = new Event("Evento 3", "Martes evento jejejejejejejejejejejejejeje, metele más cosas", R.drawable.day04);
-        Event martes2 = new Event("Evento 4", "Martes evento jejejejejejejejejejejejejeje, metele más cosas", R.drawable.day05);
-        Event miercoles1 = new Event("Evento 3", "Miercoles evento jejejejejejejejejejejejejeje, metele más cosas", R.drawable.day06);
-        Event miercoles2 = new Event("Evento 3", "Miercoles evento jejejejejejejejejejejejejeje, metele más cosas", R.drawable.day07);
+    private static ArrayList<Event> doTheParty() {
 
-        //First arraylist of events with 2 first events
-        ArrayList<Event> events = new ArrayList<Event>();
-        events.add(lunes1);
-        events.add(lunes2);
+        ArrayList<Event> eventsHistory= new ArrayList<Event>();
+        Event event1 = new Event("Zona orquestas","Descubre como llegar a la zona de orquestas",R.drawable.mapa_orquestas);
+        Event event2 = new Event("Zona de bares Rua Monte Maior","Descubre como llegar a la zona de bares de la calle Montemaior",R.drawable.mapa_zona_bares_1);
+        Event event3 = new Event("Zona de bares Rua Irmáns Moreno","Descubre como llegar a esta zona de bares de la calle Irmans Moreno",R.drawable.mapa_zona_bares2);
+        Event event4 = new Event("Zona de pubs y discotecas cerca de la Plaza Alameda","Descubre como llegar a la movida nocturna",R.drawable.mapa_discotes);
 
-        //Second arraylist of events with 2  events
-        ArrayList<Event> events2 = new ArrayList<Event>();
-        events2.add(martes1);
-        events2.add(martes2);
-
-        //Third arraylist of events with 2  events
-        ArrayList<Event> events3 = new ArrayList<Event>();
-        events3.add(miercoles1);
-        events3.add(miercoles2);
-
-        //First day with 2 first events
-        Day lunes = new Day("1 de Febrero", R.drawable.icon, "Lunes de carnaval", "Cabalgata espectacular en el pequeño gran pueblo de Verín", events);
-
-        //Second dday with the events 2
-        Day martes = new Day("2 de Febrero", R.drawable.icon, "Martes de carnaval", "Cabalgata espectacular en el pequeño gran pueblo de Verín", events2);
-
-        //Third dday with the events 2
-        Day miercoles = new Day("3 de Febrero", R.drawable.icon, "Maiercoles", "Cabalgata espectacular en el pequeño gran pueblo de Verín", events3);
+        eventsHistory.add(event1);
+        eventsHistory.add(event2);
+        eventsHistory.add(event3);
+        eventsHistory.add(event4);
+        return eventsHistory;
+    }
 
 
-        //ArrayList of days
-        ArrayList<Day> dataDays = new ArrayList<Day>();
-        dataDays.add(lunes);
-        dataDays.add(martes);
-        dataDays.add(miercoles);
-        dataDays.add(lunes);
-        dataDays.add(martes);
-        dataDays.add(miercoles);
-        dataDays.add(lunes);
-        dataDays.add(martes);
-        dataDays.add(miercoles);
-        dataDays.add(lunes);
-        dataDays.add(martes);
-        dataDays.add(miercoles);
-        dataDays.add(lunes);
-        dataDays.add(martes);
-        dataDays.add(miercoles);
 
-
-        return dataDays;
-    }*/
-
-    public static ArrayList<Party> doTheParty() {
+    public static ArrayList<Party> doTheOrquestas() {
         ArrayList<Party> partyData = new ArrayList<Party>();
         String uriVideo="qh-mwjF-OMo";
         //Mapa
@@ -135,18 +99,11 @@ eventsHistory.add(event1);
 //Lunes de carnaval
         partyData.add(new Party("Orquesta Ciclón",R.drawable.orquesta_ciclon,"08/02 Orquesta Compostela","www.es-la.facebook.com/ciclongrupo","bKdrz7UXXpE"));
 
-/*        partyData.add(new Party("Orquesta Panorama", R.drawable.panorama, "02/02/15", "www.panaderiaroscas.com",uriVideo));
-        partyData.add(new Party("Orquesta Paris de Noia", R.drawable.parisdenoia, "02/02/15", "www.panaderiaroscas.com",uriVideo));
-        partyData.add(new Party("Orquesta Marbella", R.drawable.day04, "02/02/15", "www.panaderiaroscas.com","www.panaderiaroscas.com"));
-        partyData.add(new Party("Orquesta Panorama", R.drawable.day05, "02/02/15", "www.panaderiaroscas.com","www.panaderiaroscas.com"));
-        partyData.add(new Party("Orquesta Paris de Noia", R.drawable.day06, "02/02/15", "www.panaderiaroscas.com","www.panaderiaroscas.com"));
-        partyData.add(new Party("Mapa", R.drawable.mapita, "02/02/15", "www.panaderiaroscas.com","www.panaderiaroscas.com"));
-        partyData.add(new Party("Orquesta Marbella", R.drawable.marbella, "02/02/15", "www.panaderiaroscas.com","www.panaderiaroscas.com"));*/
 
         return partyData;
     }
 
-    public static ArrayList<Day> doTheDay() {
+    private static ArrayList<Day> doTheDay() {
         ArrayList<Event> e28 = new ArrayList<Event>();
         e28.add(new Event("Jueves de Compadres", "Panorámica Jueves de Compadres\n" +
                 "Es el primer día del Carnaval y la primera noche de mascarada colectiva.\n" +
@@ -219,18 +176,28 @@ eventsHistory.add(event1);
         return dataDays;
     }
 
-    public static ArrayList<Miscelaneus> doTheMiscelaneus() {
+    private static ArrayList<Miscelaneus> doTheMiscelaneus() {
         ArrayList<Miscelaneus> miscelaneusData = new ArrayList<Miscelaneus>();
         Miscelaneus miscelaneus1= new Miscelaneus("Eventos Musicales",Miscelaneus.ORQUESTA,R.drawable.orquestas);
         Miscelaneus miscelaneus2= new Miscelaneus("Carteles Del Carnaval",Miscelaneus.HISTORIA,R.drawable.carteles);
         Miscelaneus miscelaneus3= new Miscelaneus("Cigarrones y Tradición",Miscelaneus.CIGARRON,R.drawable.cigarron);
-        Miscelaneus miscelaneus4= new Miscelaneus("Concurso de disfraces",Miscelaneus.CONCURSO,R.drawable.hermione);
-
+        Miscelaneus miscelaneus5= new Miscelaneus("Concurso de disfraces",Miscelaneus.CONCURSO,R.drawable.hermione);
+        Miscelaneus miscelaneus4= new Miscelaneus("Fiesta",Miscelaneus.FIESTA,R.drawable.fiesta);
         miscelaneusData.add(miscelaneus1);
         miscelaneusData.add(miscelaneus2);
         miscelaneusData.add(miscelaneus3);
         miscelaneusData.add(miscelaneus4);
+        miscelaneusData.add(miscelaneus5);
         return miscelaneusData;
+    }
+
+    private static ArrayList<Colaborador> doTheColaboradores() {
+        ArrayList<Colaborador> colaboradores = new ArrayList<Colaborador>();
+
+        colaboradores.add(new Colaborador("Ayuntamiento de Verín",R.drawable.ayuntamiento_verin,Uri.parse("http://www.verin.es/"),"Difusión de la aplicación"));
+        colaboradores.add(new Colaborador("La Región",R.drawable.la_region,Uri.parse("http://www.laregion.es/"),"Difusión de la aplicación"));
+
+        return colaboradores;
     }
 
 

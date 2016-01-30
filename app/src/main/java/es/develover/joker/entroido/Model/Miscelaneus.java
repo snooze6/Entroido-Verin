@@ -7,7 +7,8 @@ public class Miscelaneus {
     public static final int ORQUESTA = 0;
     public static final int HISTORIA = 1;
     public static final int CIGARRON = 2;
-    public static final int CONCURSO = 3;
+    public static final int FIESTA   = 3;
+    public static final int CONCURSO = 4;
     public String title;
     public int imageID;
     public int id;

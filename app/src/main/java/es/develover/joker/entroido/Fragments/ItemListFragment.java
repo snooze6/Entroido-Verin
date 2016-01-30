@@ -74,7 +74,7 @@ public class ItemListFragment extends ListFragment {
 
         // TODO: replace with a real list adapter.
 
-         dayAdapter = new DayAdapter(ContentProvider.days,this.getActivity());
+        dayAdapter = new DayAdapter(ContentProvider.days,this.getActivity());
         setListAdapter(dayAdapter);
 
     }

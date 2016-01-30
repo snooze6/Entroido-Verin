@@ -19,6 +19,7 @@ import es.develover.joker.entroido.Activities.CigarronActivity;
 import es.develover.joker.entroido.Activities.ConcursoActivity;
 import es.develover.joker.entroido.Activities.HistoriaActivity;
 import es.develover.joker.entroido.Activities.OrquestaActivity;
+import es.develover.joker.entroido.Activities.PartyActivity;
 import es.develover.joker.entroido.Model.Miscelaneus;
 import es.develover.joker.entroido.R;
 
@@ -91,6 +92,10 @@ public class MiscelaneusAdapter extends BaseAdapter {
                             break;
                         case Miscelaneus.CONCURSO:
                             intent = new Intent(activity, ConcursoActivity.class);
+                            activity.startActivity(intent);
+                            break;
+                        case Miscelaneus.FIESTA:
+                            intent = new Intent(activity, PartyActivity.class);
                             activity.startActivity(intent);
                             break;
                     }

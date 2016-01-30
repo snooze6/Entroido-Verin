@@ -38,11 +38,15 @@ public class ContentProvider {
 
     private static ArrayList<Event> doTheCigarron() {
         ArrayList<Event> eventsHistory = new ArrayList<Event>();
-        Event event1 = new Event("Origen", "A principios del siglo XX, tan solo existían unos pocos trajes de cigarrón en la comarca y éstos eran alquilados a las casas que los poseían en castro. El traje en sí, se mantuvo igual hasta después de la guerra, tiempo en el que se descuidó un poco la estética. En los últimos tiempos se promovieron iniciativas para poder mejorar la presencia del cigarrón y a día de hoy tiene determinados unos elementos básicos que deben mantenerse intactos, como el pantalón, los zapatos, la camisa (permitidas algunas variantes pero dentro de la estética básica) y la estructura básica de la chaquetilla (los veremos en el apartado traje). Dentro de esa estética básica se permite un libre albedrío de colores tanto en medias, como pañoletas, fajas, ligas, pompones y elementos de las caretas como los motivos que aparecen en las mitras o las pieles empleadas en ellas. ", R.drawable.cigarron_1);
+        Event event1 = new Event("Origen", "A principios del siglo XX, tan solo existían unos pocos trajes de cigarrón en la comarca y éstos eran alquilados a las casas que los poseían en castro. El traje en sí, se mantuvo igual hasta después de la guerra, tiempo en el que se descuidó un poco la estética. " +
+                "En los últimos tiempos se promovieron iniciativas para poder mejorar la presencia del cigarrón y a día de hoy tiene determinados unos elementos básicos que deben mantenerse intactos, como el pantalón, los zapatos, la camisa (permitidas algunas variantes pero dentro de la estética básica) y la estructura básica de la chaquetilla. " +
+                "Dentro de esa estética básica se permite un libre albedrío de colores tanto en medias, como pañoletas, fajas, ligas, pompones y elementos de las caretas como los motivos que aparecen en las mitras o las pieles empleadas en ellas. ", R.drawable.cigarron_1);
         Event event2 = new Event("Importancia", "Siempre ha sido la figura central del Entroido de Verín y debe ser venerada y respetada como tal, la tradición manda que se les debe dejar paso y que no se les puede tirar  la harina o ceniza tan típica del carnaval.\n" +
                 "El cigarrón es un personaje que hace exaltación de su poderío y fuerza mediante las carreras y los saltos, los movimientos ágiles y certeros y la destreza al mover y emplear su zamarra, la cual tiene un uso exclusivamente limitado desde antaño en apartar a la gente que se interpone en el camino o perseguir y azotar a todo aquel que insulta al cigarrón o a la persona que lo porta.\n", R.drawable.cigarron_2);
-        Event event3 = new Event("De padres a hijos", "Entendiendo tradición como la herencia de padres a hijos, en Verín se ha conservado desde antaño el vestir el traje de cigarrón. Para la gente de Verín el cigarrón es la figura idiosincrática del Entroido y vestirlo es un honor para todo aquel que puede hacerlo. Más que un traje, es un sentimiento que va más allá de lo que la razón puede entender. \n" +
-                "Cigarróns son todas las personas que a lo largo de los siglos han conseguido mantener viva la tradición y vestirlo con el mayor orgullo, respeto y amor posible.  En Verín todo el mundo es cigarrón, desde el que lo viste, el que ayuda a vestirlo, el que lo admira, el que siente pasión por él aunque no lo vista y todas aquellas personas que lo llevan en el alma aunque jamás lo hayan vestido.\n", R.drawable.cigarron_3);
+        Event event3 = new Event("De padres a hijos", "Entendiendo tradición como la herencia de padres a hijos, en Verín se ha conservado desde antaño el vestir el traje de cigarrón. " +
+                "Para la gente de Verín el cigarrón es la figura idiosincrática del Entroido y vestirlo es un honor para todo aquel que puede hacerlo. Más que un traje, es un sentimiento que va más allá de lo que la razón puede entender. \n" +
+                "Cigarróns son todas las personas que a lo largo de los siglos han conseguido mantener viva la tradición y vestirlo con el mayor orgullo, respeto y amor posible.  " +
+                "En Verín todo el mundo es cigarrón, desde el que lo viste, el que ayuda a vestirlo, el que lo admira, el que siente pasión por él aunque no lo vista y todas aquellas personas que lo llevan en el alma aunque jamás lo hayan vestido.\n", R.drawable.cigarron_3);
         eventsHistory.add(event1);
         eventsHistory.add(event2);
         eventsHistory.add(event3);
@@ -55,10 +59,10 @@ public class ContentProvider {
     private static ArrayList<Event> doTheParty() {
 
         ArrayList<Event> eventsHistory = new ArrayList<Event>();
-        Event event1 = new Event("Zona orquestas", "Descubre como llegar a la zona de orquestas", R.drawable.mapa_orquestas);
-        Event event2 = new Event("Zona de bares Rua Monte Maior", "Descubre como llegar a la zona de bares de la calle Montemaior", R.drawable.mapa_zona_bares_1);
-        Event event3 = new Event("Zona de bares Rua Irmáns Moreno", "Descubre como llegar a esta zona de bares de la calle Irmans Moreno", R.drawable.mapa_zona_bares2);
-        Event event4 = new Event("Zona de pubs y discotecas cerca de la Plaza Alameda", "Descubre como llegar a la movida nocturna", R.drawable.mapa_discotes);
+        Event event1 = new Event("Zona orquestas", "Click para descubrir como llegar a la zona de orquestas", R.drawable.mapa_orquestas);
+        Event event2 = new Event("Zona de bares Rua Monte Maior", "Click para descubrir como llegar a la zona de bares de la calle Montemaior", R.drawable.mapa_zona_bares_1);
+        Event event3 = new Event("Zona de bares Rua Irmáns Moreno", "Click para descubrir como llegar a esta zona de bares de la calle Irmans Moreno", R.drawable.mapa_zona_bares2);
+        Event event4 = new Event("Zona de pubs y discotecas cerca de la Plaza Alameda", "Click para descubrir como llegar a la movida nocturna", R.drawable.mapa_discotes);
 
         eventsHistory.add(event1);
         eventsHistory.add(event2);

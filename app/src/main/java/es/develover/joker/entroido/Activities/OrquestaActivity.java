@@ -21,7 +21,7 @@ public class OrquestaActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         this.setTitle("Orquesta");
         GridView gridView= (GridView)findViewById(R.id.grid);
-        gridView.setAdapter(new PartyAdapter(ContentProvider.parties, this));
+        gridView.setAdapter(new PartyAdapter(ContentProvider.orquestas, this));
 
         if(getResources().getBoolean(R.bool.portrait_only)){
             setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);

@@ -12,12 +12,12 @@ import es.develover.joker.entroido.R;
 public class ContentProvider {
 
     public static ArrayList<Day> days = doTheDay();
-    public static ArrayList<Party> parties = doTheParty();
+    public static ArrayList<Party> orquestas = doTheOrquestas();
     public static ArrayList<Miscelaneus> miscelaneuses= doTheMiscelaneus();
     public static ArrayList<Event> history= doTheHistory();
     public static ArrayList<Event> cigarron= doTheCigarron();
     public static ArrayList<Colaborador> colaboradores= doTheColaboradores();
-
+    public static ArrayList<Event> parties= doTheParty();
     private static ArrayList<Event> doTheHistory() {
         ArrayList<Event> eventsHistory= new ArrayList<Event>();
         Event event1 = new Event("2016","",R.drawable.entroido2016);
@@ -48,7 +48,25 @@ eventsHistory.add(event1);
         return eventsHistory;
     }
 
-    private static ArrayList<Party> doTheParty() {
+
+    private static ArrayList<Event> doTheParty() {
+
+        ArrayList<Event> eventsHistory= new ArrayList<Event>();
+        Event event1 = new Event("Zona orquestas","Descubre como llegar a la zona de orquestas",R.drawable.mapa_orquestas);
+        Event event2 = new Event("Zona de bares Rua Monte Maior","Descubre como llegar a la zona de bares de la calle Montemaior",R.drawable.mapa_zona_bares_1);
+        Event event3 = new Event("Zona de bares Rua Irmáns Moreno","Descubre como llegar a esta zona de bares de la calle Irmans Moreno",R.drawable.mapa_zona_bares2);
+        Event event4 = new Event("Zona de pubs y discotecas cerca de la Plaza Alameda","Descubre como llegar a la movida nocturna",R.drawable.mapa_discotes);
+
+        eventsHistory.add(event1);
+        eventsHistory.add(event2);
+        eventsHistory.add(event3);
+        eventsHistory.add(event4);
+        return eventsHistory;
+    }
+
+
+
+    public static ArrayList<Party> doTheOrquestas() {
         ArrayList<Party> partyData = new ArrayList<Party>();
         String uriVideo="qh-mwjF-OMo";
         //Mapa
@@ -81,13 +99,6 @@ eventsHistory.add(event1);
 //Lunes de carnaval
         partyData.add(new Party("Orquesta Ciclón",R.drawable.orquesta_ciclon,"08/02 Orquesta Compostela","www.es-la.facebook.com/ciclongrupo","bKdrz7UXXpE"));
 
-/*        partyData.add(new Party("Orquesta Panorama", R.drawable.panorama, "02/02/15", "www.panaderiaroscas.com",uriVideo));
-        partyData.add(new Party("Orquesta Paris de Noia", R.drawable.parisdenoia, "02/02/15", "www.panaderiaroscas.com",uriVideo));
-        partyData.add(new Party("Orquesta Marbella", R.drawable.day04, "02/02/15", "www.panaderiaroscas.com","www.panaderiaroscas.com"));
-        partyData.add(new Party("Orquesta Panorama", R.drawable.day05, "02/02/15", "www.panaderiaroscas.com","www.panaderiaroscas.com"));
-        partyData.add(new Party("Orquesta Paris de Noia", R.drawable.day06, "02/02/15", "www.panaderiaroscas.com","www.panaderiaroscas.com"));
-        partyData.add(new Party("Mapa", R.drawable.mapita, "02/02/15", "www.panaderiaroscas.com","www.panaderiaroscas.com"));
-        partyData.add(new Party("Orquesta Marbella", R.drawable.marbella, "02/02/15", "www.panaderiaroscas.com","www.panaderiaroscas.com"));*/
 
         return partyData;
     }
@@ -170,10 +181,11 @@ eventsHistory.add(event1);
         Miscelaneus miscelaneus1= new Miscelaneus("Eventos Musicales",Miscelaneus.ORQUESTA,R.drawable.orquestas);
         Miscelaneus miscelaneus2= new Miscelaneus("Carteles Del Carnaval",Miscelaneus.HISTORIA,R.drawable.carteles);
         Miscelaneus miscelaneus3= new Miscelaneus("Cigarrones y Tradición",Miscelaneus.CIGARRON,R.drawable.cigarron);
-
+        Miscelaneus miscelaneus4= new Miscelaneus("Fiesta",Miscelaneus.FIESTA,R.drawable.fiesta);
         miscelaneusData.add(miscelaneus1);
         miscelaneusData.add(miscelaneus2);
         miscelaneusData.add(miscelaneus3);
+        miscelaneusData.add(miscelaneus4);
         return miscelaneusData;
     }
 
@@ -185,5 +197,6 @@ eventsHistory.add(event1);
 
         return colaboradores;
     }
+
 
 }

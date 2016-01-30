@@ -41,6 +41,7 @@ eventsHistory.add(event1);
         eventsHistory.add(event2);
         eventsHistory.add(event3);
 
+
         return eventsHistory;
     }
 

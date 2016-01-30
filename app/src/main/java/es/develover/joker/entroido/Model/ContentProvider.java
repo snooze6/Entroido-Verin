@@ -14,8 +14,9 @@ public class ContentProvider {
     public static ArrayList<Miscelaneus> miscelaneuses= doTheMiscelaneus();
     public static ArrayList<Event> history= doTheHistory();
     public static ArrayList<Event> cigarron= doTheCigarron();
+    public static ArrayList<Colaborador> colaboradores= doTheColaboradores();
 
-    public static ArrayList<Event> doTheHistory() {
+    private static ArrayList<Event> doTheHistory() {
         ArrayList<Event> eventsHistory= new ArrayList<Event>();
         Event event1 = new Event("2016","",R.drawable.entroido2016);
         Event event2 = new Event("2015","",R.drawable.entroido2015);
@@ -30,7 +31,7 @@ eventsHistory.add(event1);
         return eventsHistory;
     }
 
-    public static ArrayList<Event> doTheCigarron() {
+    private static ArrayList<Event> doTheCigarron() {
         ArrayList<Event> eventsHistory= new ArrayList<Event>();
         Event event1 = new Event("Origen","A principios del siglo XX, tan solo existían unos pocos trajes de cigarrón en la comarca y éstos eran alquilados a las casas que los poseían en castro. El traje en sí, se mantuvo igual hasta después de la guerra, tiempo en el que se descuidó un poco la estética. En los últimos tiempos se promovieron iniciativas para poder mejorar la presencia del cigarrón y a día de hoy tiene determinados unos elementos básicos que deben mantenerse intactos, como el pantalón, los zapatos, la camisa (permitidas algunas variantes pero dentro de la estética básica) y la estructura básica de la chaquetilla (los veremos en el apartado traje). Dentro de esa estética básica se permite un libre albedrío de colores tanto en medias, como pañoletas, fajas, ligas, pompones y elementos de las caretas como los motivos que aparecen en las mitras o las pieles empleadas en ellas. ",R.drawable.cigarron_1);
         Event event2 = new Event("Importancia","Siempre ha sido la figura central del Entroido de Verín y debe ser venerada y respetada como tal, la tradición manda que se les debe dejar paso y que no se les puede tirar  la harina o ceniza tan típica del carnaval.\n" +
@@ -45,64 +46,7 @@ eventsHistory.add(event1);
         return eventsHistory;
     }
 
-    /*public static ArrayList<Day> doTheDay() {
-
-        //Event creation
-        Event lunes1 = new Event("Evento 1", "Lunes evento jejejejejejejejejejejejejeje, metele más cosas", R.drawable.icon);
-        Event lunes2 = new Event("Evento 2", "Lunes evento jejejejejejejejejejejejejeje, metele más cosas", R.drawable.domingo);
-        Event martes1 = new Event("Evento 3", "Martes evento jejejejejejejejejejejejejeje, metele más cosas", R.drawable.day04);
-        Event martes2 = new Event("Evento 4", "Martes evento jejejejejejejejejejejejejeje, metele más cosas", R.drawable.day05);
-        Event miercoles1 = new Event("Evento 3", "Miercoles evento jejejejejejejejejejejejejeje, metele más cosas", R.drawable.day06);
-        Event miercoles2 = new Event("Evento 3", "Miercoles evento jejejejejejejejejejejejejeje, metele más cosas", R.drawable.day07);
-
-        //First arraylist of events with 2 first events
-        ArrayList<Event> events = new ArrayList<Event>();
-        events.add(lunes1);
-        events.add(lunes2);
-
-        //Second arraylist of events with 2  events
-        ArrayList<Event> events2 = new ArrayList<Event>();
-        events2.add(martes1);
-        events2.add(martes2);
-
-        //Third arraylist of events with 2  events
-        ArrayList<Event> events3 = new ArrayList<Event>();
-        events3.add(miercoles1);
-        events3.add(miercoles2);
-
-        //First day with 2 first events
-        Day lunes = new Day("1 de Febrero", R.drawable.icon, "Lunes de carnaval", "Cabalgata espectacular en el pequeño gran pueblo de Verín", events);
-
-        //Second dday with the events 2
-        Day martes = new Day("2 de Febrero", R.drawable.icon, "Martes de carnaval", "Cabalgata espectacular en el pequeño gran pueblo de Verín", events2);
-
-        //Third dday with the events 2
-        Day miercoles = new Day("3 de Febrero", R.drawable.icon, "Maiercoles", "Cabalgata espectacular en el pequeño gran pueblo de Verín", events3);
-
-
-        //ArrayList of days
-        ArrayList<Day> dataDays = new ArrayList<Day>();
-        dataDays.add(lunes);
-        dataDays.add(martes);
-        dataDays.add(miercoles);
-        dataDays.add(lunes);
-        dataDays.add(martes);
-        dataDays.add(miercoles);
-        dataDays.add(lunes);
-        dataDays.add(martes);
-        dataDays.add(miercoles);
-        dataDays.add(lunes);
-        dataDays.add(martes);
-        dataDays.add(miercoles);
-        dataDays.add(lunes);
-        dataDays.add(martes);
-        dataDays.add(miercoles);
-
-
-        return dataDays;
-    }*/
-
-    public static ArrayList<Party> doTheParty() {
+    private static ArrayList<Party> doTheParty() {
         ArrayList<Party> partyData = new ArrayList<Party>();
         String uriVideo="qh-mwjF-OMo";
         //Mapa
@@ -146,7 +90,7 @@ eventsHistory.add(event1);
         return partyData;
     }
 
-    public static ArrayList<Day> doTheDay() {
+    private static ArrayList<Day> doTheDay() {
         ArrayList<Event> e28 = new ArrayList<Event>();
         e28.add(new Event("Jueves de Compadres", "Panorámica Jueves de Compadres\n" +
                 "Es el primer día del Carnaval y la primera noche de mascarada colectiva.\n" +
@@ -219,7 +163,7 @@ eventsHistory.add(event1);
         return dataDays;
     }
 
-    public static ArrayList<Miscelaneus> doTheMiscelaneus() {
+    private static ArrayList<Miscelaneus> doTheMiscelaneus() {
         ArrayList<Miscelaneus> miscelaneusData = new ArrayList<Miscelaneus>();
         Miscelaneus miscelaneus1= new Miscelaneus("Eventos Musicales",Miscelaneus.ORQUESTA,R.drawable.orquestas);
         Miscelaneus miscelaneus2= new Miscelaneus("Carteles Del Carnaval",Miscelaneus.HISTORIA,R.drawable.carteles);
@@ -231,5 +175,15 @@ eventsHistory.add(event1);
         return miscelaneusData;
     }
 
+    private static ArrayList<Colaborador> doTheColaboradores() {
+        ArrayList<Colaborador> colaboradores = new ArrayList<Colaborador>();
+
+        colaboradores.add(new Colaborador("Ayuntamiento de Verín",))
+
+
+
+
+        return colaboradores;
+    }
 
 }

@@ -173,6 +173,7 @@ public class MainActivity extends AppCompatActivity
 
                     if(!internet)
                         internetDialog();
+
                 }else{
 
                     if(opcionActualizarTweets.isVisible())
@@ -208,6 +209,7 @@ public class MainActivity extends AppCompatActivity
         // killed and restarted.
 
         savedInstanceState.putInt("Item", item);
+
         // etc.
     }
 
@@ -221,6 +223,7 @@ public class MainActivity extends AppCompatActivity
             this.onItemSelected("" + item);
             //Log.e("Item>>>>>>>>>", "" + item);
         }
+
     }
 
     @Override
@@ -326,9 +329,7 @@ public class MainActivity extends AppCompatActivity
         public CharSequence getPageTitle(int position) {
             switch (position) {
                 case 0:
-
                     return "SOCIAL";
-
                 case 1:
                     return "AGENDA";
                 case 2:

@@ -138,7 +138,7 @@ private int positionSpecial=3;
                 //Fill with the right content
                 Day day = (Day) getItem(position);
                 title.setText(day.getDayName());
-                Picasso.with(activity).load(day.getPhotoId()).into(image);
+                Picasso.with(activity).load(day.getPhotoId()).fit().into(image);
             } else {
                 ImageView image = (ImageView) convertView.findViewById(R.id.item_image);
                 TextView title = (TextView) convertView.findViewById(R.id.item_title);

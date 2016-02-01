@@ -166,12 +166,12 @@ public class MainActivity extends AppCompatActivity
             public void onTabSelected(TabLayout.Tab tab) {
 
                 //TENSE QUE CAMBIARNO CASO  DE QUE O PRIMER ELEMENTODO MENU NON SEA ODEACTUALIZAR TWEETS
-                MenuItem opcionActualizarTweets = menuTopBar.getItem(0);
+                if(menuTopBar!=null){
+                    MenuItem opcionActualizarTweets = menuTopBar.getItem(0);
+
 
                 if(tab.getPosition() == 0) {
-
                     opcionActualizarTweets.setVisible(true);
-
                     if(!internet)
                         internetDialog();
 
@@ -183,7 +183,7 @@ public class MainActivity extends AppCompatActivity
                 }
                 currentTab=tab.getPosition();
                 mViewPager.setCurrentItem(currentTab);
-
+                }
             }
 
             @Override
@@ -230,6 +230,7 @@ public class MainActivity extends AppCompatActivity
     @Override
     protected void onResume() {
         super.onResume();
+
         mViewPager.setCurrentItem(currentTab);
     }
 
@@ -505,6 +506,7 @@ public class MainActivity extends AppCompatActivity
                         rootView = inflater.inflate(R.layout.fragment_fiesta, container, false);
 
                         GridView grid = (GridView) rootView.findViewById(R.id.grid);
+
                       //  grid.setAdapter(new PartyAdapter(ContentProvider.orquestas, getActivity()));
                         grid.setAdapter(new MiscelaneusAdapter(ContentProvider.miscelaneuses, getActivity()));
                         if (mTwoPane) {
@@ -518,7 +520,7 @@ public class MainActivity extends AppCompatActivity
 
                             grid.setNumColumns(col);
                         } else {
-                            grid.setNumColumns(1);
+                            grid.setNumColumns(2);
                         }
 
                         fiesta = rootView;

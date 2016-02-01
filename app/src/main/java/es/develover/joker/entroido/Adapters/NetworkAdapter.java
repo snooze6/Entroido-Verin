@@ -33,10 +33,14 @@ public class NetworkAdapter extends BaseAdapter {
     private ArrayList<NetworkContent> contenido = null;
     private Activity activity;
     private LayoutInflater layoutInflater = null;
-    private int NUM_COL = 1;
+    private int NUM_COL = 5;
     private int ITEMS_AT_SAME = 20;
     private long min_id;
     private long max_id;
+
+    public long getMin_id() {
+        return min_id;
+    }
 
     public void setContenido(ArrayList<NetworkContent> contenido) {
         this.contenido = contenido;
@@ -84,23 +88,16 @@ public class NetworkAdapter extends BaseAdapter {
         ConnectionDetector cd = new ConnectionDetector(activity);
         if (cd.isConnectingToInternet()) {
             //Log.d("[TWEET]", "  -- Voy a cargar más por abajo");
-            for (int i = 0; i < contenido.size(); i++) {
+            /*for (int i = 0; i < contenido.size(); i++) {
                 ((Tweet) contenido.get(i)).print();
-            }
+            }*/
 
-            try {
-                ArrayList<Tweet> arr = new TwitterGetterId().execute(min_id - 1).get();
-                contenido.addAll(arr);
-                min_id = contenido.get(contenido.size() - 1).getId();
-                notifyDataSetChanged();
+
+                new TwitterGetterId(activity,this).execute(min_id - 1);
 
 //            ArrayList<Tweet> arr = new TwitterGetter().execute("FelizMiercoles").get();
 //            contenido.addAll(arr);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            } catch (ExecutionException e) {
-                e.printStackTrace();
-            }
+
         }else{
             ((MainActivity)activity).internetDialog();
         }

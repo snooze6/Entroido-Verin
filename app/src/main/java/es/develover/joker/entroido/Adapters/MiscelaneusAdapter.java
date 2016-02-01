@@ -60,10 +60,10 @@ public class MiscelaneusAdapter extends BaseAdapter {
         Miscelaneus miscelaneus = miscelaneusArray.get(position);
        final int id=miscelaneus.getId();
         if (convertView == null) {
-            convertView = layoutInflater.inflate(R.layout.card_party, parent, false);
-            convertView.findViewById(R.id.youtubeIcon).setVisibility(View.GONE);
+            convertView = layoutInflater.inflate(R.layout.card_grid_miscelaneus, parent, false);
+/*            convertView.findViewById(R.id.youtubeIcon).setVisibility(View.GONE);
             convertView.findViewById(R.id.item_date_special).setVisibility(View.GONE);
-            convertView.findViewById(R.id.imageButton).setVisibility(View.GONE);
+            convertView.findViewById(R.id.imageButton).setVisibility(View.GONE);*/
         }
 
         CardView carview = (CardView)convertView.findViewById(R.id.cv);

@@ -29,7 +29,12 @@
         android:gravity="center"
         android:includeFontPadding="false"
 
-        android:text="Gracias por haber descargado la aplicación del Entroido de Verín. Agradecemos que nos envies cualquier queja, sugerencia o aquello que más te apetezca decirnos a jokersdevelopers@gmail.com"
+        android:text="Gracias por haber descargado la aplicación del Entroido de Verín. Agradecemos que nos envies cualquier queja, sugerencia o aquello que más te apetezca decirnos a jokersdevelopers@gmail.com
+
+Autores:
+Armando Nogueira Rio
+Diego Reiriz Cores
+Denis Romasanta Rodríguez"
         android:textSize="20sp" />
 
 </android.support.design.widget.CoordinatorLayout>

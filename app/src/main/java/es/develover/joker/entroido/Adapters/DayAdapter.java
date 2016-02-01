@@ -88,7 +88,7 @@ private int positionSpecial=3;
 
     @Override
     public int getCount() {
-        return days.size() + 1;
+        return days.size();
     }
 
     @Override

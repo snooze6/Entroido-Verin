@@ -40,4 +40,7 @@
 <dimen name="card_network_marginRight">15dp</dimen>
 <dimen name="card_network_marginLeft">15dp</dimen>
 <dimen name="card_network_marginTop">10dp</dimen>
+
+<dimen name="fragment_social_marginBottom">20dp</dimen>
+<dimen name="fragment_social_marginRight">320dp</dimen>
 </resources>

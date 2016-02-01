@@ -25,6 +25,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageButton;
 import android.widget.ListView;
@@ -394,8 +395,8 @@ public class MainActivity extends AppCompatActivity
 
                         if (social == null) {
                             rootView = inflater.inflate(R.layout.fragment_social, container, false);
-                            ImageButton twitterButton = (ImageButton) rootView.findViewById(R.id.icon_twitter);
-                            twitterButton.setOnClickListener(new View.OnClickListener() {
+                            ImageButton compartirButton = (ImageButton) rootView.findViewById(R.id.cv);
+                            compartirButton.setOnClickListener(new View.OnClickListener() {
                                 @Override
                                 public void onClick(View v) {
                                     // Create intent using ACTION_VIEW and a normal Twitter url:

@@ -53,4 +53,7 @@
     <dimen name="card_network_marginRight">0dp</dimen>
     <dimen name="card_network_marginLeft">0dp</dimen>
     <dimen name="card_network_marginTop">0dp</dimen>
+
+    <dimen name="fragment_social_marginBottom">3dp</dimen>
+    <dimen name="fragment_social_marginRight">3dp</dimen>
 </resources>

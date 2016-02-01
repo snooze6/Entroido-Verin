@@ -46,7 +46,7 @@ public class FiestaAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return Events.size()+1;
+        return Events.size();
     }
 
     @Override

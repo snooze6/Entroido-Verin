@@ -48,13 +48,16 @@ public class TwitterGetterId extends AsyncTask<Long, String, Void> {
             Log.d("DFJKÑFH","ARRAY SIZE: "+tw.size());
 
             if(adapter != null){
-                adapter.getContenido().addAll(tw);
-                adapter.setMin_id(adapter.getContenido().get(adapter.getContenido().size() - 1).getId());
+                ArrayList<NetworkContent> adap=adapter.getContenido();
+                adap.addAll(tw);
+                //adapter.setMin_id(adapter.getContenido().get(adapter.getContenido().size() - 1).getId());
+                adapter.setContenido(adap);
 
                 act.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
                         adapter.notifyDataSetChanged();
+                        adapter.setDone(true);
                     }
                 });
 

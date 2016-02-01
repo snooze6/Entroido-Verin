@@ -37,6 +37,15 @@ public class NetworkAdapter extends BaseAdapter {
     private int ITEMS_AT_SAME = 20;
     private long min_id;
     private long max_id;
+    private boolean done = true;
+
+    public boolean isDone() {
+        return done;
+    }
+
+    public void setDone(boolean done) {
+        this.done = done;
+    }
 
     public long getMin_id() {
         return min_id;
@@ -122,7 +131,8 @@ public class NetworkAdapter extends BaseAdapter {
 
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
-        if (position+NUM_COL>=contenido.size() && contenido.size()>2){
+        if (position+NUM_COL>=contenido.size() && contenido.size()>2 && isDone()){
+            done=false;
             doTheLoad();
         }
         if (convertView==null){

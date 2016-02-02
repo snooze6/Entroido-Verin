@@ -93,40 +93,18 @@ public class NetworkAdapter extends BaseAdapter {
     }
 
     private void doTheLoad(){
-
-        ConnectionDetector cd = new ConnectionDetector(activity);
-        if (cd.isConnectingToInternet()) {
-            //Log.d("[TWEET]", "  -- Voy a cargar más por abajo");
-            /*for (int i = 0; i < contenido.size(); i++) {
-                ((Tweet) contenido.get(i)).print();
-            }*/
-
-
-                new TwitterGetterId(activity,this).execute(min_id - 1);
-
-//            ArrayList<Tweet> arr = new TwitterGetter().execute("FelizMiercoles").get();
-//            contenido.addAll(arr);
-
-        }else{
-            ((MainActivity)activity).internetDialog();
-        }
+        new TwitterGetterId(activity,this).execute(min_id - 1);
     }
 
     public void doTheUpdate(){
-        //Log.d("[TWEET]", "  -- Voy a cargar más por arriba");
-        for (int i=0; i<contenido.size(); i++){
-            ((Tweet)contenido.get(i)).print();
-        }
         try {
-            new TwitterUpdater(this).execute(max_id+1).get();
-
-            notifyDataSetChanged();
-
+            new TwitterUpdater(activity,this).execute(max_id+1).get();
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (ExecutionException e) {
             e.printStackTrace();
         }
+        //notifyDataSetChanged();
     }
 
     @Override

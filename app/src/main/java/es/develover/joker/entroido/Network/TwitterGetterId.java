@@ -1,11 +1,11 @@
 package es.develover.joker.entroido.Network;
 
 import android.app.Activity;
-import android.content.Context;
 import android.os.AsyncTask;
-import android.util.Log;
 
+import es.develover.joker.entroido.Activities.MainActivity;
 import es.develover.joker.entroido.Adapters.NetworkAdapter;
+import es.develover.joker.entroido.Configuration;
 import es.develover.joker.entroido.Model.NetworkContent;
 import es.develover.joker.entroido.Model.Tweet;
 
@@ -15,37 +15,34 @@ import java.util.ArrayList;
 /**
  * Created by snooze on 27/01/16.
  */
-public class TwitterGetterId extends AsyncTask<Long, String, Void> {
+public class TwitterGetterId extends AsyncTask<Long, Void, Void> {
 
-    private Context c = null;
     private NetworkAdapter adapter;
-    private Activity act;
-
-    public TwitterGetterId() {
-    }
+    private Activity activity;
 
     public TwitterGetterId(Activity act,NetworkAdapter adapter) {
-        this.act=act;
+        this.activity =act;
         this.adapter=adapter;
     }
 
-    public TwitterGetterId(Context c) {
-        this.c = c;
-    }
-
     @Override
-    protected Void doInBackground(Long... params) {
+    protected Void doInBackground(Long... params){
+        if (!new ConnectionDetector(activity).isConnectingToInternet()){
+            activity.runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    ((MainActivity)activity).internetDialog();
+                }
+            });
+            return null;
+        }
         try {
-            Twitah t;
-            if (c!=null) {
-                t = new Twitah(c);
-            } else {
-                t = new Twitah();
-            }
+            Twitah t = new Twitah();
+
             t.autentificarOAUTH2();
-            Log.d("[TWEET]", "  -- Voy a cargar a partir de id:" + params[0]);
-            ArrayList<Tweet> tw=t.tweetsPorHashtag(15, params[0], "verin", "entroidoverin", "entroidoverin2016", "verin2016","entroidoverin16","carnavalVerin","carnavalVerin16");
-            Log.d("DFJKÑFH","ARRAY SIZE: "+tw.size());
+
+            //Log.d("[TWEET]", "  -- Voy a cargar a partir de id:" + params[0]);
+            ArrayList<Tweet> tw=t.tweetsPorHashtag(15, params[0], Configuration.HASTAGS);
 
             if(adapter != null){
                 ArrayList<NetworkContent> adap=adapter.getContenido();
@@ -53,14 +50,13 @@ public class TwitterGetterId extends AsyncTask<Long, String, Void> {
                 //adapter.setMin_id(adapter.getContenido().get(adapter.getContenido().size() - 1).getId());
                 adapter.setContenido(adap);
 
-                act.runOnUiThread(new Runnable() {
+                activity.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
                         adapter.notifyDataSetChanged();
                         adapter.setDone(true);
                     }
                 });
-
             }
 
 

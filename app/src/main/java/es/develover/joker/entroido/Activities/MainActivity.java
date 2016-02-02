@@ -427,11 +427,12 @@ public class MainActivity extends AppCompatActivity
                             });
 
                             try {
-                                ArrayList<Tweet> t = new TwitterGetter((NetworkAdapter) list.getAdapter()).execute("verin","entroidoverin","entroidoverin2016","verin2016","entroidoverin16","carnavalVerin","carnavalVerin16").get();
-                                ArrayList<NetworkContent> t1 = new ArrayList<NetworkContent>();
-                                t1.addAll(t);
-                                ((NetworkAdapter) list.getAdapter()).setContenido(t1);
-                                ((NetworkAdapter) list.getAdapter()).notifyDataSetChanged();
+                                new TwitterGetter(getActivity(),(NetworkAdapter) list.getAdapter()).execute().get();
+//                                ArrayList<Tweet> t = new TwitterGetter(getActivity(),(NetworkAdapter) list.getAdapter()).execute().get();
+//                                ArrayList<NetworkContent> t1 = new ArrayList<NetworkContent>();
+//                                t1.addAll(t);
+//                                ((NetworkAdapter) list.getAdapter()).setContenido(t1);
+//                                ((NetworkAdapter) list.getAdapter()).notifyDataSetChanged();
                             } catch (InterruptedException e) {
                                 e.printStackTrace();
                             } catch (ExecutionException e) {

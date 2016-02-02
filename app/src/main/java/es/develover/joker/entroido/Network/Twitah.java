@@ -185,7 +185,7 @@ public class Twitah {
         return bearerToken;
     }
 
-    public ArrayList<Tweet> tweetsPorHashtag(int cantidad,String... hashtags) throws IOException,Oauth2Exception{
+    public ArrayList<Tweet> tweetsPorHashtag(int cantidad,String[] hashtags) throws IOException,Oauth2Exception{
         HttpsURLConnection connection = null;
 
         //codificanse as credenciales ao formato establecido por twitter
@@ -198,7 +198,6 @@ public class Twitah {
             //TODO: REFACTORIZAR
 
             String cadenaHashtags="%23"+hashtags[0];
-
             for (int i=1;i<hashtags.length;i++) {
                 cadenaHashtags+="%2BOR%2B%23"+hashtags[i];
             }
@@ -250,7 +249,7 @@ public class Twitah {
         }
     }
 
-    public ArrayList<Tweet> tweetsPorHashtag(int cantidad, long desde,String... hashtags) throws IOException,Oauth2Exception {
+    public ArrayList<Tweet> tweetsPorHashtag(int cantidad, long desde, String[] hashtags) throws IOException,Oauth2Exception {
         HttpsURLConnection connection = null;
 
         //codificanse as credenciales ao formato establecido por twitter

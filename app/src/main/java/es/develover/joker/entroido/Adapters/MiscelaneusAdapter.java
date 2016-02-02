@@ -71,9 +71,11 @@ public class MiscelaneusAdapter extends BaseAdapter {
         TextView title = (TextView) convertView.findViewById(R.id.item_title_special);
 
 
-        if (image != null) {
 
-            image.setOnClickListener(new View.OnClickListener() {
+        if (carview != null) {
+
+            carview.setOnClickListener(new View.OnClickListener() {
+
                 @Override
                 public void onClick(View v) {
                     Intent intent;

@@ -25,7 +25,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageButton;
 import android.widget.ListView;
@@ -504,9 +503,7 @@ public class MainActivity extends AppCompatActivity
                 case 3:
                     if (fiesta == null) {
                         rootView = inflater.inflate(R.layout.fragment_fiesta, container, false);
-
                         GridView grid = (GridView) rootView.findViewById(R.id.grid);
-
                       //  grid.setAdapter(new PartyAdapter(ContentProvider.orquestas, getActivity()));
                         grid.setAdapter(new MiscelaneusAdapter(ContentProvider.miscelaneuses, getActivity()));
                         if (mTwoPane) {

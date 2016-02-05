@@ -45,9 +45,9 @@ public class XMLParser {
                     if (xml.getName().equals("cigarron")){
                         xml.next();
                         this.cigarron = parseEvent(xml, "cigarron");
-                    } else if (xml.getName().equals("party")){
+                    } else if (xml.getName().equals("partyzones")){
                         xml.next();
-                        this.party = parseEvent(xml, "party");
+                        this.party = parseEvent(xml, "partyzones");
                     }
                     break;
                 case XmlPullParser.END_TAG:

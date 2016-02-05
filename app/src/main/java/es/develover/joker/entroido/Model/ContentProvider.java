@@ -74,9 +74,8 @@ public class ContentProvider {
 
     public static ArrayList<Party> doTheOrquestas() {
         ArrayList<Party> partyData = new ArrayList<Party>();
-        String uriVideo = "qh-mwjF-OMo";
         //Mapa
-        partyData.add(new Party("Localización Orquestas", R.drawable.mapita, "", "www.entroidoverin.com", uriVideo));
+        partyData.add(new Party("Localización Orquestas", R.drawable.mapita, "", "www.entroidoverin.com", "qh-mwjF-OMo"));
         //Jueves de compadres
         partyData.add(new Party("Charanga Tamega", R.drawable.charanga_tamega, "28/01 Jueves de Compadres", "www.orquestasyfiestas.com/charanga-tamega/", "KQv_w2HEPWI"));
         partyData.add(new Party("Banda de Gaitas de Verín", R.drawable.banda_de_gaitas_de_verin, "28/01 Jueves de Compadres", "http://www.verin.es/", "1697zUVEOwo"));
@@ -102,7 +101,7 @@ public class ContentProvider {
         //Lunes de carnaval
         partyData.add(new Party("Orquesta Compostela", R.drawable.orquesta_compostela, "08/02 Orquesta Compostela", "www.orquestasdegalicia.es/formaciones/orquesta_compostela", "HWAFT21Zins"));
 
-//Lunes de carnaval
+        //Lunes de carnaval
         partyData.add(new Party("Orquesta Ciclón", R.drawable.orquesta_ciclon, "08/02 Orquesta Compostela", "www.es-la.facebook.com/ciclongrupo", "bKdrz7UXXpE"));
 
 

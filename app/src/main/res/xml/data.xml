@@ -38,7 +38,7 @@
                 </event>
             </events>
         </cigarron>
-        <party>
+        <partyzones>
             <event>
                 <title>Zona orquestas</title>
                 <description>Click para descubrir como llegar a la zona de las orquestas</description>
@@ -59,6 +59,22 @@
                 <description>Click para descubrir como llegar a la movida nocturna</description>
                 <image>R.drawable.mapa_discotes</image>
             </event>
-        </party>
+        </partyzones>
+        <orquestas>
+            <party>
+                <title>Localización Orquestas</title>
+                <image>R.drawable.mapita</image>
+                <date>_</date>
+                <url>www.entroidoverin.com</url>
+                <video>qh-mwjF-OMo</video>
+            </party>
+            <party>
+                <title></title>
+                <image></image>
+                <date></date>
+                <url></url>
+                <video></video>
+            </party>
+        </orquestas>
     </data>
 </resources>

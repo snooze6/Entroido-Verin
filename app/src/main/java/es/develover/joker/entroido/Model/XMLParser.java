@@ -19,6 +19,7 @@ public class XMLParser {
     int id;
 
     ArrayList<Event> cigarron = null;
+    ArrayList<Event> party = null;
 
     public XMLParser(int id, Context context){
         this.id = id;
@@ -44,6 +45,9 @@ public class XMLParser {
                     if (xml.getName().equals("cigarron")){
                         xml.next();
                         this.cigarron = parseEvent(xml, "cigarron");
+                    } else if (xml.getName().equals("party")){
+                        xml.next();
+                        this.party = parseEvent(xml, "party");
                     }
                     break;
                 case XmlPullParser.END_TAG:

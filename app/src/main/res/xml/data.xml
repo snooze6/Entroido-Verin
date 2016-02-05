@@ -38,5 +38,27 @@
                 </event>
             </events>
         </cigarron>
+        <party>
+            <event>
+                <title>Zona orquestas</title>
+                <description>Click para descubrir como llegar a la zona de las orquestas</description>
+                <image>R.drawable.mapa_orquestas</image>
+            </event>
+            <event>
+                <title>Zona de bares Rua Monte Maior</title>
+                <description>Click para descubrir como llegar a la zona de bares de la calle Montemaior</description>
+                <image>R.drawable.mapa_zona_bares_1</image>
+            </event>
+            <event>
+                <title>Zona de bares Rua Irmáns Moreno</title>
+                <description>Click para descubrir como llegar a la zona de bares de la calle Irmans Moreno</description>
+                <image>R.drawable.mapa_zona_bares_2</image>
+            </event>
+            <event>
+                <title>Zona de pubs y discotecas cerca de la Plaza Alameda</title>
+                <description>Click para descubrir como llegar a la movida nocturna</description>
+                <image>R.drawable.mapa_discotes</image>
+            </event>
+        </party>
     </data>
 </resources>

@@ -72,7 +72,7 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void onItemSelected(String id) {
-        Log.e("[Tocado]: ", "" + mTwoPane + " - " + id);
+        //Log.e("[Tocado]: ", "" + mTwoPane + " - " + id);
 
         if(!id.equals("10")) {
             item = Integer.parseInt(id);

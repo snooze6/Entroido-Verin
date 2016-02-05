@@ -5,6 +5,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.content.res.XmlResourceParser;
 import android.graphics.Point;
 import android.net.Uri;
 import android.os.Build;
@@ -20,6 +21,7 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.util.Xml;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -29,6 +31,7 @@ import android.widget.GridView;
 import android.widget.ImageButton;
 import android.widget.ListView;
 
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.ArrayList;
@@ -36,14 +39,20 @@ import java.util.concurrent.ExecutionException;
 
 import es.develover.joker.entroido.Adapters.MiscelaneusAdapter;
 import es.develover.joker.entroido.Adapters.NetworkAdapter;
+import es.develover.joker.entroido.Configuration;
 import es.develover.joker.entroido.Fragments.ItemDetailFragment;
 import es.develover.joker.entroido.Fragments.ItemListFragment;
 import es.develover.joker.entroido.Model.ContentProvider;
+import es.develover.joker.entroido.Model.Event;
 import es.develover.joker.entroido.Model.NetworkContent;
 import es.develover.joker.entroido.Model.Tweet;
 import es.develover.joker.entroido.Network.ConnectionDetector;
 import es.develover.joker.entroido.Network.TwitterGetter;
 import es.develover.joker.entroido.R;
+import org.xmlpull.v1.XmlPullParser;
+import org.xmlpull.v1.XmlPullParserException;
+
+import static es.develover.joker.entroido.Configuration.*;
 
 public class MainActivity extends AppCompatActivity
         implements ItemListFragment.Callbacks {
@@ -136,6 +145,14 @@ public class MainActivity extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        try {
+            doit();
+        } catch (XmlPullParserException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         fiesta = null;
         agenda = null;
@@ -535,5 +552,71 @@ public class MainActivity extends AppCompatActivity
             return rootView;
         }
 
+    }
+
+    String LOG_TAG = "XML_TEST";
+
+    public void doit() throws XmlPullParserException, IOException {
+        XmlResourceParser xml = getResources().getXml(R.xml.data);
+
+        int event = xml.getEventType();
+
+        while(event!=XmlPullParser.END_DOCUMENT){
+            switch(event){
+                case XmlPullParser.START_TAG:
+//                    Log.d(LOG_TAG,"Start tag " + xml.getName());
+                    if (xml.getName().equals("cigarron")){
+                        xml.next();
+                        parseEvent(xml, "cigarron");
+                    }
+                    break;
+                case XmlPullParser.END_TAG:
+//                    Log.d(LOG_TAG,"End tag " + xml.getName());
+                    break;
+                case XmlPullParser.TEXT:
+//                    Log.d(LOG_TAG,"Text " + xml.getText());
+                    break;
+                case XmlPullParser.START_DOCUMENT:
+                    break;
+            }
+            event = xml.next();
+        }
+
+    }
+
+    private ArrayList<Event> parseEvent(XmlResourceParser xml, String end) throws XmlPullParserException, IOException {
+        ArrayList<Event> arr = new ArrayList<Event>();
+            int event = xml.getEventType();
+            String title;
+            String description;
+            int image = 0;
+            while(event!=XmlPullParser.END_DOCUMENT){
+                switch(event){
+                    case XmlPullParser.START_TAG:
+                        if (xml.getName().equals("title")){
+                            xml.next();
+                            title = xml.getText();
+                            xml.next();
+                            xml.next(); //Fin del título
+                            xml.next(); //Inicio descripción
+                            description = xml.getText();
+                            xml.next();
+                            xml.next();
+                            xml.next();
+                            image = Integer.parseInt(String.valueOf(getResources().getIdentifier(xml.getText().replace("R.drawable.",""),"drawable",getPackageName())));
+                            xml.next();
+                            arr.add(new Event(title, description, image));
+//                            arr.get(arr.size()-1).print();
+                        }
+                    case XmlPullParser.END_TAG:
+//                        Log.d(LOG_TAG,"End tag " + xml.getName());
+                        if (xml.getName().equals(end)){
+                            return arr;
+                        }
+                        break;
+                }
+                event = xml.next();
+            }
+        return arr;
     }
 }

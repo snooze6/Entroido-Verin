@@ -188,13 +188,13 @@ public class ContentProvider {
         Miscelaneus miscelaneus2= new Miscelaneus(" Eventos \n Musicales",Miscelaneus.ORQUESTA,R.drawable.orquestas);
         Miscelaneus miscelaneus3= new Miscelaneus(" Cigarrones y \n Tradición",Miscelaneus.CIGARRON,R.drawable.cigarron);
         Miscelaneus miscelaneus4= new Miscelaneus(" Carteles Del \n Carnaval",Miscelaneus.HISTORIA,R.drawable.carteles);
-        //Miscelaneus miscelaneus5= new Miscelaneus("Concurso de disfraces",Miscelaneus.CONCURSO,R.drawable.hermione);
+        Miscelaneus miscelaneus5= new Miscelaneus("Concurso de disfraces",Miscelaneus.CONCURSO,R.drawable.hermione);
 
         miscelaneusData.add(miscelaneus1);
         miscelaneusData.add(miscelaneus2);
         miscelaneusData.add(miscelaneus3);
         miscelaneusData.add(miscelaneus4);
-        //miscelaneusData.add(miscelaneus5);
+        miscelaneusData.add(miscelaneus5);
         return miscelaneusData;
     }
 

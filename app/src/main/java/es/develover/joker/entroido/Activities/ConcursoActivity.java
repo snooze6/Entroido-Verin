@@ -26,7 +26,7 @@ public class ConcursoActivity extends AppCompatActivity {
                 // Create intent using ACTION_VIEW and a normal Twitter url:
                 String tweetUrl =
                         String.format("https://twitter.com/intent/tweet?text=%s&url=%s",
-                                urlEncode("#entroidoVerin"), urlEncode(""));
+                                urlEncode("#entroidoVerin #CIGAPPRRON16"), urlEncode(""));
                 Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(tweetUrl));
                 startActivity(intent);
             }

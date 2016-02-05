@@ -16,11 +16,8 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
-
-import es.develover.joker.entroido.Activities.MainActivity;
 import es.develover.joker.entroido.Model.NetworkContent;
 import es.develover.joker.entroido.Model.Tweet;
-import es.develover.joker.entroido.Network.ConnectionDetector;
 import es.develover.joker.entroido.Network.TwitterGetterId;
 import es.develover.joker.entroido.Network.TwitterUpdater;
 import es.develover.joker.entroido.R;
@@ -121,7 +118,6 @@ public class NetworkAdapter extends BaseAdapter {
         ImageView imageProfile = (ImageView) convertView.findViewById(R.id.card_network_profile_image);
         TextView author = (TextView) convertView.findViewById(R.id.card_network_title);
         TextView text = (TextView) convertView.findViewById(R.id.card_network_texto);
-
 
 
         NetworkContent n = contenido.get(position);

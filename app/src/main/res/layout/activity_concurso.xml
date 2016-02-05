@@ -57,7 +57,8 @@
 
                             android:layout_centerHorizontal="true"
                             android:layout_below="@+id/card_network_image"
-                            android:text="Con motivo del carnaval 2016; @entroidoverin y @DOMonterrei llegaron a un acuerdo de colaboración para crear un concurso de disfraces para este año.\n\n PREMIOS: Dos estuches de vino donados por la D.O Monterrei.\n\n BASES:\n -Realizar una foto\n.Disfrazados o con el traje e cigarrón\n-Disfrutando con vino D.O.Monterrei (Tendrá que verse la botella)\n-Subir la foto a twitter nombrando a @entroidoverin y @domonterrei\n-Plazo: 28-01-16 a 10-02-16\n-Quedarán fuera de concurso las fotos de mal gusto o ofensivas\n-Serán validadas las fotos mediante un RT desde @entroidoverin\n-Prohibido menores de edad y bebed con moderación\n\nGANADORES:\n1º) Estuche: A la foto que más puntos gane\n   Me gusta -> 1 punto\n    RT -> 2 puntos\n2º) Estuche: Mediante un sorteo aleatorio\n\nLos estuches deberán recogerse personalmente en la sede de la D.O.Monterrei\n\n"
+                            android:text="Ya que estamos de carnaval, queremos celebrarlo con todos los usuarios de la app. Así que hemos organizado un concurso de disfraces para buscar el mejor disfraz de todo el carnaval.\n\n
+PREMIOS: Una tablet android proporcionada por XXXXXXXXXX.\n\n BASES:\n - Realizar una foto disfrazad@ usando la aplicación\n - Subir la foto a twitter con el hashtag #CIGAPPRRON16 \n - Plazo: hasta el 10-02-16\n - Se ignoraran todas aquellas fotos que puedan resultar ofensivas o de mal gusto\n\nPara la notificación del ganador/a, colocaremos un tweet en nuestra cuenta de twitter e intentaremos ponernos en contacto con el o ella mediante un mensaje directo\n\n"
                             android:textAppearance="?android:attr/textAppearanceMedium"
                             android:textSize="@dimen/card_event_detail_txt_size"
                     />
@@ -69,7 +70,7 @@
                             android:layout_below="@+id/item_description_special"
                             android:layout_alignParentLeft="true" android:layout_alignParentStart="true"
                             android:layout_alignParentRight="true" android:layout_alignParentEnd="true"
-                            android:background="@android:color/holo_green_light" android:elevation="8dp"/>
+                            android:background="@color/colorAccent" android:elevation="8dp"/>
 
                 </RelativeLayout>
             </LinearLayout>

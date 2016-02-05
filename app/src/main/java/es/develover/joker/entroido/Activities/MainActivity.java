@@ -143,7 +143,7 @@ public class MainActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-//        new XMLParser(R.xml.data, getApplicationContext());
+        new XMLParser(R.xml.data, getApplicationContext());
 
         fiesta = null;
         agenda = null;

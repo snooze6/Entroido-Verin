@@ -46,6 +46,6 @@ public class Event {
         Log.d(LOG_TAG,"title=      " +title);
         Log.d(LOG_TAG,"description=" +description);
         Log.d(LOG_TAG,"image=      " +image);
-        Log.d(LOG_TAG,"--</event>" +title);
+        Log.d(LOG_TAG,"--</event>");
     }
 }

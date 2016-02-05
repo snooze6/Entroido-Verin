@@ -1,0 +1,19 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools" tools:context=".MainActivity">
+
+    <item android:id="@+id/action_share" android:title="Comparte la aplicación"
+        android:orderInCategory="100" app:showAsAction="never" />
+
+    <item android:id="@+id/action_about_us" android:title="Sobre nosotros"
+        android:orderInCategory="100" app:showAsAction="never" />
+
+    <item android:id="@+id/action_colaboradores" android:title="Colaboradores"
+        android:orderInCategory="100" app:showAsAction="never" />
+
+    <item
+        android:id="@+id/menu_refresh"
+        app:showAsAction="never"
+        android:title="@string/menu_refresh"
+        android:visible="false"/>
+</menu>

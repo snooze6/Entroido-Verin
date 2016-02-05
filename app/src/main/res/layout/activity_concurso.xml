@@ -1,0 +1,81 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingLeft="@dimen/activity_horizontal_margin"
+                android:paddingRight="@dimen/activity_horizontal_margin"
+                android:paddingTop="@dimen/activity_vertical_margin"
+                android:paddingBottom="@dimen/activity_vertical_margin"
+                tools:context="es.develover.joker.entroido.Activities.ConcursoActivity">
+
+    <ScrollView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/scrollView">
+
+        <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+                                            xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                                            android:id="@+id/cv"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:orientation="vertical"
+                                            android:paddingBottom="@dimen/activity_vertical_margin"
+
+                                            android:paddingTop="@dimen/activity_vertical_margin"
+                                            card_view:cardCornerRadius="8dp">
+
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:baselineAligned="false"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp">
+
+                <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="10dp"
+                        android:paddingBottom="10dp">
+
+                    <ImageView
+                            android:id="@+id/card_network_image"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/concurso" />
+
+
+                    <TextView
+                            android:id="@+id/item_description_special"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingTop="10dp"
+
+                            android:layout_centerHorizontal="true"
+                            android:layout_below="@+id/card_network_image"
+                            android:text="Ya que estamos de carnaval, queremos celebrarlo con todos los usuarios de la app. Así que hemos organizado un concurso de disfraces para buscar el mejor disfraz de todo el carnaval.\n\n
+PREMIOS: Una tablet android proporcionada por XXXXXXXXXX.\n\n BASES:\n - Realizar una foto disfrazad@ usando la aplicación\n - Subir la foto a twitter con el hashtag #CIGAPPRRON16 \n - Plazo: hasta el 10-02-16\n - Se ignoraran todas aquellas fotos que puedan resultar ofensivas o de mal gusto\n\nPara la notificación del ganador/a, colocaremos un tweet en nuestra cuenta de twitter e intentaremos ponernos en contacto con el o ella mediante un mensaje directo\n\n"
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:textSize="@dimen/card_event_detail_txt_size"
+                    />
+                    <Button
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="participa"
+                            android:id="@+id/participa"
+                            android:layout_below="@+id/item_description_special"
+                            android:layout_alignParentLeft="true" android:layout_alignParentStart="true"
+                            android:layout_alignParentRight="true" android:layout_alignParentEnd="true"
+                            android:background="@color/colorAccent" android:elevation="8dp"/>
+
+                </RelativeLayout>
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+    </ScrollView>
+
+</RelativeLayout>

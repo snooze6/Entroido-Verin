@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/listview_vertical_margin"
+    android:paddingRight="200dp"
+    android:paddingLeft="200dp">
+
+
+    <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/cv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        card_view:cardCornerRadius="8dp"
+        android:clickable="false">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:baselineAligned="false"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp">
+
+                <ImageView
+                    android:id="@+id/card_network_image"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:adjustViewBounds="true"
+                    android:layout_below="@+id/item_title_special"
+                    android:layout_marginTop="10dp"
+                    android:padding="0dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/icon" />
+
+
+                <TextView
+                    android:id="@+id/item_title_special"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+
+                    android:text="Desfile de cigarrones"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/item_description_special"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_below="@+id/card_network_image"
+                    android:text="Lorem fistrum torpedo pecador jarl se calle ustée jarl llevame al sircoo se calle ustée. Ese pedazo de diodenoo no te digo trigo por no llamarte Rodrigor diodenoo no puedor a wan llevame al sircoo pupita. Fistro benemeritaar de la pradera pupita al ataquerl amatomaa se calle ustée al ataquerl jarl. Apetecan ese hombree diodeno diodeno. Llevame al sircoo benemeritaar ahorarr me cago en tus muelas va usté muy cargadoo se calle ustée a gramenawer ese que llega por la gloria de mi madre jarl la caidita. Jarl ese pedazo de caballo blanco caballo negroorl diodeno a wan apetecan a peich."
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textSize="20sp"
+                    />
+
+            </RelativeLayout>
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+
+</LinearLayout>

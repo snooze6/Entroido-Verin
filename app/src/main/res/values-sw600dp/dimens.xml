@@ -1,0 +1,46 @@
+<resources>
+<!-- Default screen margins, per the Android Design guidelines. -->
+<dimen name="activity_horizontal_margin">8dp</dimen>
+<dimen name="activity_vertical_margin">8dp</dimen>
+<dimen name="listview_vertical_margin">10dp</dimen>
+<dimen name="fab_margin">16dp</dimen>
+<dimen name="appbar_padding_top">8dp</dimen>
+<dimen name="app_bar_height">200dp</dimen>
+
+<dimen name="card_width">370dp</dimen>
+<dimen name="card_height">370dp</dimen>
+<dimen name="card_photo">250dp</dimen>
+<dimen name="card_padding">4dp</dimen>
+<dimen name="column_width">390dp</dimen>
+<dimen name="fragment_fiesta_paddingBottom">70dp</dimen>
+
+<!--car_item.xml and card_item_special.xml -->
+<dimen name="card_item_paddingBottom">10dp</dimen>
+<dimen name="card_item_paddingTop">0dp</dimen>
+<dimen name="card_item_paddingRight">6dp</dimen>
+<dimen name="card_item_paddingLeft">6dp</dimen>
+<dimen name="card_item_relative_padding">10dp</dimen>
+<dimen name="card_item_corner_radius">8dp</dimen>
+<dimen name="card_item_view_elevation">8dp</dimen>
+<dimen name="card_item_view_elevation_special">12dp</dimen>
+<dimen name="card_item_linear_padding">3dp</dimen>
+
+<!--car_event_detail.xml-->
+<dimen name="card_event_detail_paddingBottom">15dp</dimen>
+<dimen name="card_event_detail_paddingTop">0dp</dimen>
+<dimen name="card_event_detail_paddingRight">15dp</dimen>
+<dimen name="card_event_detail_paddingLeft">15dp</dimen>
+<dimen name="card_event_detail_corner_radius">16dp</dimen>
+<dimen name="card_event_detail_view_elevation">10dp</dimen>
+<dimen name="card_event_detail_linearPadding">3dp</dimen>
+<dimen name="card_event_detail_imgHeight">300dp</dimen>
+<dimen name="card_event_detail_imgMargin">10dp</dimen>
+    <dimen name="card_event_detail_txt_size">20dp</dimen>
+<!--car_network.xml and card_item_special.xml -->
+<dimen name="card_network_marginRight">15dp</dimen>
+<dimen name="card_network_marginLeft">15dp</dimen>
+<dimen name="card_network_marginTop">10dp</dimen>
+
+<dimen name="fragment_social_marginBottom">20dp</dimen>
+<dimen name="fragment_social_marginRight">320dp</dimen>
+</resources>

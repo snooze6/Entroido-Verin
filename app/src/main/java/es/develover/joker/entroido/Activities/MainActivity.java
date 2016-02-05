@@ -42,10 +42,7 @@ import es.develover.joker.entroido.Adapters.NetworkAdapter;
 import es.develover.joker.entroido.Configuration;
 import es.develover.joker.entroido.Fragments.ItemDetailFragment;
 import es.develover.joker.entroido.Fragments.ItemListFragment;
-import es.develover.joker.entroido.Model.ContentProvider;
-import es.develover.joker.entroido.Model.Event;
-import es.develover.joker.entroido.Model.NetworkContent;
-import es.develover.joker.entroido.Model.Tweet;
+import es.develover.joker.entroido.Model.*;
 import es.develover.joker.entroido.Network.ConnectionDetector;
 import es.develover.joker.entroido.Network.TwitterGetter;
 import es.develover.joker.entroido.R;
@@ -146,13 +143,7 @@ public class MainActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        try {
-            doit();
-        } catch (XmlPullParserException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        new XMLParser(R.xml.data, getApplicationContext());
 
         fiesta = null;
         agenda = null;
@@ -554,69 +545,5 @@ public class MainActivity extends AppCompatActivity
 
     }
 
-    String LOG_TAG = "XML_TEST";
 
-    public void doit() throws XmlPullParserException, IOException {
-        XmlResourceParser xml = getResources().getXml(R.xml.data);
-
-        int event = xml.getEventType();
-
-        while(event!=XmlPullParser.END_DOCUMENT){
-            switch(event){
-                case XmlPullParser.START_TAG:
-//                    Log.d(LOG_TAG,"Start tag " + xml.getName());
-                    if (xml.getName().equals("cigarron")){
-                        xml.next();
-                        parseEvent(xml, "cigarron");
-                    }
-                    break;
-                case XmlPullParser.END_TAG:
-//                    Log.d(LOG_TAG,"End tag " + xml.getName());
-                    break;
-                case XmlPullParser.TEXT:
-//                    Log.d(LOG_TAG,"Text " + xml.getText());
-                    break;
-                case XmlPullParser.START_DOCUMENT:
-                    break;
-            }
-            event = xml.next();
-        }
-
-    }
-
-    private ArrayList<Event> parseEvent(XmlResourceParser xml, String end) throws XmlPullParserException, IOException {
-        ArrayList<Event> arr = new ArrayList<Event>();
-            int event = xml.getEventType();
-            String title;
-            String description;
-            int image = 0;
-            while(event!=XmlPullParser.END_DOCUMENT){
-                switch(event){
-                    case XmlPullParser.START_TAG:
-                        if (xml.getName().equals("title")){
-                            xml.next();
-                            title = xml.getText();
-                            xml.next();
-                            xml.next(); //Fin del título
-                            xml.next(); //Inicio descripción
-                            description = xml.getText();
-                            xml.next();
-                            xml.next();
-                            xml.next();
-                            image = Integer.parseInt(String.valueOf(getResources().getIdentifier(xml.getText().replace("R.drawable.",""),"drawable",getPackageName())));
-                            xml.next();
-                            arr.add(new Event(title, description, image));
-//                            arr.get(arr.size()-1).print();
-                        }
-                    case XmlPullParser.END_TAG:
-//                        Log.d(LOG_TAG,"End tag " + xml.getName());
-                        if (xml.getName().equals(end)){
-                            return arr;
-                        }
-                        break;
-                }
-                event = xml.next();
-            }
-        return arr;
-    }
 }

@@ -148,5 +148,41 @@
                 <video>bKdrz7UXXpE</video>
             </party>
         </orquestas>
+        <miscelaneuses>
+            <miscelaneus>
+                <title>Concurso de disfraces</title>
+                <id>4</id>
+                <image>R.drawable.portada_concurso</image>
+            </miscelaneus>
+            <miscelaneus>
+                <title>Zonas de fiesta</title>
+                <id>3</id>
+                <image>R.drawable.fiesta</image>
+            </miscelaneus>
+            <miscelaneus>
+                <title>Eventos Musicales</title>
+                <id>0</id>
+                <image>R.drawable.orquestas</image>
+            </miscelaneus>
+            <miscelaneus>
+                <title>Cigarrones y tradición</title>
+                <id>2</id>
+                <image>R.drawable.cigarron</image>
+            </miscelaneus>
+            <miscelaneus>
+                <title>Carteles del carnaval</title>
+                <id>1</id>
+                <image>R.drawable.carteles</image>
+            </miscelaneus>
+        </miscelaneuses>
+        <colaborators>
+            <colaborator>
+                <name>Ayuntamiento de Verín</name>
+                <image>R.drawable.ayuntamiento_verin</image>
+                <web>http://www.verin.es/</web>
+                <title>Difusión de la aplicació</title>
+                <description>El ayuntamiento colaboró en la difusión de la aplicaciónde</description>
+            </colaborator>
+        </colaborators>
     </data>
 </resources>

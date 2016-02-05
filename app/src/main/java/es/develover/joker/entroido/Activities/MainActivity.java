@@ -279,6 +279,7 @@ public class MainActivity extends AppCompatActivity
         switch (item.getItemId()) {
             case R.id.action_about_us:
                 Intent intent = new Intent(this, AboutUsActivity.class);
+//                intent.addFlags();
                 this.startActivity(intent);
                 break;
 
@@ -293,6 +294,7 @@ public class MainActivity extends AppCompatActivity
 
             case R.id.action_colaboradores:
                 Intent i = new Intent(this, ColaboradoresActivity.class);
+//                i.addFlags();
                 startActivity(i);
                 break;
 

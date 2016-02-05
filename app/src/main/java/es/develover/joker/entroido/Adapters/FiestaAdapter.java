@@ -83,7 +83,7 @@ public class FiestaAdapter extends BaseAdapter {
 
         if (position < Events.size()) {
 
-            Log.e("He tocado aqui","He tocado aqui");
+            //Log.e("He tocado aqui","He tocado aqui");
 
 
 

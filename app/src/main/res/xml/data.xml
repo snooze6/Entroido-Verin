@@ -180,8 +180,15 @@
                 <name>Ayuntamiento de Verín</name>
                 <image>R.drawable.ayuntamiento_verin</image>
                 <web>http://www.verin.es/</web>
-                <title>Difusión de la aplicació</title>
-                <description>El ayuntamiento colaboró en la difusión de la aplicaciónde</description>
+                <title>Difusión de la aplicación</title>
+                <description>El ayuntamiento colaboró en la difusión de la aplicación</description>
+            </colaborator>
+            <colaborator>
+                <name>Tienda Idatia</name>
+                <image>R.drawable.idatia</image>
+                <web>https://www.facebook.com/Idatia-Ver%C3%ADn-139722042738352/</web>
+                <title>Patrocinador concurso</title>
+                <description>Colabora con una tablet para el ganador del concurso de fotos #entroidoApp16</description>
             </colaborator>
         </colaborators>
         <days>

@@ -5,7 +5,6 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
-import android.content.res.XmlResourceParser;
 import android.graphics.Point;
 import android.net.Uri;
 import android.os.Build;
@@ -21,7 +20,6 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.util.Xml;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -31,7 +29,6 @@ import android.widget.GridView;
 import android.widget.ImageButton;
 import android.widget.ListView;
 
-import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.ArrayList;
@@ -39,17 +36,15 @@ import java.util.concurrent.ExecutionException;
 
 import es.develover.joker.entroido.Adapters.MiscelaneusAdapter;
 import es.develover.joker.entroido.Adapters.NetworkAdapter;
-import es.develover.joker.entroido.Configuration;
 import es.develover.joker.entroido.Fragments.ItemDetailFragment;
 import es.develover.joker.entroido.Fragments.ItemListFragment;
-import es.develover.joker.entroido.Model.*;
+import es.develover.joker.entroido.Model.ContentProvider;
+import es.develover.joker.entroido.Model.NetworkContent;
+import es.develover.joker.entroido.Model.Tweet;
+import es.develover.joker.entroido.Model.XMLParser;
 import es.develover.joker.entroido.Network.ConnectionDetector;
 import es.develover.joker.entroido.Network.TwitterGetter;
 import es.develover.joker.entroido.R;
-import org.xmlpull.v1.XmlPullParser;
-import org.xmlpull.v1.XmlPullParserException;
-
-import static es.develover.joker.entroido.Configuration.*;
 
 public class MainActivity extends AppCompatActivity
         implements ItemListFragment.Callbacks {
@@ -304,6 +299,12 @@ public class MainActivity extends AppCompatActivity
                 Intent i = new Intent(this, ColaboradoresActivity.class);
 //                i.addFlags();
                 startActivity(i);
+                break;
+            case R.id.action_pagina_web:
+                String url = "http://www.carnavaldeverin.com";
+                Intent i2 = new Intent(Intent.ACTION_VIEW);
+                i2.setData(Uri.parse(url));
+                startActivity(i2);
                 break;
 
         }

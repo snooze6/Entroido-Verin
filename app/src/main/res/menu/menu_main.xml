@@ -11,6 +11,9 @@
     <item android:id="@+id/action_colaboradores" android:title="Colaboradores"
         android:orderInCategory="100" app:showAsAction="never" />
 
+    <item android:id="@+id/action_pagina_web" android:title="Página web"
+        android:orderInCategory="100" app:showAsAction="never" />
+
     <item
         android:id="@+id/menu_refresh"
         app:showAsAction="never"

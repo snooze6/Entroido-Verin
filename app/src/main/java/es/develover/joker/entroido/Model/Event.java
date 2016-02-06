@@ -1,5 +1,7 @@
 package es.develover.joker.entroido.Model;
 
+import android.util.Log;
+
 /**
  * Created by Denis on 26/01/2016.
  */
@@ -36,5 +38,14 @@ public class Event {
 
     public void setImage(int image) {
         this.image = image;
+    }
+
+    public void print(){
+        String LOG_TAG = "XML_TEST";
+        Log.d(LOG_TAG,"--<event>");
+        Log.d(LOG_TAG,"title=      " +title);
+        Log.d(LOG_TAG,"description=" +description);
+        Log.d(LOG_TAG,"image=      " +image);
+        Log.d(LOG_TAG,"--</event>");
     }
 }

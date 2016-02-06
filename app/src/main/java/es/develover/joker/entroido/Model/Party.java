@@ -1,5 +1,7 @@
 package es.develover.joker.entroido.Model;
 
+import android.util.Log;
+
 /**
  * Created by Denis on 26/01/2016.
  */
@@ -55,5 +57,16 @@ public class Party {
 
     public void setUriWeb(String uriWeb) {
         this.uriWeb = uriWeb;
+    }
+
+    public void print(){
+        String LOG_TAG = "XML_TEST";
+        Log.d(LOG_TAG,"--<party>");
+        Log.d(LOG_TAG,"title=      " +title);
+        Log.d(LOG_TAG,"image=      " +image);
+        Log.d(LOG_TAG,"date=       " +date);
+        Log.d(LOG_TAG,"web=        " +uriWeb);
+        Log.d(LOG_TAG,"video=      " +uriYoutube);
+        Log.d(LOG_TAG,"--</party>");
     }
 }

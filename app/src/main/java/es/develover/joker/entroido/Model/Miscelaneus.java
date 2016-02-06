@@ -1,5 +1,7 @@
 package es.develover.joker.entroido.Model;
 
+import android.util.Log;
+
 /**
  * Created by Denis on 28/01/2016.
  */
@@ -44,5 +46,14 @@ public class Miscelaneus {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public void print(){
+        String LOG_TAG = "XML_TEST";
+        Log.d(LOG_TAG,"--<miscellaneous>");
+        Log.d(LOG_TAG,"title=      " +title);
+        Log.d(LOG_TAG,"id=         " +id);
+        Log.d(LOG_TAG,"image=      " +imageID);
+        Log.d(LOG_TAG,"--</miscellaneous>");
     }
 }

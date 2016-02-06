@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <data>
+        <cigarron>
+            <events>
+                <event>
+                    <title>Origen</title>
+                    <description>
+                        A principios del siglo XX, tan solo existían unos pocos trajes de cigarrón en la comarca y éstos eran alquilados a las casas que los poseían en castro. El traje en sí, se mantuvo igual hasta después de la guerra, tiempo en el que se descuidó un poco la estética.
+
+                        En los últimos tiempos se promovieron iniciativas para poder mejorar la presencia del cigarrón y a día de hoy tiene determinados unos elementos básicos que deben mantenerse intactos, como el pantalón, los zapatos, la camisa (permitidas algunas variantes pero dentro de la estética básica) y la estructura básica de la chaquetilla.
+
+                        Dentro de esa estética básica se permite un libre albedrío de colores tanto en medias, como pañoletas, fajas, ligas, pompones y elementos de las caretas como los motivos que aparecen en las mitras o las pieles empleadas en ellas.
+                    </description>
+                    <image>R.drawable.cigarron_1</image>
+                </event>
+                <event>
+                    <title>Importancia</title>
+                    <description>
+                        Siempre ha sido la figura central del Entroido de Verín y debe ser venerada y respetada como tal, la tradición manda que se les debe dejar paso y que no se les puede tirar  la harina o ceniza tan típica del carnaval.
+
+                        El cigarrón es un personaje que hace exaltación de su poderío y fuerza mediante las carreras y los saltos, los movimientos ágiles y certeros y la destreza al mover y emplear su zamarra, la cual tiene un uso exclusivamente limitado desde antaño en apartar a la gente que se interpone en el camino o perseguir y azotar a todo aquel que insulta al cigarrón o a la persona que lo porta.
+                    </description>
+                    <image>R.drawable.cigarron_2</image>
+                </event>
+                <event>
+                <title>De padres a hijos</title>
+                <description>
+                    Entendiendo tradición como la herencia de padres a hijos, en Verín se ha conservado desde antaño el vestir el traje de cigarrón.
+
+                    Para la gente de Verín el cigarrón es la figura idiosincrática del Entroido y vestirlo es un honor para todo aquel que puede hacerlo. Más que un traje, es un sentimiento que va más allá de lo que la razón puede entender.
+
+                    Cigarróns son todas las personas que a lo largo de los siglos han conseguido mantener viva la tradición y vestirlo con el mayor orgullo, respeto y amor posible.
+
+                    En Verín todo el mundo es cigarrón, desde el que lo viste, el que ayuda a vestirlo, el que lo admira, el que siente pasión por él aunque no lo vista y todas aquellas personas que lo llevan en el alma aunque jamás lo hayan vestido.
+                </description>
+                <image>R.drawable.cigarron_3</image>
+                </event>
+            </events>
+        </cigarron>
+        <partyzones>
+            <event>
+                <title>Zona orquestas</title>
+                <description>Click para descubrir como llegar a la zona de las orquestas</description>
+                <image>R.drawable.mapa_orquestas</image>
+            </event>
+            <event>
+                <title>Zona de bares Rua Monte Maior</title>
+                <description>Click para descubrir como llegar a la zona de bares de la calle Montemaior</description>
+                <image>R.drawable.mapa_zona_bares_1</image>
+            </event>
+            <event>
+                <title>Zona de bares Rua Irmáns Moreno</title>
+                <description>Click para descubrir como llegar a la zona de bares de la calle Irmans Moreno</description>
+                <image>R.drawable.mapa_zona_bares_2</image>
+            </event>
+            <event>
+                <title>Zona de pubs y discotecas cerca de la Plaza Alameda</title>
+                <description>Click para descubrir como llegar a la movida nocturna</description>
+                <image>R.drawable.mapa_discotes</image>
+            </event>
+        </partyzones>
+        <orquestas>
+            <party>
+                <title>Localización Orquestas</title>
+                <image>R.drawable.mapita</image>
+                <date>_</date>
+                <url>www.entroidoverin.com</url>
+                <video>qh-mwjF-OMo</video>
+            </party>
+            <party>
+                <title>Charanga Tamega</title>
+                <image>R.drawable.charanga_tamega</image>
+                <date>28/01 Jueves de Compadres</date>
+                <url>www.orquestasyfiestas.com/charanga-tamega/</url>
+                <video>KQv_w2HEPWI</video>
+            </party>
+            <party>
+                <title>Banda de Gaitas de Verín</title>
+                <image>R.drawable.banda_de_gaitas_de_verin</image>
+                <date>28/01 Jueves de Compadres</date>
+                <url>http://www.verin.es/</url>
+                <video>1697zUVEOwo</video>
+            </party>
+            <party>
+                <title>Disco movil Jorge</title>
+                <image>R.drawable.disco_movil_jorge</image>
+                <date>28/01 Jueves de Compadres</date>
+                <url>www.discomoviljorge.com/</url>
+                <video>87vZe4G2zoM</video>
+            </party>
+            <party>
+                <title>Grupo Aramio</title>
+                <image>R.drawable.grupo_aramio</image>
+                <date>31/01 Domingo de corredoiro</date>
+                <url>www.aramio.es/</url>
+                <video>EvlTqavVv8Q</video>
+            </party>
+            <party>
+                <title>Orquesta Capitol</title>
+                <image>R.drawable.orquesta_capitol</image>
+                <date>04/02 Jueves de Comadres 1:00</date>
+                <url>www.orquestasdegalicia.es/formaciones/orquesta_capitol</url>
+                <video>OYrLz_efk-Q</video>
+            </party>
+            <party>
+                <title>Discomovil a Gramola</title>
+                <image>R.drawable.disco_movil_gramola</image>
+                <date>05/02 Viernes de Compadreo - Noche</date>
+                <url>www.orquestasdegalicia.es/fiesta_02-08-2015_disco-movil_a-gramola_pazos-verin-ourense
+                </url>
+                <video>Hi5j3-kuiTo</video>
+            </party>
+            <party>
+                <title>Orquesta Trebol</title>
+                <image>R.drawable.orquesta_trebol</image>
+                <date>06/02 Sabado de carnaval</date>
+                <url>www.orquestatrebol.net</url>
+                <video>UJwu2DIY37c</video>
+            </party>
+            <party>
+                <title>Orquesta America</title>
+                <image>R.drawable.orquesta_america</image>
+                <date>06/02 Sabado de carnaval</date>
+                <url>www.orquestasdegalicia.es/formaciones/grupo_america-de-vigo</url>
+                <video>Lwjzio2O6_M</video>
+            </party>
+            <party>
+                <title>Orquesta Grupo de Moda</title>
+                <image>R.drawable.orquesta_de_moda</image>
+                <date>07/02 Orquesta Grupo de Moda</date>
+                <url>www.orquestasdegalicia.es/formaciones/grupo_d%C2%B4moda</url>
+                <video>M_uUN9gV42Yc
+                </video>
+            </party>
+            <party>
+                <title>Orquesta Compostela</title>
+                <image>R.drawable.orquesta_compostela</image>
+                <date>08/02 Orquesta Compostela</date>
+                <url>www.orquestasdegalicia.es/formaciones/orquesta_compostela</url>
+                <video>HWAFT21Zins</video>
+            </party>
+            <party>
+                <title>Orquesta Ciclón</title>
+                <image>R.drawable.orquesta_ciclon</image>
+                <date>08/02 Orquesta Compostela</date>
+                <url>www.es-la.facebook.com/ciclongrupo</url>
+                <video>bKdrz7UXXpE</video>
+            </party>
+        </orquestas>
+        <miscelaneuses>
+            <miscelaneus>
+                <title>Concurso de disfraces</title>
+                <id>4</id>
+                <image>R.drawable.portada_concurso</image>
+            </miscelaneus>
+            <miscelaneus>
+                <title>Zonas de fiesta</title>
+                <id>3</id>
+                <image>R.drawable.fiesta</image>
+            </miscelaneus>
+            <miscelaneus>
+                <title>Eventos Musicales</title>
+                <id>0</id>
+                <image>R.drawable.orquestas</image>
+            </miscelaneus>
+            <miscelaneus>
+                <title>Cigarrones y tradición</title>
+                <id>2</id>
+                <image>R.drawable.cigarron</image>
+            </miscelaneus>
+            <miscelaneus>
+                <title>Carteles del carnaval</title>
+                <id>1</id>
+                <image>R.drawable.carteles</image>
+            </miscelaneus>
+        </miscelaneuses>
+        <colaborators>
+            <colaborator>
+                <name>Ayuntamiento de Verín</name>
+                <image>R.drawable.ayuntamiento_verin</image>
+                <web>http://www.verin.es/</web>
+                <title>Difusión de la aplicació</title>
+                <description>El ayuntamiento colaboró en la difusión de la aplicaciónde</description>
+            </colaborator>
+        </colaborators>
+    </data>
+</resources>

@@ -203,6 +203,8 @@ public class ContentProvider {
         ArrayList<Colaborador> colaboradores = new ArrayList<Colaborador>();
 
         colaboradores.add(new Colaborador("Ayuntamiento de Verín", R.drawable.ayuntamiento_verin, Uri.parse("http://www.verin.es/"), "Difusión de la aplicación","El ayuntamiento colaboró en la difusión de la aplicación"));
+        colaboradores.add(new Colaborador("Tienda Idatia", R.drawable.idatia, Uri.parse("https://www.facebook.com/Idatia-Ver%C3%ADn-139722042738352/"), "Patrocinador concurso","Colabora con una tablet para el ganador del concurso de fotos #entroidoApp16"));
+
         //colaboradores.add(new Colaborador("La Región", R.drawable.la_region, Uri.parse("http://www.laregion.es/"), "Difusión de la aplicación","DESCRIPCION"));
 
 

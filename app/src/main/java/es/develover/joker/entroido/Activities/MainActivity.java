@@ -138,7 +138,14 @@ public class MainActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        new XMLParser(R.xml.data, getApplicationContext());
+        XMLParser parser = new XMLParser(R.xml.data, getApplicationContext());
+        ContentProvider.cigarron = parser.getCigarron();
+        ContentProvider.colaboradores = parser.getColaborador();
+        ContentProvider.days = parser.getDay();
+        ContentProvider.history = parser.getHistory();
+        ContentProvider.miscelaneuses = parser.getMiscellaneous();
+        ContentProvider.orquestas = parser.getOrquesta();
+        ContentProvider.parties = parser.getParty();
 
         fiesta = null;
         agenda = null;

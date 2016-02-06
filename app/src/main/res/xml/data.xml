@@ -375,5 +375,32 @@
                 </events>
             </day>
         </days>
+        <history>
+            <event>
+                <title>2016</title>
+                <description>_</description>
+                <image>R.drawable.entroido2016</image>
+            </event>
+            <event>
+                <title>2015</title>
+                <description>_</description>
+                <image>R.drawable.entroido2015</image>
+            </event>
+            <event>
+                <title>2014</title>
+                <description>_</description>
+                <image>R.drawable.entroido2014</image>
+            </event>
+            <event>
+                <title>2013</title>
+                <description>_</description>
+                <image>R.drawable.entroido2013</image>
+            </event>
+            <event>
+                <title>2013</title>
+                <description>_</description>
+                <image>R.drawable.entroido2012</image>
+            </event>
+        </history>
     </data>
 </resources>

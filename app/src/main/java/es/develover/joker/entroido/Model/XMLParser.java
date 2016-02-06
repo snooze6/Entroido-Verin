@@ -26,6 +26,7 @@ public class XMLParser {
     ArrayList<Miscelaneus> miscellaneous = null;
     ArrayList<Colaborador> colaborador = null;
     ArrayList<Day> day = null;
+    ArrayList<Event> history = null;
 
     public XMLParser(int id, Context context){
         this.id = id;
@@ -66,6 +67,9 @@ public class XMLParser {
                     } else if (xml.getName().equals("days")){
                         xml.next();
                         this.day = parseDay(xml, "days");
+                    } else if (xml.getName().equals("history")){
+                        xml.next();
+                        this.history = parseEvent(xml, "history");
                     }
                     break;
                 case XmlPullParser.END_TAG:
@@ -115,7 +119,7 @@ public class XMLParser {
                             events = parseEvent(xml, "events");
                         }
                         arr.add(new Day(date,image,title,description,events));
-                        arr.get(arr.size()-1).print();
+//                        arr.get(arr.size()-1).print();
                     }
                 case XmlPullParser.END_TAG:
 //                        Log.d(LOG_TAG,"End tag " + xml.getName());
@@ -151,7 +155,7 @@ public class XMLParser {
                         image = Integer.parseInt(String.valueOf(context.getResources().getIdentifier(xml.getText().replace("R.drawable.",""),"drawable",context.getPackageName())));
                         xml.next();
                         arr.add(new Miscelaneus(title, id, image));
-                        arr.get(arr.size()-1).print();
+//                        arr.get(arr.size()-1).print();
                     }
                 case XmlPullParser.END_TAG:
 //                        Log.d(LOG_TAG,"End tag " + xml.getName());
@@ -197,7 +201,7 @@ public class XMLParser {
                         description = xml.getText();
                         xml.next();
                         arr.add(new Colaborador(name, image, url, title, description));
-                        arr.get(arr.size()-1).print();
+//                        arr.get(arr.size()-1).print();
                     }
                 case XmlPullParser.END_TAG:
 //                        Log.d(LOG_TAG,"End tag " + xml.getName());
@@ -243,7 +247,7 @@ public class XMLParser {
                         video = xml.getText();
                         xml.next();
                         arr.add(new Party(title, image, date, url, video));
-                        arr.get(arr.size()-1).print();
+//                        arr.get(arr.size()-1).print();
                     }
                 case XmlPullParser.END_TAG:
 //                        Log.d(LOG_TAG,"End tag " + xml.getName());
@@ -279,7 +283,7 @@ public class XMLParser {
                         image = Integer.parseInt(String.valueOf(context.getResources().getIdentifier(xml.getText().replace("R.drawable.",""),"drawable",context.getPackageName())));
                         xml.next();
                         arr.add(new Event(title, description, image));
-                        arr.get(arr.size()-1).print();
+//                        arr.get(arr.size()-1).print();
                     }
                 case XmlPullParser.END_TAG:
 //                        Log.d(LOG_TAG,"End tag " + xml.getName());
@@ -291,5 +295,33 @@ public class XMLParser {
             event = xml.next();
         }
         return arr;
+    }
+
+    public ArrayList<Event> getCigarron() {
+        return cigarron;
+    }
+
+    public ArrayList<Event> getParty() {
+        return party;
+    }
+
+    public ArrayList<Party> getOrquesta() {
+        return orquesta;
+    }
+
+    public ArrayList<Miscelaneus> getMiscellaneous() {
+        return miscellaneous;
+    }
+
+    public ArrayList<Colaborador> getColaborador() {
+        return colaborador;
+    }
+
+    public ArrayList<Day> getDay() {
+        return day;
+    }
+
+    public ArrayList<Event> getHistory() {
+        return history;
     }
 }

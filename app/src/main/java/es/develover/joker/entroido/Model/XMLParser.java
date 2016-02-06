@@ -3,6 +3,7 @@ package es.develover.joker.entroido.Model;
 import android.content.Context;
 import android.content.res.XmlResourceParser;
 import android.net.Uri;
+import android.util.Log;
 import es.develover.joker.entroido.R;
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
@@ -24,6 +25,7 @@ public class XMLParser {
     ArrayList<Party> orquesta = null;
     ArrayList<Miscelaneus> miscellaneous = null;
     ArrayList<Colaborador> colaborador = null;
+    ArrayList<Day> day = null;
 
     public XMLParser(int id, Context context){
         this.id = id;
@@ -61,6 +63,9 @@ public class XMLParser {
                     } else if (xml.getName().equals("colaborators")){
                         xml.next();
                         this.colaborador = parseColaborator(xml, "colaborators");
+                    } else if (xml.getName().equals("days")){
+                        xml.next();
+                        this.day = parseDay(xml, "days");
                     }
                     break;
                 case XmlPullParser.END_TAG:
@@ -75,6 +80,53 @@ public class XMLParser {
             event = xml.next();
         }
 
+    }
+
+    private ArrayList<Day> parseDay(XmlResourceParser xml, String end) throws XmlPullParserException, IOException {
+        ArrayList<Day> arr = new ArrayList<Day>();
+        int event = xml.getEventType();
+        String date;
+        int image = 0;
+        String title;
+        String description;
+        ArrayList<Event> events = null;
+        while(event!=XmlPullParser.END_DOCUMENT){
+            switch(event){
+                case XmlPullParser.START_TAG:
+                    if (xml.getName().equals("date")){
+                        xml.next();
+                        date = xml.getText();
+                        xml.next();
+                        xml.next(); //Fin del título
+                        xml.next(); //Inicio descripción
+                        image = Integer.parseInt(String.valueOf(context.getResources().getIdentifier(xml.getText().replace("R.drawable.",""),"drawable",context.getPackageName())));
+                        xml.next();
+                        xml.next();
+                        xml.next();
+                        title = xml.getText();
+                        xml.next();
+                        xml.next();
+                        xml.next();
+                        description = xml.getText();
+                        xml.next(); //Description
+                        xml.next(); //Events
+                        if (xml.getName().equals("events")){
+                            xml.next();
+                            events = parseEvent(xml, "events");
+                        }
+                        arr.add(new Day(date,image,title,description,events));
+                        arr.get(arr.size()-1).print();
+                    }
+                case XmlPullParser.END_TAG:
+//                        Log.d(LOG_TAG,"End tag " + xml.getName());
+                    if (xml.getName().equals(end)){
+                        return arr;
+                    }
+                    break;
+            }
+            event = xml.next();
+        }
+        return arr;
     }
 
     private ArrayList<Miscelaneus> parseMiscellaneus(XmlResourceParser xml, String end) throws XmlPullParserException, IOException {

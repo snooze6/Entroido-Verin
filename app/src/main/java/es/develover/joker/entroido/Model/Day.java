@@ -1,5 +1,7 @@
 package es.develover.joker.entroido.Model;
 
+import android.util.Log;
+
 import java.util.ArrayList;
 
 /**
@@ -66,5 +68,18 @@ public class Day {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public void print(){
+        String LOG_TAG = "XML_TEST";
+        Log.d(LOG_TAG,"--<day>");
+        Log.d(LOG_TAG,"date=       " +date);
+        Log.d(LOG_TAG,"image=      " +photoId);
+        Log.d(LOG_TAG,"title=      " +dayName);
+        Log.d(LOG_TAG,"description=" +events);
+        for (int i=0; i<events.size(); i++){
+            events.get(i).print();
+        }
+        Log.d(LOG_TAG,"--</day>");
     }
 }

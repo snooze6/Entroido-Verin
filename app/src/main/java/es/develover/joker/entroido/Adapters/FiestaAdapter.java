@@ -96,7 +96,11 @@ public class FiestaAdapter extends BaseAdapter {
             title.setText(event.getTitle());
 
             description.setText(event.getDescription());
-            Picasso.with(activity).load(event.getImage()).into(image);
+            if (event.getImage()!=0) {
+                Picasso.with(activity).load(event.getImage()).into(image);
+            } else {
+                image.setImageResource(R.drawable.hermione);
+            }
         }
 
 

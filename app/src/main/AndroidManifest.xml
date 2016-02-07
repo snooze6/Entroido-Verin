@@ -97,6 +97,21 @@
                     android:name="android.support.PARENT_ACTIVITY"
                     android:value="es.develover.joker.entroido.Activities.MainActivity" />
         </activity>
+
+        <service android:name=".Services.NotificationService" android:exported="false" />
+
+        <receiver android:name=".Receiver.ConcursoReceiver">
+
+            <intent-filter>
+                <!--<action android:name="android.intent.action.ACTION_POWER_CONNECTED">
+                </action>-->
+                <action android:name="android.intent.action.CAMERA_BUTTON">
+                </action>
+                <action android:name="android.intent.action.USER_PRESENT">
+                </action>
+            </intent-filter>
+
+        </receiver>
     </application>
 
 </manifest>

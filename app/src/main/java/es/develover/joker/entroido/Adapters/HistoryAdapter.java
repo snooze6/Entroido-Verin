@@ -90,7 +90,12 @@ public class HistoryAdapter extends BaseAdapter {
             Event event = (Event) getItem(position);
             title.setText(event.getTitle());
 
-            description.setText(event.getDescription());
+            if (event.getDescription().equals("_")){
+                description.setText(""); description.setVisibility(View.GONE);
+            } else {
+                description.setVisibility(View.VISIBLE);
+                description.setText(event.getDescription());
+            }
             Picasso.with(activity).load(event.getImage()).into(image);
         }
 

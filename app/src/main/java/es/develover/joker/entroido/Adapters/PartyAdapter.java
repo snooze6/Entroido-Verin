@@ -108,7 +108,13 @@ public class PartyAdapter extends BaseAdapter {
         TextView date = (TextView) convertView.findViewById(R.id.item_date_special);
         Picasso.with(activity).load(parties.get(position).getImage()).into(image);
         title.setText(parties.get(position).getTitle());
-        date.setText(parties.get(position).getDate());
+        if (parties.get(position).getDate().equals("_")){
+            date.setVisibility(View.GONE);
+        } else {
+            date.setVisibility(View.VISIBLE);
+            date.setText(parties.get(position).getDate());
+        }
+
 
 
         return convertView;

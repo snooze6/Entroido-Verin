@@ -1,6 +1,7 @@
 package es.develover.joker.entroido.Activities;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -31,6 +32,10 @@ public class ConcursoActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        if(getResources().getBoolean(R.bool.portrait_only)){
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        }
 
     }
 

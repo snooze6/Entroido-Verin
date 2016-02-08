@@ -49,22 +49,23 @@
                 android:adjustViewBounds="true"
                 android:clickable="true"
                 android:scaleType="centerCrop"
-                android:src="@drawable/hermione" />
+                android:src="@drawable/hermione"
+                android:layout_above="@+id/photo_number" />
+
 
 
             <TextView
-                android:id="@+id/card_network_texto"
+                android:id="@+id/photo_number"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_marginLeft="21dp"
-                android:layout_marginStart="21dp"
-                android:layout_toEndOf="@+id/card_network_profile_image"
-                android:layout_toRightOf="@+id/card_network_profile_image"
-                android:text="\@user"
+                android:text="Imagen  / 4"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:textSize="20dp"
-                android:textStyle="bold" />
+                android:layout_marginTop="5dp"
+                android:textStyle="bold"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                />
 
 
         </RelativeLayout>

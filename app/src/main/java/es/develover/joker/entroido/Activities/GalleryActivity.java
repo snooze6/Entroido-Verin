@@ -13,10 +13,13 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
 import es.develover.joker.entroido.R;
+
+
 
 public class GalleryActivity extends AppCompatActivity {
 
@@ -28,7 +31,7 @@ public class GalleryActivity extends AppCompatActivity {
      * may be best to switch to a
      * {@link android.support.v4.app.FragmentStatePagerAdapter}.
      */
-    private SectionsPagerAdapter mSectionsPagerAdapter;
+    private static SectionsPagerAdapter mSectionsPagerAdapter;
 
     /**
      * The {@link ViewPager} that will host the section contents.
@@ -153,7 +156,10 @@ public class GalleryActivity extends AppCompatActivity {
                                  Bundle savedInstanceState) {
             int section = getArguments().getInt(ARG_SECTION_NUMBER);
             View rootView = inflater.inflate(R.layout.fragment_gallery, container, false);
-          //  TextView textView = (TextView) rootView.findViewById(R.id.item_gallery);
+             TextView textView = (TextView) rootView.findViewById(R.id.photo_number);
+
+            String text= "Imagen " +section+" / "+mSectionsPagerAdapter.getCount();;
+                    textView.setText(text);
             ImageView image = (ImageView)rootView.findViewById(R.id.card_gallery);
             switch (section){
                 case 1:

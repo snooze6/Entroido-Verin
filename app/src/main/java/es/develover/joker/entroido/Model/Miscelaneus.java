@@ -11,6 +11,7 @@ public class Miscelaneus {
     public static final int CIGARRON = 2;
     public static final int FIESTA   = 3;
     public static final int CONCURSO = 4;
+    public static final int GALERIA = 5;
     public String title;
     public int imageID;
     public int id;

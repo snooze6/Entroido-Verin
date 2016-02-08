@@ -17,6 +17,7 @@ import java.util.ArrayList;
 
 import es.develover.joker.entroido.Activities.CigarronActivity;
 import es.develover.joker.entroido.Activities.ConcursoActivity;
+import es.develover.joker.entroido.Activities.GalleryActivity;
 import es.develover.joker.entroido.Activities.HistoriaActivity;
 import es.develover.joker.entroido.Activities.OrquestaActivity;
 import es.develover.joker.entroido.Activities.PartyActivity;
@@ -98,6 +99,10 @@ public class MiscelaneusAdapter extends BaseAdapter {
                             break;
                         case Miscelaneus.FIESTA:
                             intent = new Intent(activity, PartyActivity.class);
+                            activity.startActivity(intent);
+                            break;
+                        case Miscelaneus.GALERIA:
+                            intent = new Intent(activity, GalleryActivity.class);
                             activity.startActivity(intent);
                             break;
                     }

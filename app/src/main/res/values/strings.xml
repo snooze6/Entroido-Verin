@@ -14,5 +14,6 @@
     <string name="title_activity_colaboradores">Colaboradores</string>
     <string name="title_activity_party">Fiesta</string>
     <string name="title_activity_concurso">Concurso de Disfraces</string>
+    <string name="title_activity_gallery">Galeria</string>
 
 </resources>

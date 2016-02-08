@@ -1,30 +1,31 @@
-<?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_alignParentLeft="true"
-    android:layout_alignParentStart="true"
-    android:orientation="vertical">
-
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="es.develover.joker.entroido.Activities.GalleryActivity$PlaceholderFragment">
 
     <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:card_view="http://schemas.android.com/apk/res-auto"
         android:id="@+id/cv"
         android:layout_width="@dimen/card_width"
         android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_centerVertical="true"
         android:layout_marginBottom="10dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:orientation="vertical"
         card_view:cardCornerRadius="12dp"
-        card_view:cardElevation="6dp"
-        android:layout_centerVertical="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentBottom="true">
+        card_view:cardElevation="6dp">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -32,44 +33,43 @@
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             android:baselineAligned="false"
-            android:gravity="center_vertical"
             android:clickable="true"
+            android:gravity="center_vertical"
             android:padding="12dp">
 
             <ImageView
                 android:id="@+id/card_gallery"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:adjustViewBounds="true"
+                android:layout_alignParentLeft="true"
 
+                android:layout_alignParentStart="true"
                 android:layout_below="@+id/card_network_texto"
                 android:layout_marginTop="10dp"
+                android:adjustViewBounds="true"
                 android:clickable="true"
                 android:scaleType="centerCrop"
-                android:src="@drawable/hermione"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true" />
-
+                android:src="@drawable/hermione" />
 
 
             <TextView
                 android:id="@+id/card_network_texto"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
                 android:layout_marginLeft="21dp"
+                android:layout_marginStart="21dp"
+                android:layout_toEndOf="@+id/card_network_profile_image"
+                android:layout_toRightOf="@+id/card_network_profile_image"
                 android:text="\@user"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:textSize="20dp"
-                android:textStyle="bold"
-                android:layout_alignParentTop="true"
-                android:layout_toRightOf="@+id/card_network_profile_image"
-                android:layout_toEndOf="@+id/card_network_profile_image"
-                android:layout_marginStart="21dp" />
-
+                android:textStyle="bold" />
 
 
         </RelativeLayout>
 
     </android.support.v7.widget.CardView>
+
 
 </RelativeLayout>

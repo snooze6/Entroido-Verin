@@ -7,6 +7,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -17,12 +18,15 @@ import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
-import es.develover.joker.entroido.R;
+import java.util.ArrayList;
 
+import es.develover.joker.entroido.R;
 
 
 public class GalleryActivity extends AppCompatActivity {
 
+
+    public static ArrayList<String> urls;
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
      * fragments for each of the sections. We use a
@@ -38,9 +42,44 @@ public class GalleryActivity extends AppCompatActivity {
      */
     private ViewPager mViewPager;
 
+    public void createUrls() {
+        int i = 1;
+        urls = new ArrayList<String>();
+        for (i = 1; i < 11; i++) {
+            String urlBasic = "http://www.carnavaldeverin.com/wp-content/uploads/2015/07/Compadres-2016-";
+            String url = urlBasic + i+".jpg";
+            Log.e("URL:", url);
+            urls.add(url);
+        }
+        for (i = 1; i < 11; i++) {
+            String urlBasic = "http://www.carnavaldeverin.com/wp-content/uploads/2015/07/Comadres_2016_";
+            String url = urlBasic + i+".jpg";
+            Log.e("URL:", url);
+            urls.add(url);
+        }
+
+        for (i = 1; i < 11; i++) {
+            String urlBasic = "http://www.carnavaldeverin.com/wp-content/uploads/2015/07/Corredoiro-2016-";
+            String url = urlBasic + i+"-1.jpg";
+            Log.e("URL:", url);
+            urls.add(url);
+        }
+        for (i = 590; i < 600; i++) {
+            String urlBasic = "http://www.carnavaldeverin.com/wp-content/uploads/2015/07/Desfile-nenos_2016_";
+            String url = urlBasic + i+".jpg";
+            Log.e("URL:", url);
+            urls.add(url);
+        }
+/*urls.clear();
+        urls.add("http://www.carnavaldeverin.com/wp-content/uploads/2015/07/Comadres_2016_20.jpg");
+        urls.add("http://www.carnavaldeverin.com/wp-content/uploads/2015/07/Compadres-2016-3.jpg");*/
+
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        createUrls();
         setContentView(R.layout.activity_gallery);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -107,7 +146,7 @@ public class GalleryActivity extends AppCompatActivity {
         @Override
         public int getCount() {
             // Show 3 total pages.
-            return 4;
+            return urls.size();
         }
 
         @Override
@@ -156,26 +195,31 @@ public class GalleryActivity extends AppCompatActivity {
                                  Bundle savedInstanceState) {
             int section = getArguments().getInt(ARG_SECTION_NUMBER);
             View rootView = inflater.inflate(R.layout.fragment_gallery, container, false);
-             TextView textView = (TextView) rootView.findViewById(R.id.photo_number);
+            TextView textView = (TextView) rootView.findViewById(R.id.photo_number);
 
-            String text= "Imagen " +section+" / "+mSectionsPagerAdapter.getCount();;
-                    textView.setText(text);
-            ImageView image = (ImageView)rootView.findViewById(R.id.card_gallery);
-            switch (section){
+            String text = "Imagen " + section + " / " + mSectionsPagerAdapter.getCount();
+            ;
+            textView.setText(text);
+            ImageView image = (ImageView) rootView.findViewById(R.id.card_gallery);
+           /* switch (section) {
                 case 1:
-                    Picasso.with(getActivity()).load(R.drawable.domingo).into(image);
+                    Picasso.with(getActivity()).load("http://www.carnavaldeverin.com/wp-content/uploads/2015/07/Comadres_2016_18.jpg").into(image);
                     break;
                 case 2:
-                    Picasso.with(getActivity()).load(R.drawable.cigarron).into(image);
+                    Picasso.with(getActivity()).load("http://www.carnavaldeverin.com/wp-content/uploads/2015/07/Corredoiro-2016-11-1.jpg").into(image);
                     break;
                 case 3:
-                    Picasso.with(getActivity()).load(R.drawable.ayuntamiento_verin).into(image);
+                    Picasso.with(getActivity()).load("http://www.carnavaldeverin.com/wp-content/uploads/2015/07/Comadres_2016_15.jpg").into(image);
                     break;
                 case 4:
-                    Picasso.with(getActivity()).load(R.drawable.hermione).into(image);
+                    Picasso.with(getActivity()).load("http://www.carnavaldeverin.com/wp-content/uploads/2015/07/Compadres-2016-3.jpg").into(image);
                     break;
-            }
+                case 5:
+                    Picasso.with(getActivity()).load("http://www.carnavaldeverin.com/wp-content/uploads/2015/07/Comadres_2016_1.jpg").into(image);
+                    break;
+            }*/
 
+            Picasso.with(getActivity()).load(urls.get(section-1)).into(image);
             //textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
             return rootView;
         }

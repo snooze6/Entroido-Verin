@@ -1,18 +1,23 @@
 package es.develover.joker.entroido.Activities;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
+import android.provider.Settings;
+import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -20,6 +25,7 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
+import es.develover.joker.entroido.Network.ConnectionDetector;
 import es.develover.joker.entroido.R;
 
 
@@ -27,6 +33,7 @@ public class GalleryActivity extends AppCompatActivity {
 
 
     public static ArrayList<String> urls;
+   public static boolean internet=false;
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
      * fragments for each of the sections. We use a
@@ -36,49 +43,61 @@ public class GalleryActivity extends AppCompatActivity {
      * {@link android.support.v4.app.FragmentStatePagerAdapter}.
      */
     private static SectionsPagerAdapter mSectionsPagerAdapter;
-
+    public static TabLayout tabLayout;
     /**
      * The {@link ViewPager} that will host the section contents.
      */
     private ViewPager mViewPager;
+
+    public void internetDialog() {
+        ConnectionDetector cd = new ConnectionDetector(this);
+        if (!cd.isConnectingToInternet()) {
+            final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+            alertDialogBuilder.setPositiveButton("Conectarse a internet", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int which) {
+                    Intent intent = new Intent(Settings.ACTION_SETTINGS);
+                    startActivity(intent);
+                }
+            });
+            alertDialogBuilder.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int which) {
+                }
+            });
+            alertDialogBuilder.setTitle("Necesitas conexión a internet para ver el contenido");
+            alertDialogBuilder.show();
+        }
+    }
 
     public void createUrls() {
         int i = 1;
         urls = new ArrayList<String>();
         for (i = 1; i < 11; i++) {
             String urlBasic = "http://www.carnavaldeverin.com/wp-content/uploads/2015/07/Compadres-2016-";
-            String url = urlBasic + i+".jpg";
-            Log.e("URL:", url);
+            String url = urlBasic + i + ".jpg";
             urls.add(url);
         }
         for (i = 1; i < 11; i++) {
             String urlBasic = "http://www.carnavaldeverin.com/wp-content/uploads/2015/07/Comadres_2016_";
-            String url = urlBasic + i+".jpg";
-            Log.e("URL:", url);
+            String url = urlBasic + i + ".jpg";
             urls.add(url);
         }
 
         for (i = 1; i < 11; i++) {
             String urlBasic = "http://www.carnavaldeverin.com/wp-content/uploads/2015/07/Corredoiro-2016-";
-            String url = urlBasic + i+"-1.jpg";
-            Log.e("URL:", url);
+            String url = urlBasic + i + "-1.jpg";
             urls.add(url);
         }
         for (i = 590; i < 600; i++) {
             String urlBasic = "http://www.carnavaldeverin.com/wp-content/uploads/2015/07/Desfile-nenos_2016_";
-            String url = urlBasic + i+".jpg";
-            Log.e("URL:", url);
+            String url = urlBasic + i + ".jpg";
             urls.add(url);
         }
-/*urls.clear();
-        urls.add("http://www.carnavaldeverin.com/wp-content/uploads/2015/07/Comadres_2016_20.jpg");
-        urls.add("http://www.carnavaldeverin.com/wp-content/uploads/2015/07/Compadres-2016-3.jpg");*/
-
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        internet=false;
         createUrls();
         setContentView(R.layout.activity_gallery);
 
@@ -94,19 +113,13 @@ public class GalleryActivity extends AppCompatActivity {
         mViewPager = (ViewPager) findViewById(R.id.container);
         mViewPager.setAdapter(mSectionsPagerAdapter);
 
-/*        View decorView = getWindow().getDecorView();
-// Hide the status bar.
-        int uiOptions = View.SYSTEM_UI_FLAG_FULLSCREEN;
-        decorView.setSystemUiVisibility(uiOptions);*/
-
-
     }
 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_gallery, menu);
+
         return true;
     }
 
@@ -118,9 +131,9 @@ public class GalleryActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+   /*     if (id == R.id.action_settings) {
             return true;
-        }
+        }*/
 
         return super.onOptionsItemSelected(item);
     }
@@ -201,27 +214,54 @@ public class GalleryActivity extends AppCompatActivity {
             ;
             textView.setText(text);
             ImageView image = (ImageView) rootView.findViewById(R.id.card_gallery);
-           /* switch (section) {
-                case 1:
-                    Picasso.with(getActivity()).load("http://www.carnavaldeverin.com/wp-content/uploads/2015/07/Comadres_2016_18.jpg").into(image);
-                    break;
-                case 2:
-                    Picasso.with(getActivity()).load("http://www.carnavaldeverin.com/wp-content/uploads/2015/07/Corredoiro-2016-11-1.jpg").into(image);
-                    break;
-                case 3:
-                    Picasso.with(getActivity()).load("http://www.carnavaldeverin.com/wp-content/uploads/2015/07/Comadres_2016_15.jpg").into(image);
-                    break;
-                case 4:
-                    Picasso.with(getActivity()).load("http://www.carnavaldeverin.com/wp-content/uploads/2015/07/Compadres-2016-3.jpg").into(image);
-                    break;
-                case 5:
-                    Picasso.with(getActivity()).load("http://www.carnavaldeverin.com/wp-content/uploads/2015/07/Comadres_2016_1.jpg").into(image);
-                    break;
-            }*/
 
-            Picasso.with(getActivity()).load(urls.get(section-1)).into(image);
+            ConnectionDetector cd = new ConnectionDetector(getContext());
+            if (cd.isConnectingToInternet()) {
+                Picasso.with(getActivity()).load(urls.get(section - 1)).into(image);
+
+            } else {
+                rootView = inflater.inflate(R.layout.card_no_connection_gallery, container, false);
+                Button button = (Button) rootView.findViewById(R.id.button);
+                button.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        getActivity().recreate();
+
+
+                    }
+                });
+                if(internet==false){
+                    internetDialog();
+                    internet=true;
+                }
+                else{
+                    internet=false;
+                }
+
+            }
             //textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
             return rootView;
         }
+
+        public void internetDialog() {
+            ConnectionDetector cd = new ConnectionDetector(this.getActivity());
+            if (!cd.isConnectingToInternet()) {
+                final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this.getActivity());
+                alertDialogBuilder.setPositiveButton("Conectarse a internet", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        Intent intent = new Intent(Settings.ACTION_SETTINGS);
+                        startActivity(intent);
+                    }
+                });
+                alertDialogBuilder.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                    }
+                });
+                alertDialogBuilder.setTitle("Necesitas conexión a internet para ver el contenido");
+                alertDialogBuilder.show();
+            }
+        }
     }
+
 }

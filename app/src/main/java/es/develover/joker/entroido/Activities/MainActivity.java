@@ -2,14 +2,9 @@ package es.develover.joker.entroido.Activities;
 
 import android.annotation.TargetApi;
 import android.app.AlertDialog;
-import android.app.NotificationManager;
-import android.app.PendingIntent;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
-import android.graphics.BitmapFactory;
-import android.graphics.Color;
 import android.graphics.Point;
 import android.net.Uri;
 import android.os.Build;
@@ -20,8 +15,6 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.app.NotificationCompat;
-import android.support.v4.app.TaskStackBuilder;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -52,7 +45,6 @@ import es.develover.joker.entroido.Model.XMLParser;
 import es.develover.joker.entroido.Network.ConnectionDetector;
 import es.develover.joker.entroido.Network.TwitterGetter;
 import es.develover.joker.entroido.R;
-import es.develover.joker.entroido.Receiver.ConcursoReceiver;
 
 public class MainActivity extends AppCompatActivity
         implements ItemListFragment.Callbacks {
@@ -416,7 +408,7 @@ public class MainActivity extends AppCompatActivity
             switch (section) {
                 case 1:
                     ConnectionDetector cd = new ConnectionDetector(getContext());
-                    if (cd.isConnectingToInternet()) {
+                        if (cd.isConnectingToInternet()) {
                         // call your AsyncTask
 
                         if (social == null) {

@@ -21,6 +21,11 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_6
         targetCompatibility JavaVersion.VERSION_1_6
     }
+
+    buildTypes.each {
+        it.buildConfigField 'String', 'API_KEY', '\"VIJrM2ZUPIsG7Qs1qRidaYeD1\"'
+        it.buildConfigField 'String', 'API_SECRET', '\"apAqSn4nMzGqi5yH6i4ThOiM6IWC2w7B1Lrr9RdBT2iXEPsTJq\"'
+    }
 }
 
 dependencies {

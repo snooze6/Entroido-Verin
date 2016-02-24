@@ -4,6 +4,8 @@ import android.content.Context;
 import android.net.Uri;
 import android.util.Base64;
 import android.util.Log;
+
+import es.develover.joker.entroido.BuildConfig;
 import es.develover.joker.entroido.Model.Tweet;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -32,8 +34,8 @@ public class Twitah {
     private final static String DEBUG_API="DEBUG_API";
     //</DEBUG>
 
-    private final static String API_KEY ="VIJrM2ZUPIsG7Qs1qRidaYeD1";
-    private final static String API_SECRET ="apAqSn4nMzGqi5yH6i4ThOiM6IWC2w7B1Lrr9RdBT2iXEPsTJq";
+    private final static String API_KEY = BuildConfig.API_KEY;
+    private final static String API_SECRET = BuildConfig.API_SECRET;
     private final static String TOKEN_URL = "https://api.twitter.com/oauth2/token";
 
     private static String bearerToken;

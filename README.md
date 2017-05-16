@@ -1,6 +1,6 @@
 # Entroido Verin Android App
 
-Available in [AndroidStore](goo.gl/F4y122content_copyCopy short URL)
+Available in [AndroidStore](goo.gl/F4y122content_copyCopy)
 
 ## Description
 Enjoy all the joy of the Entrodo de Verín from your mobile, access wherever the information of the best carnival in the world.
